@@ -1,6 +1,36 @@
 .auth {
   background: linear-gradient(90deg, rgba(39, 42, 55, 1) 24%, rgba(82, 85, 97, 1) 82%);
   height: 100vh;
+
+  .auth_logo {
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 120px;
+      position: relative;
+      left: -25px;
+      top: 5px;
+      text-shadow: 1px 1px 1px #ffffff;
+      color: white;
+    }
+
+    img {
+      width: 120px;
+      height: 120px;
+    }
+
+    h3 {
+      position: relative;
+      top: -40px;
+    }
+  }
+
   div {
     display: flex;
     justify-content: space-around;

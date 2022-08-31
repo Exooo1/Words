@@ -1,6 +1,6 @@
 .auth {
-  background: linear-gradient(90deg, rgba(39, 42, 55, 1) 24%, rgba(82, 85, 97, 1) 82%);
-  height: 100vh;
+  background: linear-gradient(to right, #0f2027, #553d83, #8f049f);
+  min-height: 100vh;
 
   .auth_logo {
     width: 350px;
@@ -31,9 +31,9 @@
     }
   }
 
-  div {
+  .auth_outlet {
+    flex-wrap: wrap;
     display: flex;
     justify-content: space-around;
-    align-items: center;
   }
 }

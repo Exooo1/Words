@@ -22,6 +22,9 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "no-console": "warn"
+    "no-useless-escape": "off",
+    "react/prop-types": "off",
+    "no-console": "warn",
+    "react/display-name": "off"
   }
 }

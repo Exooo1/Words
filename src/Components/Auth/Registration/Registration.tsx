@@ -1,10 +1,12 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
 import './registration.scss'
-import {useForm} from "../../../Hooks/Form";
+import {useForm} from '../../../Hooks/Form'
+import {FormPassword} from "../../../Common/FormPassword/FormPassword";
+import {CreateButton} from "../../../Common/Buttons/CreateButton";
 
 export const Registration = () => {
-    const reg = useForm()
+    const {email, password, changePassword, changeEmail, ...form} = useForm()
     return (
         <div className='reg'>
             <p>START FOR FREE</p>
@@ -15,63 +17,28 @@ export const Registration = () => {
                 Already A Member? <Link to='login'>Log in.</Link>
             </p>
             <div className='reg_profile'>
-                <div>
-                    <div>
-                        {!!reg.name.length && <label>First name</label>}
-                        <input
-                            value={reg.name}
-                            onChange={reg.changeName}
-                            type='text'
-                            placeholder='First name'
-                        />
-                    </div>
-                    <a>&#128240;</a>
-                    {/*<a>&#9993;</a>*/}
-                </div>
-                <div>
-                    <div>
-                        {!!reg.surname.length && <label>Last name</label>}
-                        <input
-                            value={reg.surname}
-                            onChange={reg.changeSurname}
-                            type='text'
-                            placeholder='Last name'
-                        />
-                    </div>
-                    <a>&#128240;</a>
-                </div>
+                {form.itemsProfile.map((item) => {
+                    return (
+                        <div key={item.id}>
+                            <div>
+                                {!!item.name && <label>{item.plc}</label>}
+                                <input
+                                    value={item.name}
+                                    onChange={item.change}
+                                    type={item.type}
+                                    placeholder={item.plc}
+                                />
+                            </div>
+                            <img src={item.img} alt={item.name}/>
+                        </div>
+                    )
+                })}
             </div>
             <div className='reg_security'>
-                <div>
-                    <div>
-                        {!!reg.email.length && <label>Email</label>}
-                        <input
-                            value={reg.email}
-                            onChange={reg.changeEmail}
-                            type='text'
-                            placeholder='Email'
-                        />
-                    </div>
-                    <a>&#9993;</a>
-                </div>
-                <div>
-                    <div>
-                        {!!reg.password.length && <label>Password</label>}
-                        <input
-                            value={reg.password}
-                            onChange={reg.changePassword}
-                            type='text'
-                            placeholder='Password'
-                        />
-                    </div>
-                    <img style={{color: 'white', width: '50px', height: '50px'}}
-                         src="https://cdn-icons-png.flaticon.com/512/6624/6624543.png" alt=""/>
-                </div>
+                <FormPassword email={email} password={password} changeEmail={changeEmail}
+                              changePassword={changePassword}/>
             </div>
-            <div className='reg_create'>
-                <button onClick={reg.reset}>Reset</button>
-                <button>Create account</button>
-            </div>
+            <CreateButton create={form.createAccount} name={'Create account'}/>
         </div>
     )
 }

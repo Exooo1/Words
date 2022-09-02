@@ -37,3 +37,23 @@
     justify-content: space-around;
   }
 }
+
+.test {
+  border: solid 2px red;
+  height: 600px;
+
+  div {
+    position: absolute;
+    width: 700px;
+    opacity: 0.4;
+    height: 600px;
+    background: #d7cccc;
+    filter: blur(1px);
+  }
+
+  .test1 {
+    filter: blur(0px);
+    background: none;
+    opacity: 1;
+  }
+}

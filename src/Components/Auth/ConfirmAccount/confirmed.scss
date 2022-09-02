@@ -1,0 +1,39 @@
+.confirmed {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #0f2027, #553d83, #8f049f);
+
+  div {
+    background: linear-gradient(to right, #262B37, #4D4450);
+    height: 450px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    width: 400px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    button{
+      background: #517ee8;
+      border-radius: 15px;
+      width: 260px;
+    }
+    span {
+      font-size: 40px;
+      color: #0370e5
+    }
+
+    p {
+      width: 300px;
+    }
+
+    img {
+      width: 120px;
+      height: 120px;
+    }
+  }
+}

@@ -10,3 +10,4 @@ export const CreateButton: React.FC<ButtonType> = memo(({name, create}) => {
         <button onClick={create} style={{width: '80%'}}>{name}</button>
     </div>
 })
+

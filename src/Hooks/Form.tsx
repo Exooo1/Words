@@ -1,4 +1,5 @@
 import {ChangeEvent, useCallback, useState} from 'react'
+import {useNavigate} from "react-router-dom";
 import info from '../Assets/Images/inform.png'
 
 type ItemProfileType = {
@@ -22,6 +23,7 @@ type FormType = {
     createAccount: () => void
 }
 export const useForm = (): FormType => {
+    const redirect = useNavigate()
     const [name, setName] = useState<string>('')
     const [surname, setSurname] = useState<string>('')
     const [email, setEmail] = useState<string>('')
@@ -36,7 +38,9 @@ export const useForm = (): FormType => {
         if (password.length! < 6) return console.log('Password must be more six symbols')
         const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (!reg.test(email)) return console.log('invalid Email')
-        console.log(name,surname,password,email)
+        console.log(name, surname, password, email)
+        if (reg.test(email)) redirect('/auth/email')
+
     }
     const itemsProfile: Array<ItemProfileType> = [
         {id: 1, name: name, change: changeName, type: 'text', plc: 'First name', img: info},

@@ -5,6 +5,10 @@ import {useForm} from '../../../Hooks/Form'
 import {FormPassword} from "../../../Common/FormPassword/FormPassword";
 import {CreateButton} from "../../../Common/Buttons/CreateButton";
 
+const Links=React.memo(()=>{
+    return <Link to={''}>Log in</Link>
+})
+
 export const Registration = () => {
     const {email, password, changePassword, changeEmail, ...form} = useForm()
     return (
@@ -14,7 +18,7 @@ export const Registration = () => {
                 Create new account <span>.</span>
             </h1>
             <p>
-                Already A Member? <Link to='login'>Log in.</Link>
+                Already A Member? <Links/>
             </p>
             <div className='reg_profile'>
                 {form.itemsProfile.map((item) => {

@@ -22,6 +22,10 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "no-console": "error"
+    "react/no-unescaped-entities": "off",
+    "no-useless-escape": "off",
+    "react/prop-types": "off",
+    "no-console": "warn",
+    "react/display-name": "off"
   }
 }

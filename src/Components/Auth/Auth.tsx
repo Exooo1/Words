@@ -13,9 +13,9 @@ export const Auth = () => {
           <h3>App</h3>
         </div>
       </div>
-      <div>
+      <div className='auth_outlet'>
         <Outlet />
-        <div>
+        <div style={{ width: '700px' }}>
           <h1>TEST!</h1>
         </div>
       </div>

@@ -7,6 +7,22 @@ import {LinkMemo} from "../../../Common/Link";
 
 export const Registration = () => {
     const {email, password, changePassword, changeEmail, ...form} = useForm()
+    const profile = form.itemsProfile.map((item) => {
+        return (
+            <div key={item.id}>
+                <div>
+                    {!!item.name && <label>{item.plc}</label>}
+                    <input
+                        value={item.name}
+                        onChange={item.change}
+                        type={item.type}
+                        placeholder={item.plc}
+                    />
+                </div>
+                <img src={item.img} alt={item.name}/>
+            </div>
+        )
+    })
     return (
         <div className='reg'>
             <p>START FOR FREE</p>
@@ -17,22 +33,7 @@ export const Registration = () => {
                 Already A Member? <LinkMemo name='Login' path='login'/>
             </p>
             <div className='reg_profile'>
-                {form.itemsProfile.map((item) => {
-                    return (
-                        <div key={item.id}>
-                            <div>
-                                {!!item.name && <label>{item.plc}</label>}
-                                <input
-                                    value={item.name}
-                                    onChange={item.change}
-                                    type={item.type}
-                                    placeholder={item.plc}
-                                />
-                            </div>
-                            <img src={item.img} alt={item.name}/>
-                        </div>
-                    )
-                })}
+                {profile}
             </div>
             <div className='reg_security'>
                 <FormPassword

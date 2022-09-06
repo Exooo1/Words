@@ -38,8 +38,8 @@ export const useForm = (): FormType => {
         if (password.length! < 6) return console.log('Password must be more six symbols')
         const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (!reg.test(email)) return console.log('invalid Email')
-        console.log(name, surname, password, email)
         if (reg.test(email)) redirect('/auth/email')
+        console.log(name, surname, password, email)
 
     }
     const itemsProfile: Array<ItemProfileType> = [

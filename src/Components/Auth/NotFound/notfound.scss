@@ -3,48 +3,39 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background: black;
   background: linear-gradient(to right, #0f2027, #553d83, #8f049f);
 
   .notfound_content {
-    background: linear-gradient(to right, #262B37, #4D4450);
-    height: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
     color: white;
-    width: 50%;
+    border-radius: 20px;
+    width: 40%;
+    min-height: 600px;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
 
-    div {
-      width: 460px;
+    h1 {
+      font-weight: 800;
+      min-width: 300px;
+      font-size: 35px;
+      margin: 0 0;
     }
 
-    .notfound_content_img {
-      height: 550px;
-      img {
-        width: 200px;
-        height: 200px;
-        position: relative;
-        top: 150px;
-      }
-
-      p {
-        font-weight: 900;
-        font-size: 120px;
-      }
-
+    p {
+      min-width: 300px;
+      width: 80%;
+      font-size: 18px;
     }
 
-    .notfound_content_description {
-      width: 410px;
-      text-align: start;
-      padding: 0 30px;
-
-      p {
-        font-size: 20px;
-      }
+    p:first-child {
+      text-shadow: 0 0 18px #9c3ee0;
+      color: #e4e5ef;
+      margin: 0 0;
+      font-weight: 900;
+      font-size: 150px;
     }
+
   }
 }

@@ -1,13 +1,9 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import './registration.scss'
 import {useForm} from '../../../Hooks/Form'
-import {FormPassword} from "../../../Common/FormPassword/FormPassword";
-import {CreateButton} from "../../../Common/Buttons/CreateButton";
-
-const Links=React.memo(()=>{
-    return <Link to={''}>Log in</Link>
-})
+import {FormPassword} from '../../../Common/FormPassword/FormPassword'
+import {CreateButton} from '../../../Common/Buttons/CreateButton'
+import {LinkMemo} from "../../../Common/Link";
 
 export const Registration = () => {
     const {email, password, changePassword, changeEmail, ...form} = useForm()
@@ -15,10 +11,10 @@ export const Registration = () => {
         <div className='reg'>
             <p>START FOR FREE</p>
             <h1>
-                Create new account <span>.</span>
+                Create new account<span>.</span>
             </h1>
             <p>
-                Already A Member? <Links/>
+                Already A Member? <LinkMemo name='Login' path='login'/>
             </p>
             <div className='reg_profile'>
                 {form.itemsProfile.map((item) => {
@@ -39,8 +35,12 @@ export const Registration = () => {
                 })}
             </div>
             <div className='reg_security'>
-                <FormPassword email={email} password={password} changeEmail={changeEmail}
-                              changePassword={changePassword}/>
+                <FormPassword
+                    email={email}
+                    password={password}
+                    changeEmail={changeEmail}
+                    changePassword={changePassword}
+                />
             </div>
             <CreateButton create={form.createAccount} name={'Create account'}/>
         </div>

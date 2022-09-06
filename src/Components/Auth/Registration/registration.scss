@@ -1,5 +1,4 @@
 .reg {
-  z-index: 10;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,6 +6,10 @@
   width: 600px;
   font-weight: 900;
   color: #525461;
+
+  button{
+    width: 97%;
+  }
 
   p {
     span {

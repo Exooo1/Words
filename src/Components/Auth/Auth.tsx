@@ -16,14 +16,6 @@ export const Auth = () => {
             <div className='auth_outlet'>
                 <Outlet/>
                 <div className='test' style={{width: '700px'}}>
-                    <div>
-
-                    </div>
-                    <div className='test1'>
-                        <h1>Hello</h1>
-                        <button>1</button>
-                        <button>2</button>
-                    </div>
                 </div>
             </div>
         </div>

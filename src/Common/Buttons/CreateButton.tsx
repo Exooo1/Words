@@ -5,6 +5,6 @@ type ButtonType = {
   name: string
   create?: () => void
 }
-export const CreateButton: React.FC<ButtonType> = memo(({ name, create }) => {
-  return <button onClick={create}>{name}</button>
-})
+export const CreateButton: React.FC<ButtonType> = memo(({ name, create }) => (
+  <button onClick={create}>{name}</button>
+))

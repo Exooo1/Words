@@ -14,7 +14,7 @@
   justify-content: flex-start;
   align-items: center;
 
-  .img {
+  .slider_img {
     animation: sliderImg 1s;
     border-radius: 20px 20px 0 0;
     width: 100%;
@@ -60,11 +60,14 @@
     flex-direction: column;
 
     h1 {
+      text-shadow: 0 0 20px rebeccapurple;
+      font-weight: 900;
       color: #0370e5;
       margin: 0 0;
     }
 
     p {
+      font-size: 17px;
       width: 55%;
     }
 

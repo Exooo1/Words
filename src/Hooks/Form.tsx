@@ -42,7 +42,7 @@ export const useForm = (): FormType => {
     if (name.length < 1 || surname.length === 0) return console.log('where is your name?')
     if (surname.length < 1 || surname.length === 0) return console.log('where is your surname?')
     if (password.length! < 6) return console.log('Password must be more six symbols')
-    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    const reg = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
     if (!reg.test(email)) return console.log('invalid Email')
     if (reg.test(email)) redirect('/auth/email')
   }
@@ -55,11 +55,11 @@ export const useForm = (): FormType => {
     surname,
     email,
     password,
-    changeName,
     changeEmail,
-    changeSurname,
     changePassword,
     itemsProfile,
+    changeName,
+    changeSurname,
     createAccount,
   }
 }

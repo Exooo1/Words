@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import './slider.scss'
 
 export const Slider = () => {
-    const [count, setCount] = useState(0)
+    const [count, setCount] = useState<number>(0)
     const [slider, setSlider] = useState([
         {
             id: 0,
@@ -37,6 +37,25 @@ export const Slider = () => {
         },
     ])
     const changeCount = (id: number) => setCount(id)
+    const content = slider.map((item) => {
+        if (item.id === count)
+            return (
+                <>
+                    <img className='slider_img' src={item.img} alt={item.title}/>
+                    <div className='slider_content'>
+                        <h1>{item.title}</h1>
+                        <p>{item.description}</p>
+                    </div>
+                </>
+            )
+    })
+    const switchers = slider.map((item) => (
+        <div
+            onClick={() => changeCount(item.id)}
+            className={item.id === count ? 'slider_switcher_focus' : ''}
+            key={item.id}
+        ></div>
+    ))
     useEffect(() => {
         const interval = setInterval(() => {
             if (count < slider.length - 1) {
@@ -50,21 +69,11 @@ export const Slider = () => {
         }, 5000)
         return () => clearInterval(interval)
     }, [count])
-    return (<div className='slider'>
-             <img className='img' src={slider[count].img} alt=""/>
-            <div className='slider_content'>
-                <h1>{slider[count]?.title}</h1>
-                <p>{slider[count]?.description}</p>
-            </div>
-            <div className='slider_switcher'>
-                {slider.map((item) => (
-                    <div
-                        onClick={() => changeCount(item.id)}
-                        className={item.id === count ? 'slider_switcher_focus' : ''}
-                        key={item.id}
-                    ></div>
-                ))}
-            </div>
+
+    return (
+        <div className='slider'>
+            {content}
+            <div className='slider_switcher'>{switchers}</div>
         </div>
     )
 }

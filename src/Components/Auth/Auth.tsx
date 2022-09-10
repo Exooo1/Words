@@ -6,9 +6,7 @@ import './auth.scss'
 import {HintModal} from '../../Common/Modal/HintModal'
 
 export const Auth = () => {
-    if (0) {
-        return <Navigate to='/profle' replace={true}/>
-    }
+    if (0) return <Navigate to='/profle' replace={true}/>
     return (
         <div className='auth'>
             <div className='auth_logo'>

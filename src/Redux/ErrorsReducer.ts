@@ -12,6 +12,7 @@ type InitialStateType = {
 const initialState: InitialStateType = {
     errors: []
 }
+
 export const slice = createSlice({
     name: 'Errors',
     initialState,
@@ -27,4 +28,3 @@ export const slice = createSlice({
 })
 
 export const errorsReducer = slice.reducer
-export const {addHint, deleteHint} = slice.actions

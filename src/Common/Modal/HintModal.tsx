@@ -1,12 +1,12 @@
 import React from 'react'
-import {useAppDispatch, useAppSelector} from '../../Redux/ReduxUtils'
-import {deleteHint} from '../../Redux/ErrorsReducer'
+import {useActions, useAppSelector} from '../../Redux/ReduxUtils'
+import {slice} from '../../Redux/ErrorsReducer'
 import './hintmodal.scss'
 
 export const HintModal = () => {
+    const {deleteHint} = useActions(slice.actions)
     const hints = useAppSelector((state) => state.errorsReducer.errors)
-    const dispatch = useAppDispatch()
-    const removeHint = (id: string) => dispatch(deleteHint(id))
+    const removeHint = (id: string) => deleteHint(id)
     const resultHits = hints.map((item, index) => {
         switch (item.status) {
             case 'error':

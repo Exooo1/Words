@@ -22,11 +22,14 @@
     "@typescript-eslint"
   ],
   "rules": {
+    "import/no-extraneous-dependencies": "off",
+    "prefer-template": "off",
     "import/prefer-default-export": "off",
     "arrow-body-style": "off",
     "import/extensions": "off",
     "consistent-return": "off",
     "object-shorthand": "off",
+    "array-callback-return": "off",
     //    "no-debugger": "off",
     //    "react/no-unescaped-entities": "off",
     //    "no-useless-escape": "off",

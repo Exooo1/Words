@@ -1,7 +1,15 @@
 import { ChangeEvent, useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAppDispatch } from '../Redux/ReduxUtils'
 import info from '../Assets/Images/inform.png'
+import { addHint } from '../Redux/ErrorsReducer'
 
+export type InputType = {
+  name: string
+  surname: string
+  email: string
+  password: string
+}
 type ItemProfileType = {
   id: number
   name: string
@@ -11,18 +19,15 @@ type ItemProfileType = {
   img: string
 }
 type FormType = {
-  name: string
-  surname: string
-  email: string
-  password: string
   changeName: (e: ChangeEvent<HTMLInputElement>) => void
   changeSurname: (e: ChangeEvent<HTMLInputElement>) => void
   changeEmail: (e: ChangeEvent<HTMLInputElement>) => void
   changePassword: (e: ChangeEvent<HTMLInputElement>) => void
   itemsProfile: Array<ItemProfileType>
   createAccount: () => void
-}
+} & InputType
 export const useForm = (): FormType => {
+  const dispatch = useAppDispatch()
   const redirect = useNavigate()
   const [name, setName] = useState<string>('')
   const [surname, setSurname] = useState<string>('')
@@ -39,11 +44,11 @@ export const useForm = (): FormType => {
     [],
   )
   const createAccount = () => {
-    if (name.length < 1 || surname.length === 0) return console.log('where is your name?')
-    if (surname.length < 1 || surname.length === 0) return console.log('where is your surname?')
-    if (password.length! < 6) return console.log('Password must be more six symbols')
+    if (name.length < 1) return dispatch(addHint('Where is your name?'))
+    if (surname.length < 1) return dispatch(addHint('Where is your surname?'))
+    if (password.length! < 6) return dispatch(addHint('Password incorrect'))
     const reg = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
-    if (!reg.test(email)) return console.log('invalid Email')
+    if (!reg.test(email)) return dispatch(addHint('Invalid Email?'))
     if (reg.test(email)) redirect('/auth/email')
   }
   const itemsProfile: Array<ItemProfileType> = [

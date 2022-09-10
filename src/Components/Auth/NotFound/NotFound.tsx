@@ -1,7 +1,11 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './notfound.scss'
+import {changeTitle} from "../../../Common/usefulFuncs";
 
 export const NotFound = () => {
+    useEffect(()=>{
+        changeTitle('Not Found')
+    },[])
   return (
     <div className='notfound'>
       <div className='notfound_content'>

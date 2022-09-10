@@ -1,12 +1,16 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Navigate, Outlet} from 'react-router-dom'
 import {Slider} from '../Slider/Slider'
 import logo from '../../Assets/Images/logo.svg'
 import './auth.scss'
 import {HintModal} from '../../Common/Modal/HintModal'
+import {changeTitle} from "../../Common/usefulFuncs";
 
 export const Auth = () => {
     if (0) return <Navigate to='/profle' replace={true}/>
+    useEffect(()=>{
+        changeTitle('Auth')
+    },[])
     return (
         <div className='auth'>
             <div className='auth_logo'>

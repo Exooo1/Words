@@ -1,7 +1,15 @@
 import {ChangeEvent, useCallback, useState} from 'react'
-import {useNavigate} from "react-router-dom";
+import {useNavigate} from 'react-router-dom'
+import {useActions} from '../Redux/ReduxUtils'
+import {slice} from '../Redux/ErrorsReducer'
 import info from '../Assets/Images/inform.png'
 
+export type InputType = {
+    name: string
+    surname: string
+    email: string
+    password: string
+}
 type ItemProfileType = {
     id: number
     name: string
@@ -11,18 +19,15 @@ type ItemProfileType = {
     img: string
 }
 type FormType = {
-    name: string
-    surname: string
-    email: string
-    password: string
     changeName: (e: ChangeEvent<HTMLInputElement>) => void
     changeSurname: (e: ChangeEvent<HTMLInputElement>) => void
     changeEmail: (e: ChangeEvent<HTMLInputElement>) => void
     changePassword: (e: ChangeEvent<HTMLInputElement>) => void
     itemsProfile: Array<ItemProfileType>
     createAccount: () => void
-}
+} & InputType
 export const useForm = (): FormType => {
+    const {addHint} = useActions(slice.actions)
     const redirect = useNavigate()
     const [name, setName] = useState<string>('')
     const [surname, setSurname] = useState<string>('')
@@ -30,17 +35,21 @@ export const useForm = (): FormType => {
     const [password, setPassword] = useState<string>('')
     const changeName = (e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)
     const changeSurname = (e: ChangeEvent<HTMLInputElement>) => setSurname(e.target.value)
-    const changeEmail = useCallback((e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value), [])
-    const changePassword = useCallback((e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value), [])
+    const changeEmail = useCallback(
+        (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value),
+        [],
+    )
+    const changePassword = useCallback(
+        (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value),
+        [],
+    )
     const createAccount = () => {
-        if (name.length < 1 || surname.length === 0) return console.log('where is your name?')
-        if (surname.length < 1 || surname.length === 0) return console.log('where is your surname?')
-        if (password.length! < 6) return console.log('Password must be more six symbols')
-        const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (!reg.test(email)) return console.log('invalid Email')
-        console.log(name, surname, password, email)
+        if (name.length < 1) return addHint('Where is your name?')
+        if (surname.length < 1) return addHint('Where is your surname?')
+        if (password.length! < 6) return addHint('Password incorrect')
+        const reg = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
+        if (!reg.test(email)) return addHint('Invalid Email?')
         if (reg.test(email)) redirect('/auth/email')
-
     }
     const itemsProfile: Array<ItemProfileType> = [
         {id: 1, name: name, change: changeName, type: 'text', plc: 'First name', img: info},
@@ -51,11 +60,11 @@ export const useForm = (): FormType => {
         surname,
         email,
         password,
-        changeName,
         changeEmail,
-        changeSurname,
         changePassword,
         itemsProfile,
-        createAccount
+        changeName,
+        changeSurname,
+        createAccount,
     }
 }

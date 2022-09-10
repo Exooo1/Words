@@ -5,15 +5,15 @@
     "jest": true
   },
   "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
+    "airbnb-base",
+    "airbnb-typescript/base",
     "prettier"
   ],
   "overrides": [
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "project": "./tsconfig.json",
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
@@ -22,10 +22,19 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "react/no-unescaped-entities": "off",
-    "no-useless-escape": "off",
-    "react/prop-types": "off",
-    "no-console": "warn",
-    "react/display-name": "off"
+    "import/no-extraneous-dependencies": "off",
+    "prefer-template": "off",
+    "import/prefer-default-export": "off",
+    "arrow-body-style": "off",
+    "import/extensions": "off",
+    "consistent-return": "off",
+    "object-shorthand": "off",
+    "array-callback-return": "off",
+    //    "no-debugger": "off",
+    //    "react/no-unescaped-entities": "off",
+    //    "no-useless-escape": "off",
+    //    "react/prop-types": "off",
+    "no-console": "warn"
+    //    "react/display-name": "off"
   }
 }

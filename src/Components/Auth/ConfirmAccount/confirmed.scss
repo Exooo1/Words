@@ -1,8 +1,8 @@
-.checkMail {
+.confirmed {
   height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   background: linear-gradient(to right, #0f2027, #553d83, #8f049f);
 
   div {
@@ -17,13 +17,18 @@
     align-items: center;
     justify-content: center;
 
+    button{
+      background: #517ee8;
+      border-radius: 15px;
+      width: 260px;
+    }
+    span {
+      font-size: 40px;
+      color: #0370e5
+    }
+
     p {
       width: 300px;
-
-      span {
-        font-weight: 900;
-        color: #41ea6e
-      }
     }
 
     img {

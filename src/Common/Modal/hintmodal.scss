@@ -1,0 +1,38 @@
+.hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 1s;
+  color: white;
+  border-radius: 20px;
+  background: #525461;
+  width: 280px;
+  height: 100px;
+  position: fixed;
+  left: 15px;
+  cursor: pointer;
+  background: linear-gradient(to right, #262B37, #4D4450);
+
+  h3 {
+    width: 180px;
+    font-size: 15px;
+  }
+
+  img {
+    margin: 0 10px;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.error {
+  text-shadow: 0 0 20px red;
+}
+
+.done {
+  text-shadow: 0 0 20px #14fa03;
+}
+
+.warn {
+  background: #f6f604;
+}

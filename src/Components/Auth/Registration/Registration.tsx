@@ -1,8 +1,8 @@
 import React from 'react'
-import {useForm} from '../../../Hooks/Form'
-import {FormPassword} from '../../../Common/FormPassword/FormPassword'
-import {CreateButton} from '../../../Common/Buttons/CreateButton'
-import {LinkMemo} from '../../../Common/Link'
+import { useForm } from '../../../Hooks/Form'
+import { FormPassword } from '../../../Common/FormPassword/FormPassword'
+import { CreateButton } from '../../../Common/Buttons/CreateButton'
+import { LinkMemo } from '../../../Common/Link'
 import './registration.scss'
 
 export const Registration = () => {

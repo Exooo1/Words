@@ -1,11 +1,9 @@
+@import '../../../Common/Styles/mixins.scss';
+
 .reg {
+  @include flexDiv(center, flex-start, column);
+  @include sizes(600px, auto, 900, auto);
   z-index: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  width: 600px;
-  font-weight: 900;
   color: #525461;
 
   button {
@@ -33,112 +31,85 @@
       color: #0370e5;
     }
 
-    font-size: 50px;
-    font-weight: 900;
+    @include wei_fon(900, 50px);
     color: white;
   }
 
   .reg_profile {
+    @include flexDiv(space-between, none, none);
     width: 97%;
-    display: flex;
     margin: 10px 0;
-    justify-content: space-between;
     flex-wrap: wrap;
 
     div {
+      @include flexDiv(space-between, center, none);
+      @include wi_he(45%, 80px);
+      @include colorShadow(none, #323645, 0 0 10px rgba(0, 0, 0, 0.5), none);
       min-width: 100px;
-      width: 45%;
-      display: flex;
-      height: 80px;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      background: #323645;
       border-radius: 20px;
 
       img {
+        @include wi_he(30px, 30px);
         margin: 0 20px;
-        width: 30px;
-        height: 30px;
         color: #a9acb3;
       }
 
       div {
-        display: flex;
+        @include flexDiv(center, flex-start, column);
         width: 90%;
         box-shadow: none;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
 
         label {
           margin: 0 20px;
         }
 
         input {
+          @include sizes(90%, 50px, 900, 22px);
+          @include colorSimple(white, #323645);
           min-width: 100px;
           margin: 0 15px;
           outline: none;
           border: none;
-          background: #323645;
-          height: 50px;
-          width: 90%;
-          font-weight: 900;
-          font-size: 22px;
-          color: white;
         }
       }
     }
   }
 
   .reg_security {
-    display: flex;
-    flex-direction: column;
+    @include flexDiv(none, none, column);
     width: 100%;
     margin: 10px 0;
 
     div {
+      @include flexDiv(space-between, center, none);
+      @include wi_he(97%, 80px);
+      @include colorShadow(none, #323645, 0 0 10px rgba(0, 0, 0, 0.5), none);
       margin: 10px 0;
       min-width: 100px;
-      width: 97%;
-      display: flex;
-      height: 80px;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      background: #323645;
       border-radius: 20px;
 
       img {
+        @include wi_he(30px, 30px);
         margin: 0 20px;
-        width: 30px;
-        height: 30px;
         cursor: pointer;
       }
 
       div {
-        display: flex;
+        @include flexDiv(center, flex-start, column);
         width: 90%;
         box-shadow: none;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
 
         label {
           margin: 0 20px;
         }
 
         input {
+          @include sizes(90%, 50px, 900, 22px);
+          @include colorSimple(white, #323645);
           min-width: 100px;
           margin: 0 15px;
           outline: none;
           border: none;
-          background: #323645;
-          height: 50px;
-          width: 90%;
-          font-weight: 900;
-          font-size: 22px;
-          color: white;
         }
       }
     }

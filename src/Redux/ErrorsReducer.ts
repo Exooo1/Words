@@ -28,3 +28,4 @@ export const slice = createSlice({
 })
 
 export const errorsReducer = slice.reducer
+export  const {addHint} =slice.actions

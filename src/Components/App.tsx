@@ -21,7 +21,7 @@ export const App = () => {
           <Route path='login' element={<Login />} />
         </Route>
         <Route path='auth/email' element={<CheckMail />} />
-        <Route path='auth/confirmed' element={<ConfirmAccount />} />
+        <Route path='auth/confirmed/:id' element={<ConfirmAccount />} />
       </Routes>
     </div>
   )

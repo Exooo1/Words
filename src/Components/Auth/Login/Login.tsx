@@ -1,16 +1,21 @@
 import React, {useEffect} from 'react'
+import {Navigate, useNavigate} from "react-router-dom";
 import {useForm} from '../../../Hooks/Form'
 import {FormPassword} from '../../../Common/FormPassword/FormPassword'
 import {CreateButton} from '../../../Common/Buttons/CreateButton'
 import {LinkMemo} from '../../../Common/Link'
-import './login.scss'
 import {changeTitle} from '../../../Common/usefulFuncs'
+import {useAppSelector} from "../../../Redux/ReduxUtils";
+import './login.scss'
 
 export const Login = () => {
+    const form = useForm()
+    const navigate = useNavigate()
+    const auth = useAppSelector(state => state.authReducer.auth)
     useEffect(() => {
         changeTitle('Login')
     }, [])
-    const form = useForm()
+    if (auth === 1) navigate('/omgfth')
     return (
         <div className='login'>
             <h1>

@@ -1,13 +1,19 @@
 import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import verify from '../../../Assets/Images/verify.png'
 import './confirmed.scss'
 import { changeTitle } from '../../../Common/usefulFuncs'
+import { apiAuth } from '../../../API/API'
 
 export const ConfirmAccount = () => {
   const redirect = useNavigate()
+  const { id } = useParams()
+  const fetchConfirm = async () => {
+    await apiAuth.confirm(id || '')
+  }
   useEffect(() => {
     changeTitle('ConfirmAccount')
+    fetchConfirm()
   }, [])
   const navigate = () => redirect('/auth/login')
   return (

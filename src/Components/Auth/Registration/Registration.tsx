@@ -1,16 +1,25 @@
-import React from 'react'
-import {Navigate} from "react-router-dom";
+import React, {useEffect} from 'react'
+import {Navigate} from 'react-router-dom'
 import {useForm} from '../../../Hooks/Form'
 import {FormPassword} from '../../../Common/FormPassword/FormPassword'
 import {CreateButton} from '../../../Common/Buttons/CreateButton'
 import {LinkMemo} from '../../../Common/Link'
 import './registration.scss'
-import {useAppSelector} from "../../../Redux/ReduxUtils";
+import {useAppDispatch, useAppSelector} from '../../../Redux/ReduxUtils'
+import {fetchGetAuth} from "../../../Redux/AuthReducer";
 
 export const Registration = () => {
+    const dispatch = useAppDispatch()
+    useEffect(() => {
+        console.log('effectAuth')
+        dispatch(fetchGetAuth(''))
+    }, [])
     const {email, password, changePassword, changeEmail, login, ...form} = useForm()
-    const resultCode = useAppSelector(state => state.authReducer.resultCode)
-    if (resultCode) return <Navigate to='/auth/email' replace={true}/>
+    const resultCode = useAppSelector((state) => state.authReducer.resultCode)
+    const auth = useAppSelector((state) => state.authReducer.auth)
+    console.log(auth)
+    if (resultCode === 1) return <Navigate to='/auth/email' replace={true}/>
+    if (auth === 1) return <Navigate to='/404' replace={true}/>
     const profile = form.itemsProfile.map((item) => {
         return (
             <div key={item.id}>

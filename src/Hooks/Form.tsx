@@ -1,7 +1,8 @@
 import {ChangeEvent, useCallback, useState} from 'react'
-import {useActions} from '../Redux/ReduxUtils'
+import {useAppDispatch} from '../Redux/ReduxUtils'
 import info from '../Assets/Images/inform.png'
-import {authActions} from "../Redux/AuthReducer";
+import {fetchLogin, fetchRegistration} from '../Redux/AuthReducer'
+import {addHint} from "../Redux/ErrorsReducer";
 
 export type InputType = {
     name: string
@@ -27,7 +28,8 @@ type FormType = {
     login: () => void
 } & InputType
 export const useForm = (): FormType => {
-    const {fetchRegistration} = useActions(authActions)
+    const reg = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
+    const dispatch = useAppDispatch()
     const [name, setName] = useState<string>('')
     const [surname, setSurname] = useState<string>('')
     const [email, setEmail] = useState<string>('')
@@ -43,20 +45,25 @@ export const useForm = (): FormType => {
         [],
     )
     const createAccount = () => {
-        fetchRegistration({name, surname, password, email})
+        if (name.length < 1) return dispatch(addHint('Where is your name?'))
+        if (surname.length < 1) return dispatch(addHint('Where is your surname?'))
+        if (password.length! < 6) return dispatch(addHint('Password incorrect'))
+        if (!reg.test(email)) return dispatch(addHint('Invalid Email?'))
+        if (reg.test(email)) {
+            dispatch(fetchRegistration({
+                name: name[0].toUpperCase() + name.slice(1),
+                surname: surname[0].toUpperCase() + surname.slice(1),
+                password,
+                email
+            }))
+        }
     }
     const login = async () => {
-        // if (password.length! < 6) return addHint('Password incorrect')
-        // if (!reg.test(email)) return addHint('Invalid Email?')
-        // if (reg.test(email)) {
-        //     try {
-        //         const result = await apiAuth.login({email, password})
-        //         window.localStorage.setItem('token', result.data.token)
-        //         console.log(result.data.token)
-        //     } catch (err) {
-        //         console.log(err)
-        //     }
-        // }
+        if (password.length! < 6) return dispatch(addHint('Password incorrect'))
+        if (!reg.test(email)) return dispatch(addHint('Invalid Email?'))
+        if (reg.test(email)) {
+            dispatch(fetchLogin({email, password}))
+        }
     }
 
     const itemsProfile: Array<ItemProfileType> = [
@@ -74,6 +81,6 @@ export const useForm = (): FormType => {
         changeName,
         changeSurname,
         createAccount,
-        login
+        login,
     }
 }

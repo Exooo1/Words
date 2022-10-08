@@ -5,13 +5,12 @@ import {FormPassword} from '../../../Common/FormPassword/FormPassword'
 import {CreateButton} from '../../../Common/Buttons/CreateButton'
 import {LinkMemo} from '../../../Common/Link'
 import './registration.scss'
-import {useAppDispatch, useAppSelector} from '../../../Redux/ReduxUtils'
 import {fetchGetAuth} from "../../../Redux/AuthReducer";
+import {useAppDispatch, useAppSelector} from '../../../Redux/ReduxUtils'
 
 export const Registration = () => {
     const dispatch = useAppDispatch()
     useEffect(() => {
-        console.log('effectAuth')
         dispatch(fetchGetAuth(''))
     }, [])
     const {email, password, changePassword, changeEmail, login, ...form} = useForm()
@@ -19,7 +18,7 @@ export const Registration = () => {
     const auth = useAppSelector((state) => state.authReducer.auth)
     console.log(auth)
     if (resultCode === 1) return <Navigate to='/auth/email' replace={true}/>
-    if (auth === 1) return <Navigate to='/404' replace={true}/>
+    if (auth === 1) return <Navigate to='/app' replace={true}/>
     const profile = form.itemsProfile.map((item) => {
         return (
             <div key={item.id}>

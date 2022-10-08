@@ -50,5 +50,8 @@ export const apiAuth = {
     },
     getAuth() {
         return instance.post<ApiReturnType>('me', {}, {headers: {Authorization: `Bearer ${window.localStorage.getItem('token')}`}})
+    },
+    logout() {
+        return instance.put<ApiReturnType>('logout', {}, {headers: {Authorization: `Bearer ${window.localStorage.getItem('token')}`}})
     }
 }

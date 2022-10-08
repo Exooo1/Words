@@ -56,7 +56,14 @@ export const fetchGetAuth = createAsyncThunk<number, any>('auth/fetchGetAuth',
             return rejectWithValue({errors: response?.data.error || message})
         }
     })
-export const authActions = {fetchRegistration}
+export const fetchLogOut = createAsyncThunk('auth/fetchLogOut', async () => {
+    try {
+        const {data} = await apiAuth.logout()
+        return data.resultCode
+    } catch (err) {
+        return 1
+    }
+})
 export const slice = createSlice({
     name: 'auth',
     initialState,
@@ -69,6 +76,9 @@ export const slice = createSlice({
             state.auth = action.payload
         })
         builder.addCase(fetchGetAuth.fulfilled, (state, action) => {
+            state.auth = action.payload
+        })
+        builder.addCase(fetchLogOut.fulfilled, (state, action) => {
             state.auth = action.payload
         })
     }

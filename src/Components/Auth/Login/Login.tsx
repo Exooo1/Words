@@ -15,7 +15,7 @@ export const Login = () => {
     useEffect(() => {
         changeTitle('Login')
     }, [])
-    if (auth === 1) navigate('/omgfth')
+    if (auth === 1) navigate('/app')
     return (
         <div className='login'>
             <h1>

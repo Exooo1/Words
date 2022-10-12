@@ -43,9 +43,9 @@
     background: linear-gradient(90deg, rgb(243, 23, 140) 10%, rgba(251, 6, 6, 0.5) 72%);
     color: white;
     cursor: pointer;
+    border: none;
   }
   button:active{
-    border: none;
     box-shadow: inset 0 0 10px black;
   }
 }

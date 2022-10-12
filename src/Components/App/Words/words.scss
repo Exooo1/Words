@@ -9,11 +9,15 @@
   .container_words_sort {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
 
     .container_words_sort_buttons {
-      display: flex;
       width: 30%;
+      display: flex;
+      //.container_words_sort_buttons_active{
+      //  transform: rotate(90deg);
+      //}
 
       div {
         display: flex;

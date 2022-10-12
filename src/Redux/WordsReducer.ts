@@ -36,7 +36,8 @@ type WordsInitialType = {
         x: Array<WordType>,
         y: Array<WordType>,
         z: Array<WordType>,
-    }
+    },
+    totalWords:number
 }
 const initialState: WordsInitialType = {
     words: {
@@ -65,13 +66,15 @@ const initialState: WordsInitialType = {
         x: [],
         y: [],
         z: [],
-    }
+    },
+    totalWords:0
 }
 
 export const fetchGetWords = createAsyncThunk('words/fetchGetWords', async (arg, {rejectWithValue, dispatch}) => {
     try {
         const {data} = await wordApi.getWords()
-        return data.resultCode.words
+        console.log(data)
+        return {words:data.resultCode.words, totalWords:data.resultCode.totalWords}
     } catch (err) {
         const {response, message} = err as AxiosError<any>
         if (response?.data === undefined) dispatch(addHint(message))
@@ -86,7 +89,8 @@ export const fetchAddWord = createAsyncThunk<AddWordType, AddWordType>('words/fe
                                                                                                         added
                                                                                                     }, thunkAPI) => {
     try {
-        const {data}=await wordApi.addWord({word, translate, description, added})
+        const upperWord = word[0].toUpperCase() + word.slice(1)
+        const {data}=await wordApi.addWord({word:upperWord, translate, description, added})
         console.log(data)
         return data.resultCode
     } catch (err) {
@@ -111,9 +115,11 @@ const slice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(fetchGetWords.fulfilled, (state, action) => {
-            state.words = action.payload
+            console.log(action)
+            state.words = action.payload.words
+            state.totalWords=action.payload.totalWords
         })
-        builder.addCase(fetchAddWord.fulfilled, (state, action: PayloadAction<AddWordType>) => {
+        builder.addCase(fetchAddWord.fulfilled, (state, action) => {
             const letter = action.payload.word[0].toLowerCase()
             state.words[letter].unshift({...action.payload})
         })

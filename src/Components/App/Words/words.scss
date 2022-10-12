@@ -6,16 +6,52 @@
   flex-direction: column;
   margin-left: 50px;
 
-  .container_words_description_decorate {
+  .container_words_sort {
     display: flex;
-    justify-content: center;
-    div {
-      background: white;
-      width: 80%;
-      height: 1px;
-      opacity: 0.4;
+    justify-content: flex-start;
+    align-items: center;
+
+    .container_words_sort_buttons {
+      display: flex;
+      width: 30%;
+
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        span {
+          color: white;
+        }
+
+        button {
+          font-family: "Calibri Light";
+          text-align: right;
+          color: white;
+          font-size: 18px;
+          border: none;
+          background: none;
+          cursor: pointer;
+          width: 95px;
+          height: 50px;
+        }
+      }
     }
   }
+
+  .container_words_word {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .container_words_word_item {
+      width: 99%;
+      border-radius: 10px;
+      background: linear-gradient(to right, rgba(31, 38, 84, 0.09), #1d1d3f);
+    }
+  }
+
 
   .container_words_description {
     display: flex;
@@ -25,27 +61,6 @@
       height: 260px;
       display: flex;
       flex-direction: column;
-
-      div {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        height: 90px;
-        width: 350px;
-        margin-top: 25px;
-
-        button {
-          font-weight: 600;
-          color: white;
-          cursor: pointer;
-          font-size: 15px;
-          background: #2e2e38;
-          width: 120px;
-          border: none;
-          height: 60px;
-          border-radius: 10px;
-        }
-      }
     }
 
     .container_words_description_two {
@@ -55,16 +70,34 @@
       flex-direction: column;
       margin-right: 20px;
 
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid 1px #545563;
+        border-radius: 15px;
+        box-shadow: 0 0 1px white;
+        width: 310px;
+        height: 65px;
+
+        img {
+          margin: 0 5px;
+          width: 35px;
+          height: 35px;
+        }
+      }
+
       button {
         color: white;
         font-weight: 900;
         font-size: 15px;
         width: 200px;
         height: 70px;
-        background: #4563f3;
+        background: linear-gradient(to right, #2295d2, #284196);
         box-shadow: 0 0 2px #294adc;
-        border-radius: 15px;
+        border-radius: 18px;
         cursor: pointer;
+        border: none;
       }
 
       button:active {
@@ -72,9 +105,19 @@
       }
 
       input {
+        font-weight: 600;
+        outline: none;
+        font-size: 17px;
+        border: none;
+        color: white;
+        background: #252734;
         border-radius: 15px;
         width: 250px;
         height: 40px;
+      }
+
+      input::placeholder {
+        color: #545563;
       }
     }
   }

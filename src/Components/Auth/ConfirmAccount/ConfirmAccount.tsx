@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import verify from '../../../Assets/Images/verify.png'
 import './confirmed.scss'
 import { changeTitle } from '../../../Common/usefulFuncs'
-import { apiAuth } from '../../../API/API'
+import { apiAuth } from '../../../API/authAPI'
 
 export const ConfirmAccount = () => {
   const redirect = useNavigate()

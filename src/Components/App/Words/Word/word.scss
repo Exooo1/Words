@@ -1,0 +1,51 @@
+.container_word {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid 1px rgba(169, 169, 169, 0.39);
+  height: 60px;
+
+  .container_word_main {
+    font-family: "Calibri Light";
+    font-size: 18px;
+    font-weight: 700;
+    text-align: left;
+    color: white;
+    padding-left: 15px;
+    width: 10%;
+  }
+
+  .container_word_translate {
+    text-shadow: 1px 1px 0 black;
+    font-family: Roboto;
+    color: #4ca5dc;
+    letter-spacing: 0.8px;
+    width: 30%;
+    font-size: 20px;
+  }
+
+  .container_word_description {
+    color: #41ea6e;
+    width: 35%;
+  }
+  .description_active {
+    color: #767a7b;
+  }
+
+  .container_word_added {
+    color: white;
+    width: 20%;
+  }
+  button{
+    border-radius: 60px;
+    height: 35px;
+    width: 35px;
+    background: linear-gradient(90deg, rgb(243, 23, 140) 10%, rgba(251, 6, 6, 0.5) 72%);
+    color: white;
+    cursor: pointer;
+  }
+  button:active{
+    border: none;
+    box-shadow: inset 0 0 10px black;
+  }
+}

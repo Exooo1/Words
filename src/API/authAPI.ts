@@ -25,10 +25,6 @@ type ApiReturnLoginType = {
     token: string
     auth: number
 }
-// const config = {
-//     headers: {Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxZDNmOTJkODIzNDFkOTM2MDFjN2QiLCJpYXQiOjE2NjMxNjIzMzQsImV4cCI6MTY2MzI0ODczNH0.ctIlR6xrGx43rcJJbBkEJgRNEzF0ZH4ZinZwbLtfaiA`}
-// }
-
 export const apiAuth = {
     registration(values: InputType): AxiosPromise<ApiReturnType> {
         const result = {

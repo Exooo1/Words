@@ -2,7 +2,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 import {InputType} from "../Hooks/Form";
 import {addHint} from "./ErrorsReducer";
-import {apiAuth, ApiReturnType} from "../API/API";
+import {apiAuth, ApiReturnType} from "../API/authAPI";
 
 type InitialStateAuth = {
     auth: number

@@ -18,6 +18,7 @@ export const slice = createSlice({
     initialState,
     reducers: {
         addHint(state, action: PayloadAction<string>) {
+            console.log('addHint')
             state.errors.push({id: uuid.v4(), article: action.payload, status: 'error'})
         },
         deleteHint(state, action: PayloadAction<string>) {

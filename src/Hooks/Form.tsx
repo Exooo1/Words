@@ -62,7 +62,7 @@ export const useForm = (): FormType => {
   }
   const login = async () => {
     if (password.length! < 6) return dispatch(addHint('Password incorrect'))
-    if (!reg.test(email)) return dispatch(addHint('Invalid Email?'))
+    if (!reg.test(email)) return dispatch(addHint('Invalid Email'))
     if (reg.test(email)) {
       dispatch(fetchLogin({ email, password }))
     }

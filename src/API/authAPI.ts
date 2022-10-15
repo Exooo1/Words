@@ -7,6 +7,10 @@ const instance = axios.create({
         Authorization: `Bearer ${window.localStorage.getItem('token')}`
     }
 })
+export type AuthLoginType={
+    token:string
+    auth:number
+}
 type LoginType = {
     email: string
     password: string
@@ -16,38 +20,35 @@ type EmailType = {
     name: string
     verify: string
 }
-export type ApiReturnType = {
+export type AuthTypeReturn<T> = {
+    item: T
     resultCode: number
     error: string
     message?: string
 }
-type ApiReturnLoginType = {
-    token: string
-    auth: number
-}
 export const apiAuth = {
-    registration(values: InputType): AxiosPromise<ApiReturnType> {
+    registration(values: InputType): AxiosPromise<AuthTypeReturn<string>> {
         const result = {
             firstName: values.name,
             lastName: values.surname,
             email: values.email,
             password: values.password
         }
-        return instance.post<ApiReturnType>('registration', result)
+        return instance.post<AuthTypeReturn<string>>('registration', result)
     },
-    sendEmail(values: EmailType): AxiosPromise<ApiReturnType> {
+    sendEmail(values: EmailType): AxiosPromise<AuthTypeReturn<null>> {
         return instance.post('email', values)
     },
-    login({email, password}: LoginType): AxiosPromise<ApiReturnLoginType> {
-        return instance.post<ApiReturnLoginType>('login', {email, password})
+    login({email, password}: LoginType): AxiosPromise<AuthTypeReturn<AuthLoginType>> {
+        return instance.post<AuthTypeReturn<AuthLoginType>>('login', {email, password})
     },
-    confirm(id: string) {
-        return instance.post<ApiReturnType>('confirm', {id})
+    confirm(id: string): AxiosPromise<AuthTypeReturn<null>> {
+        return instance.post<AuthTypeReturn<null>>('confirm', {id})
     },
-    getAuth() {
-        return instance.post<ApiReturnType>('me', {}, {headers: {Authorization: `Bearer ${window.localStorage.getItem('token')}`}})
+    getAuth(): AxiosPromise<AuthTypeReturn<number>> {
+        return instance.post<AuthTypeReturn<number>>('me' )
     },
-    logout() {
-        return instance.put<ApiReturnType>('logout', {}, {headers: {Authorization: `Bearer ${window.localStorage.getItem('token')}`}})
+    logout(): AxiosPromise<AuthTypeReturn<number>> {
+        return instance.put<AuthTypeReturn<number>>('logout'  )
     }
 }

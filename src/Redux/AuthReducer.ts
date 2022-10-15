@@ -2,7 +2,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 import {InputType} from "../Hooks/Form";
 import {addHint} from "./ErrorsReducer";
-import {apiAuth, ApiReturnType} from "../API/authAPI";
+import {apiAuth, AuthLoginType, AuthTypeReturn} from "../API/authAPI";
 
 type InitialStateAuth = {
     auth: number
@@ -22,11 +22,11 @@ export const fetchRegistration = createAsyncThunk<number, InputType, ThunkError>
         const person = {email, password, name, surname}
         try {
             const auth = await apiAuth.registration(person)
-            const verify = auth.data.message || ''
+            const verify = auth.data.item || ''
             if (auth.data.resultCode === 1) await apiAuth.sendEmail({email, name, verify})
             return auth.data.resultCode
         } catch (err) {
-            const error = err as AxiosError<ApiReturnType>
+            const error = err as AxiosError<AuthTypeReturn<string>>
             if (error.response?.data === undefined) dispatch(addHint(error.message))
             else dispatch(addHint(error.response.data.error))
             return rejectWithValue({errors: error.message})
@@ -36,11 +36,10 @@ export const fetchLogin = createAsyncThunk<number, FetchLoginType, ThunkError>('
     async ({email, password}, {dispatch, rejectWithValue}) => {
         try {
             const {data} = await apiAuth.login({email, password})
-            window.localStorage.setItem('token', data.token)
-            console.log(data)
-            return data.auth
+            window.localStorage.setItem('token', data.item.token)
+            return data.item.auth
         } catch (err) {
-            const {response, message} = err as AxiosError<ApiReturnType>
+            const {response, message} = err as AxiosError<AuthTypeReturn<AuthLoginType>>
             if (response?.data === undefined) dispatch(addHint(message))
             else dispatch(addHint(response.data.error))
             return rejectWithValue({errors: response?.data.error || message})
@@ -52,16 +51,24 @@ export const fetchGetAuth = createAsyncThunk<number, any>('auth/fetchGetAuth',
             const {data} = await apiAuth.getAuth()
             return data.resultCode
         } catch (err) {
-            const {response, message} = err as AxiosError<ApiReturnType>
+            const {response, message} = err as AxiosError<AuthTypeReturn<number>>
+            if (response?.data === undefined) dispatch(addHint(message))
+            else dispatch(addHint(response.data.error))
             return rejectWithValue({errors: response?.data.error || message})
         }
     })
-export const fetchLogOut = createAsyncThunk('auth/fetchLogOut', async () => {
+export const fetchLogOut = createAsyncThunk<number, undefined, ThunkError>('auth/fetchLogOut', async (arg, {
+    dispatch,
+    rejectWithValue
+}) => {
     try {
         const {data} = await apiAuth.logout()
         return data.resultCode
     } catch (err) {
-        return 1
+        const {response, message} = err as AxiosError<AuthTypeReturn<number>>
+        if (response?.data === undefined) dispatch(addHint(message))
+        else dispatch(addHint(response.data.error))
+        return rejectWithValue({errors: response?.data.error || message})
     }
 })
 export const slice = createSlice({

@@ -1,10 +1,17 @@
-import axios from 'axios'
+import axios, {AxiosPromise} from 'axios'
+import {AuthTypeReturn} from "./authAPI";
 
 export type AddWordType = {
     word: string
     translate: string
     description: string
     added: string
+}
+export type ProfileType = {
+    firstName: string,
+    lastName: string,
+    words: any,
+    totalWords: number
 }
 const instance = axios.create({
     baseURL: 'http://localhost:8080/',
@@ -14,14 +21,13 @@ const instance = axios.create({
 })
 
 export const wordApi = {
-    getWords() {
-        return instance.get('words')
+    getWords(): AxiosPromise<AuthTypeReturn<ProfileType>> {
+        return instance.get<AuthTypeReturn<ProfileType>>('words')
     },
-    addWord(values: AddWordType) {
-        return instance.post('add-word', values)
+    addWord(values: AddWordType):AxiosPromise<AuthTypeReturn<string>> {
+        return instance.post<AuthTypeReturn<string>>('add-word', values)
     },
-    deleteWord(value: { idWord: string, word: string }) {
-        console.log(value.word[0].toLowerCase())
-        return instance.delete(`delete-word?id=${value.idWord}&letter=${value.word[0].toLowerCase()}`)
+    deleteWord(value: { idWord: string, word: string }):AxiosPromise<AuthTypeReturn<null>> {
+        return instance.delete<AuthTypeReturn<null>>(`delete-word?id=${value.idWord}&letter=${value.word[0].toLowerCase()}`)
     }
 }

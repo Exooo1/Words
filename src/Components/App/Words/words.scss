@@ -24,12 +24,13 @@
         justify-content: center;
         align-items: center;
         height: 60px;
+
         span {
           color: white;
         }
 
         button {
-          font-family: "Calibri Light";
+          font-family: 'Calibri Light';
           text-align: right;
           color: white;
           font-size: 18px;
@@ -49,13 +50,63 @@
     justify-content: flex-start;
     align-items: flex-start;
 
+    .container_words_pagination {
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        p {
+          color: #4ca5dc;
+        }
+      }
+
+      border-radius: 10px;
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      background: rgba(38, 38, 73, 0.55);
+      width: 99%;
+      height: 60px;
+
+      .container_words_pagination_showing {
+        display: flex;
+        justify-content: flex-start;
+        padding-left: 10px;
+        width: 43%;
+        color: rgba(255, 255, 255, 0.44);
+        font-family: "Calibri Light";
+      }
+
+      button {
+        cursor: pointer;
+        width: 30px;
+        height: 60px;
+        color: white;
+        border-radius: 90px;
+        font-size: 30px;
+        font-weight: 900;
+        background: none;
+        border: none;
+      }
+
+      button:active {
+        color: #4ca5dc;
+      }
+
+      div {
+        width: 180px;
+      }
+    }
+
     .container_words_word_item {
       width: 99%;
       border-radius: 10px;
+      height: 500px;
       background: linear-gradient(to right, rgba(31, 38, 84, 0.09), #1d1d3f);
+      overflow: auto;
     }
   }
-
 
   .container_words_description {
     display: flex;

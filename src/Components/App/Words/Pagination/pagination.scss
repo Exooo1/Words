@@ -1,0 +1,16 @@
+.pagination {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 90px;
+  height: 30px;
+  width: 30px;
+  color: #4ca5dc;
+}
+.active_pagination{
+  color: white;
+  text-decoration: underline;
+}

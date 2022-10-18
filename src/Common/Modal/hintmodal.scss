@@ -3,7 +3,7 @@
 .hint {
   @include flexDiv(center, center, row);
   @include wi_he(280px, 100px);
-  @include colorGrad(white, (#262B37, #4D4450));
+  @include colorGrad(white, (#262b37, #4d4450));
   transition: 1s;
   border-radius: 20px;
   position: fixed;

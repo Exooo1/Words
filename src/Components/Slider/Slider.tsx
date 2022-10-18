@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import './slider.scss'
 
 export const Slider = () => {
@@ -40,13 +40,13 @@ export const Slider = () => {
   const content = slider.map((item) => {
     if (item.id === count)
       return (
-        <>
+        <div key={item.id} className='slider_content_image'>
           <img className='slider_img' src={item.img} alt={item.title} />
           <div className='slider_content'>
             <h1>{item.title}</h1>
             <p>{item.description}</p>
           </div>
-        </>
+        </div>
       )
   })
   const switchers = slider.map((item) => (

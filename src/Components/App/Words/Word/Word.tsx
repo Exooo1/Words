@@ -4,14 +4,13 @@ import './word.scss'
 type WordType = {
     word: string
     translate: string
-    description?: string
+    description: string
     added: string
-    _id: string
     deleteWord: () => void
 }
 export const Word: React.FC<WordType> = ({word, description, deleteWord, added, translate}) => {
     return (
-        <div className='container_word'>
+        <div className='container_word' key={word}>
             <p className={'container_word_main'}>{word}</p>
             <p className={'container_word_translate'}>{translate}</p>
             <p className={`container_word_description ${description ? '' : 'description_active'}`}>

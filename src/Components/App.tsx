@@ -9,10 +9,10 @@ import { Login } from './Auth/Login/Login'
 import { AppVocabulary } from './App/AppVocabulary'
 import { Words } from './App/Words/Words'
 
-const MainRouter = () => {
-  return <Navigate to='/auth' replace={true} />
-}
 export const App = () => {
+  const MainRouter = () => {
+    return <Navigate to='/auth' replace={true}/>
+  }
   return (
     <div>
       <Routes>

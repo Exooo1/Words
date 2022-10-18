@@ -4,9 +4,12 @@
   align-items: center;
   border-bottom: solid 1px rgba(169, 169, 169, 0.39);
   height: 60px;
+  &:last-child{
+    border-bottom: none;
+  }
 
   .container_word_main {
-    font-family: "Calibri Light";
+    font-family: 'Calibri Light';
     font-size: 18px;
     font-weight: 700;
     text-align: left;
@@ -36,7 +39,7 @@
     color: white;
     width: 20%;
   }
-  button{
+  button {
     border-radius: 60px;
     height: 35px;
     width: 35px;
@@ -45,7 +48,7 @@
     cursor: pointer;
     border: none;
   }
-  button:active{
+  button:active {
     box-shadow: inset 0 0 10px black;
   }
 }

@@ -1,8 +1,8 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {AxiosError} from "axios";
-import {InputType} from "../Hooks/Form";
-import {addHint} from "./ErrorsReducer";
-import {apiAuth, AuthLoginType, AuthTypeReturn} from "../API/authAPI";
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import {AxiosError} from 'axios'
+import {InputType} from '../Hooks/Form'
+import {addHint} from './ErrorsReducer'
+import {apiAuth, AuthLoginType, AuthTypeReturn, LoginType} from '../API/authAPI'
 
 type InitialStateAuth = {
     auth: number
@@ -10,14 +10,11 @@ type InitialStateAuth = {
 }
 const initialState: InitialStateAuth = {
     auth: 0,
-    resultCode: 0
+    resultCode: 0,
 }
 type ThunkError = { rejectValue: { errors: string } }
-type FetchLoginType = {
-    email: string
-    password: string
-}
-export const fetchRegistration = createAsyncThunk<number, InputType, ThunkError>('auth/fetchRegistration',
+export const fetchRegistration = createAsyncThunk<number, InputType, ThunkError>(
+    'auth/fetchRegistration',
     async ({name, password, email, surname}, {dispatch, rejectWithValue}) => {
         const person = {email, password, name, surname}
         try {
@@ -26,13 +23,15 @@ export const fetchRegistration = createAsyncThunk<number, InputType, ThunkError>
             if (auth.data.resultCode === 1) await apiAuth.sendEmail({email, name, verify})
             return auth.data.resultCode
         } catch (err) {
-            const error = err as AxiosError<AuthTypeReturn<string>>
-            if (error.response?.data === undefined) dispatch(addHint(error.message))
-            else dispatch(addHint(error.response.data.error))
-            return rejectWithValue({errors: error.message})
+            const {message,response} = err as AxiosError<AuthTypeReturn<string>>
+            if (response?.data === undefined) dispatch(addHint({article:message,status:'error'}))
+            else dispatch(addHint({article:response.data.error,status:'error'}))
+            return rejectWithValue({errors: message})
         }
-    })
-export const fetchLogin = createAsyncThunk<number, FetchLoginType, ThunkError>('auth/fetchLogin',
+    },
+)
+export const fetchLogin = createAsyncThunk<number, LoginType, ThunkError>(
+    'auth/fetchLogin',
     async ({email, password}, {dispatch, rejectWithValue}) => {
         try {
             const {data} = await apiAuth.login({email, password})
@@ -40,37 +39,40 @@ export const fetchLogin = createAsyncThunk<number, FetchLoginType, ThunkError>('
             return data.item.auth
         } catch (err) {
             const {response, message} = err as AxiosError<AuthTypeReturn<AuthLoginType>>
-            if (response?.data === undefined) dispatch(addHint(message))
-            else dispatch(addHint(response.data.error))
+            if (response?.data === undefined) dispatch(addHint({article:message,status:'error'}))
+            else dispatch(addHint({article:response.data.error,status:'error'}))
             return rejectWithValue({errors: response?.data.error || message})
         }
-    })
-export const fetchGetAuth = createAsyncThunk<number, any>('auth/fetchGetAuth',
+    },
+)
+export const fetchGetAuth = createAsyncThunk<number, undefined>(
+    'auth/fetchGetAuth',
     async (payload, {dispatch, rejectWithValue}) => {
         try {
             const {data} = await apiAuth.getAuth()
-            return data.resultCode
+            return data.item
         } catch (err) {
             const {response, message} = err as AxiosError<AuthTypeReturn<number>>
-            if (response?.data === undefined) dispatch(addHint(message))
-            else dispatch(addHint(response.data.error))
+            if (response?.data === undefined) dispatch(addHint({article:message,status:'error'}))
             return rejectWithValue({errors: response?.data.error || message})
         }
-    })
-export const fetchLogOut = createAsyncThunk<number, undefined, ThunkError>('auth/fetchLogOut', async (arg, {
-    dispatch,
-    rejectWithValue
-}) => {
-    try {
-        const {data} = await apiAuth.logout()
-        return data.resultCode
-    } catch (err) {
-        const {response, message} = err as AxiosError<AuthTypeReturn<number>>
-        if (response?.data === undefined) dispatch(addHint(message))
-        else dispatch(addHint(response.data.error))
-        return rejectWithValue({errors: response?.data.error || message})
-    }
-})
+    },
+)
+export const fetchLogOut = createAsyncThunk<number, undefined, ThunkError>(
+    'auth/fetchLogOut',
+    async (arg, {dispatch, rejectWithValue}) => {
+        try {
+            const {data} = await apiAuth.logout()
+            window.localStorage.removeItem('token')
+            return data.item
+        } catch (err) {
+            const {response, message} = err as AxiosError<AuthTypeReturn<number>>
+            if (response?.data === undefined) dispatch(addHint({article:message,status:'error'}))
+            else dispatch(addHint({article:response.data.error,status:'error'}))
+            return rejectWithValue({errors: response?.data.error || message})
+        }
+    },
+)
 export const slice = createSlice({
     name: 'auth',
     initialState,
@@ -88,9 +90,7 @@ export const slice = createSlice({
         builder.addCase(fetchLogOut.fulfilled, (state, action) => {
             state.auth = action.payload
         })
-    }
+    },
 })
 
 export const authReducer = slice.reducer
-
-

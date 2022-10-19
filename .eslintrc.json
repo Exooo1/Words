@@ -22,6 +22,8 @@
     "@typescript-eslint"
   ],
   "rules": {
+    "no-else-return": "off",
+    "no-useless-return": "off",
     "no-plusplus": "off",
     "@typescript-eslint/dot-notation": "off",
     "no-underscore-dangle": "off",

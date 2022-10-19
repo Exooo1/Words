@@ -6,6 +6,7 @@ export type AddWordType = {
     translate: string
     description: string
     added: string
+    _id?:string
 }
 export type ProfileType = {
     firstName: string
@@ -16,6 +17,13 @@ export type ProfileType = {
 export type DeleteWordType = {
     word: string
     id: string
+}
+export type WordChangeType = {
+    word: string
+    translate: string
+    description: string
+    added:string
+    id:string
 }
 const instance = axios.create({
     baseURL: 'http://localhost:8080/',
@@ -39,4 +47,7 @@ export const wordApi = {
             `delete-word?id=${value.id}&letter=${value.word[0].toLowerCase()}`,
         )
     },
+    changeWord(values: WordChangeType): AxiosPromise<AuthTypeReturn<null>> {
+        return instance.post<AuthTypeReturn<null>>('word-change', values)
+    }
 }

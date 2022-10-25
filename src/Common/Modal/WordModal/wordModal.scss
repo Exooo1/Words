@@ -1,6 +1,9 @@
 @import '../../../Common/Styles/mixins';
 
 .container_modalWord {
+  .modalWord_requiredfield {
+    box-shadow: 0 0 5px red;
+  }
   position: fixed;
   top: 0;
   right: 0;
@@ -10,7 +13,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   div {
     display: flex;
     justify-content: space-around;

@@ -10,8 +10,8 @@ type InitialStateType = {
   errors: Array<HintsType>
 }
 type PayloadHintType = {
-  article:string
-  status:string
+  article: string
+  status: string
 }
 const initialState: InitialStateType = {
   errors: [],
@@ -22,7 +22,11 @@ export const slice = createSlice({
   initialState,
   reducers: {
     addHint(state, action: PayloadAction<PayloadHintType>) {
-      state.errors.push({ id: uuid.v4(), article: action.payload.article, status: action.payload.status })
+      state.errors.push({
+        id: uuid.v4(),
+        article: action.payload.article,
+        status: action.payload.status,
+      })
     },
     deleteHint(state, action: PayloadAction<string>) {
       const result = state.errors.findIndex((item) => item.id === action.payload)

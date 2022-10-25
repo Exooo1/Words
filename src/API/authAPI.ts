@@ -3,10 +3,13 @@ import { InputType } from '../Hooks/Form'
 
 const instance = axios.create({
   baseURL: 'http://localhost:8080/auth/',
-  headers: {
-    Authorization: `Bearer ${window.localStorage.getItem('token')}`,
-  },
 })
+instance.interceptors.request.use((config) => {
+  // @ts-ignore
+  config.headers.Authorization = `Bearer ${window.localStorage.getItem('token')}`
+  return config
+})
+
 export type AuthLoginType = {
   token: string
   auth: number
@@ -46,12 +49,9 @@ export const apiAuth = {
     return instance.post<AuthTypeReturn<null>>('confirm', { id })
   },
   getAuth(): AxiosPromise<AuthTypeReturn<number>> {
-    return instance.post<AuthTypeReturn<number>>('me')
+    return instance.get<AuthTypeReturn<number>>('me')
   },
   logout(): AxiosPromise<AuthTypeReturn<number>> {
-    const config = {
-      headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}` }
-    };
-    return instance.put<AuthTypeReturn<number>>('logout',{},config)
+    return instance.put<AuthTypeReturn<number>>('logout')
   },
 }

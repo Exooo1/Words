@@ -11,7 +11,7 @@ import { Words } from './App/Words/Words'
 
 export const App = () => {
   const MainRouter = () => {
-    return <Navigate to='/auth' replace={true}/>
+    return <Navigate to='/auth' replace={true} />
   }
   return (
     <div>

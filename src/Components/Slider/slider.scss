@@ -12,7 +12,7 @@
   @include flexDiv(flex-start, center, column);
   @include wi_he(800px, auto);
   color: white;
-  .slider_content_image{
+  .slider_content_image {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,14 +36,12 @@
 
       background: linear-gradient(to right, #262b37, #4d4450);
     }
-  .slider_img {
-    animation: sliderImg 1s;
-    border-radius: 20px 20px 0 0;
-    @include wi_he(100%, 430px);
+    .slider_img {
+      animation: sliderImg 1s;
+      border-radius: 20px 20px 0 0;
+      @include wi_he(100%, 430px);
+    }
   }
-
-  }
-
 
   .slider_switcher {
     .slider_switcher_focus {
@@ -56,7 +54,6 @@
     @include wi_he(40%, 60px);
 
     div {
-
       @include wi_he(40px, 40px);
       box-shadow: 0 0 10px white;
       background: white;

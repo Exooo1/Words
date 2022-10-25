@@ -22,6 +22,7 @@
     "@typescript-eslint"
   ],
   "rules": {
+    "@typescript-eslint/no-unused-expressions": "off",
     "no-else-return": "off",
     "no-useless-return": "off",
     "no-plusplus": "off",

@@ -3,7 +3,7 @@
   justify-content: space-around;
   align-items: center;
   border-bottom: solid 1px rgba(169, 169, 169, 0.39);
-  height: 40px;
+  height: 41px;
   &:last-child {
     border-bottom: none;
   }
@@ -59,6 +59,10 @@
     width: 18%;
   }
   button {
+    transition: 0.5s;
+    &:hover{
+      transform: rotate(180deg);
+    }
     font-weight: 900;
     border-radius: 60px;
     height: 30px;
@@ -67,6 +71,7 @@
     color: white;
     cursor: pointer;
     border: none;
+    margin-right: 5px;
   }
   button:active {
     box-shadow: inset 0 0 10px black;

@@ -25,25 +25,29 @@
     //background: radial-gradient(circle, #101826 0%, #172740 82%);
 
     .container_navApp_logout {
-      p {
-        margin: 0 5px;
-        cursor: pointer;
-        transition: 1s;
-      }
+      min-height: 10vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 1s;
+      cursor: pointer;
 
-      p:hover {
+      &:hover {
         transform: scale(1.2);
       }
+
+      p {
+        margin: 0 5px;
+        transition: 1s;
+        font-weight: 700;
+        height: 30px;
+      }
+
 
       img {
         width: 40px;
         height: 40px;
       }
-
-      min-height: 10vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
     .container_navApp_avatar {

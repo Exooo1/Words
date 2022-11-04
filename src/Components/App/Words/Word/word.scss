@@ -1,0 +1,79 @@
+.container_word {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: solid 1px rgba(169, 169, 169, 0.39);
+  height: 41px;
+  &:last-child {
+    border-bottom: none;
+  }
+
+  img {
+    cursor: pointer;
+    margin: 0 5px;
+    width: 30px;
+    height: 30px;
+  }
+  img:hover {
+    scale: 1.2;
+  }
+  input {
+    padding-left: 10px;
+    font-family: 'Calibri Light';
+    width: 24.55%;
+    height: 40px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+  }
+  .container_word_main {
+    font-family: 'Calibri Light';
+    font-size: 18px;
+    font-weight: 700;
+    text-align: left;
+    color: white;
+    padding-left: 15px;
+    width: 10%;
+  }
+
+  .container_word_translate {
+    text-shadow: 1px 1px 0 black;
+    font-family: Roboto;
+    color: #4ca5dc;
+    letter-spacing: 0.8px;
+    width: 30%;
+    font-size: 20px;
+  }
+
+  .container_word_description {
+    color: #41ea6e;
+    width: 35%;
+  }
+  .description_active {
+    color: #767a7b;
+  }
+
+  .container_word_added {
+    color: white;
+    width: 18%;
+  }
+  button {
+    transition: 0.5s;
+    &:hover{
+      transform: rotate(180deg);
+    }
+    font-weight: 900;
+    border-radius: 60px;
+    height: 30px;
+    width: 30px;
+    background: #0a84de;
+    color: white;
+    cursor: pointer;
+    border: none;
+    margin-right: 5px;
+  }
+  button:active {
+    box-shadow: inset 0 0 10px black;
+  }
+}

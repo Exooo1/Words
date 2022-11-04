@@ -8,6 +8,7 @@ type FormPasswordType = {
   password: string
   changePassword: (e: ChangeEvent<HTMLInputElement>) => void
   changeEmail: (e: ChangeEvent<HTMLInputElement>) => void
+  login: () => void
 }
 export const FormPassword: React.FC<FormPasswordType> = memo(
   ({ email, password, changePassword, changeEmail }) => {

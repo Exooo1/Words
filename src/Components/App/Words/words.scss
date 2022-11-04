@@ -1,0 +1,215 @@
+.container_words {
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-left: 50px;
+
+  .container_words_sort {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+
+    .container_words_sort_buttons {
+      height: 50px;
+      width: 350px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      button{
+        font-weight: 500;
+        cursor: pointer;
+        color: white;
+        font-family: 'Calibri Light';
+        text-align: right;
+        font-size: 18px;
+        border: none;
+        background: none;
+        width: 95px;
+        height: 50px;
+      }
+      button:last-child {
+        font-weight: 700;
+        &:active{
+          color: #4ca5dc;
+        }
+      }
+      .container_words_sort_buttons_active {
+        transform: rotate(90deg);
+      }
+
+      div {
+        width: 110px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+
+        span {
+          transition: 0.3s;
+          color: white;
+        }
+
+        button {
+          font-family: 'Calibri Light';
+          text-align: right;
+          font-size: 18px;
+          border: none;
+          background: none;
+          width: 95px;
+          height: 50px;
+        }
+      }
+    }
+  }
+
+  .container_words_word {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .container_words_pagination {
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        p {
+          &:hover{
+            transform: scale(1.1);
+          }
+          cursor: pointer;
+          color: #4ca5dc;
+        }
+      }
+
+      border-radius: 10px;
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      background: rgba(38, 38, 73, 0.55);
+      width: 99%;
+      height: 60px;
+
+      .container_words_pagination_showing {
+        display: flex;
+        justify-content: flex-start;
+        padding-left: 10px;
+        width: 39%;
+        color: rgba(255, 255, 255, 0.44);
+        font-family: 'Calibri Light';
+      }
+
+      button {
+        cursor: pointer;
+        width: 30px;
+        height: 60px;
+        color: white;
+        border-radius: 90px;
+        font-size: 30px;
+        font-weight: 900;
+        background: none;
+        border: none;
+      }
+
+      button:active {
+        color: #4ca5dc;
+      }
+
+      div {
+        width: 250px;
+      }
+    }
+
+    .container_words_word_item {
+      overflow: auto;
+      width: 99%;
+      border-radius: 10px;
+      height: 629px;
+      background: linear-gradient(to right, rgba(31, 38, 84, 0.09), #1d1d3f);
+    }
+  }
+
+  .container_words_description {
+    display: flex;
+    justify-content: space-around;
+
+    .container_words_description_one {
+      height: 170px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container_words_description_two {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      flex-direction: column;
+      margin-right: 20px;
+
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid 1px #545563;
+        border-radius: 15px;
+        box-shadow: 0 0 1px white;
+        width: 310px;
+        height: 65px;
+
+        img {
+          margin: 0 5px;
+          width: 35px;
+          height: 35px;
+        }
+      }
+
+      button {
+        color: white;
+        font-weight: 900;
+        font-size: 15px;
+        width: 200px;
+        height: 60px;
+        background: linear-gradient(to right, #2295d2, #284196);
+        box-shadow: 0 0 2px #294adc;
+        border-radius: 18px;
+        cursor: pointer;
+        border: none;
+      }
+
+      button:active {
+        box-shadow: inset 0 0 5px black;
+      }
+
+      input {
+        font-weight: 600;
+        outline: none;
+        font-size: 17px;
+        border: none;
+        color: white;
+        background: none;
+        border-radius: 15px;
+        width: 250px;
+        height: 40px;
+      }
+
+      input::placeholder {
+        color: #545563;
+      }
+    }
+  }
+
+  h1 {
+    width: 350px;
+    color: white;
+    height: 15px;
+  }
+
+  p {
+    color: #545563;
+    width: 350px;
+  }
+}

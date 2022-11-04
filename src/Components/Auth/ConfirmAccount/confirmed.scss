@@ -6,7 +6,7 @@
   background: linear-gradient(to right, #0f2027, #553d83, #8f049f);
 
   div {
-    background: linear-gradient(to right, #262B37, #4D4450);
+    background: linear-gradient(to right, #262b37, #4d4450);
     height: 450px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 20px;
@@ -17,14 +17,23 @@
     align-items: center;
     justify-content: center;
 
-    button{
+    button {
       background: #517ee8;
       border-radius: 15px;
-      width: 260px;
+      width: 230px;
+      border: none;
+      color: white;
+      font-weight: 800;
+      font-size: 20px;
+      height: 75px;
+      cursor: pointer;
+    }
+    button:active {
+      box-shadow: inset 0 0 10px black;
     }
     span {
       font-size: 40px;
-      color: #0370e5
+      color: #0370e5;
     }
 
     p {

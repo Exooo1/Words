@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom'
 type MemoLinkType = {
   name: string
   path: string
+  click?: () => void
 }
-export const LinkMemo: React.FC<MemoLinkType> = React.memo(({ name, path }) => {
+export const LinkMemo: React.FC<MemoLinkType> = React.memo(({ name, path, click }) => {
   return (
-    <Link style={{ color: '#553d83' }} to={path}>
+    <Link onClick={click} to={path}>
       {name}
     </Link>
   )

@@ -4,7 +4,7 @@ import { InputType } from '../Hooks/Form'
 import { addHint } from './ErrorsReducer'
 import { apiAuth, AuthLoginType, AuthTypeReturn, LoginType } from '../API/authAPI'
 
-type InitialStateAuth = {
+export type InitialStateAuth = {
   auth: number
   resultCode: number
 }

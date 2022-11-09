@@ -1,6 +1,7 @@
 @import '../Styles/mixins.scss';
 
 .hint {
+  z-index: 10;
   @include flexDiv(center, center, row);
   @include wi_he(280px, 100px);
   @include colorGrad(white, (#262b37, #4d4450));

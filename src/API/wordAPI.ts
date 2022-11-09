@@ -49,4 +49,7 @@ export const wordApi = {
   changeWord(values: WordChangeType): AxiosPromise<AuthTypeReturn<null>> {
     return instance.post<AuthTypeReturn<null>>('word-change', values)
   },
+  findWords(word: string): AxiosPromise<AuthTypeReturn<Array<AddWordType>>> {
+    return instance.post<AuthTypeReturn<Array<AddWordType>>>(`word-find?word=${word}`)
+  },
 }

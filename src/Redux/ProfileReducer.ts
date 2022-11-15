@@ -7,12 +7,10 @@ import { addHint } from './ErrorsReducer'
 type ProfileInitialState = {
   firstName: string
   lastName: string
-  count: number
 }
 const initialState: ProfileInitialState = {
   firstName: '',
   lastName: '',
-  count: 1,
 }
 type ThunkError = { rejectValue: { errors: string } }
 export const fetchGetProfile = createAsyncThunk<FullNameType, undefined, ThunkError>(
@@ -29,13 +27,10 @@ export const fetchGetProfile = createAsyncThunk<FullNameType, undefined, ThunkEr
   },
 )
 
-const slice = createSlice({
+export const slice = createSlice({
   name: 'profile',
   initialState,
   reducers: {
-    addCount(state) {
-      state.count++
-    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchGetProfile.fulfilled, (state, action) => {
@@ -44,5 +39,4 @@ const slice = createSlice({
     })
   },
 })
-export const { addCount } = slice.actions
 export const profileReducer = slice.reducer

@@ -10,7 +10,6 @@ import { AppVocabulary } from './App/AppVocabulary'
 import { Words } from './App/Words/Words'
 
 export const App = () => {
-  console.log('App')
   const MainRouter = () => {
     return <Navigate to='/auth' replace={true} />
   }

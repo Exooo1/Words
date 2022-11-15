@@ -97,7 +97,7 @@
       align-items: center;
       background: rgba(38, 38, 73, 0.55);
       width: 99%;
-      height: 60px;
+      height: 55px;
 
       .container_words_pagination_showing {
         display: flex;
@@ -148,7 +148,7 @@
       overflow: auto;
       width: 99%;
       border-radius: 10px;
-      height: 629px;
+      height: 632px;
       background: linear-gradient(to right, rgba(31, 38, 84, 0.09), #1d1d3f);
     }
   }
@@ -188,7 +188,7 @@
       }
 
       button {
-        &:hover{
+        &:hover {
           box-shadow: 0 0 10px #0a84de;
         }
         color: white;

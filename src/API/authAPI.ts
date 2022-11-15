@@ -18,7 +18,7 @@ export type LoginType = {
   email: string
   password: string
 }
-type EmailType = {
+export type EmailType = {
   email: string
   name: string
   verify: string

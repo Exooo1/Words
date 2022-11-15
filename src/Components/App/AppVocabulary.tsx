@@ -7,7 +7,7 @@ import { fetchLogOut } from '../../Redux/AuthReducer'
 import { HintModal } from '../../Common/Modal/HintModal'
 import { authReselect } from '../../Redux/Reselect'
 import { NavLinkApp } from './NavLinkApp/NavLinkApp'
-import { addCount, fetchGetProfile } from '../../Redux/ProfileReducer'
+import {fetchGetProfile } from '../../Redux/ProfileReducer'
 import { cancelFetch } from '../../API/profileAPI'
 
 export const AppVocabulary = () => {
@@ -68,7 +68,6 @@ export const AppVocabulary = () => {
               />
             </div>
             <div className='container_navApp_avatar_person'>
-              <button onClick={() => dispatch(addCount())}>click</button>
               <p>
                 Good morning!<span>&#128075;</span>
               </p>

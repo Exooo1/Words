@@ -93,7 +93,7 @@ export const Words = () => {
       <div className='container_words_description'>
         <div className='container_words_description_one'>
           <h1>Words Management</h1>
-          <p>Here, you can add and delete your words,also update and add new rules.</p>
+          <p>Here, you can manage your words and phrases, update, delete, correct. Add everything you know!</p>
         </div>
         <div className='container_words_description_two'>
           <button onClick={() => handlerIsModal(true)}>+ Add new word</button>
@@ -130,8 +130,7 @@ export const Words = () => {
           </div>
           <div className='container_words_pagination'>
             <div className='container_words_pagination_showing'>
-              Showing {find.length >= 1 ? words.length : showing()} words of{' '}
-              {find.length >= 1 ? words.length : totalWords} Results
+              Showing {find.length >= 1 ? words.length : showing()} words of {find.length >= 1 ? words.length : totalWords} Results
             </div>
             <div>
               <button onClick={handlerButtonPrevious}>&#171;</button>

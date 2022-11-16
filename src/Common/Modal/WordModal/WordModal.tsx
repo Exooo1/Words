@@ -47,7 +47,10 @@ export const WordModal: React.FC<WordModalType> = ({handlerIsModal}) => {
         handlerIsModal()
     }
     const handlerEnter = (e: React.KeyboardEvent<HTMLDivElement>) => {
-        if (e.key==='Enter') console.log('Yeep')
+        if (e.key === 'Enter') {
+            console.log('Enter')
+            handlerAddNewWord()
+        }
     }
     return (
         <div className='container_modalWord' onClick={handlerIsModal}>
@@ -61,6 +64,7 @@ export const WordModal: React.FC<WordModalType> = ({handlerIsModal}) => {
                         placeholder={'Word'}
                         value={word}
                         onChange={handlerWord}
+                        onKeyDown={handlerEnter}
                     />
                 </div>
                 <div className={hint === 'translate' ? 'modalWord_requiredfield' : ''}>
@@ -70,7 +74,7 @@ export const WordModal: React.FC<WordModalType> = ({handlerIsModal}) => {
                         placeholder={'Translate'}
                         value={translate}
                         onChange={handlerTranslate}
-                        onKeyUp={handlerEnter}
+                        onKeyDown={handlerEnter}
                     />
                 </div>
                 <div>

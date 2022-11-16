@@ -21,7 +21,7 @@ export const AppVocabulary = () => {
             name: 'Profile',
             path: 'profile',
             img: 'https://cdn-icons-png.flaticon.com/512/456/456141.png',
-            style: true,
+            style: false,
         },
         {
             id: 2,
@@ -35,7 +35,7 @@ export const AppVocabulary = () => {
             name: 'Words',
             path: '',
             img: 'https://cdn-icons-png.flaticon.com/512/2501/2501356.png',
-            style: false,
+            style: true,
         },
         {
             id: 4,

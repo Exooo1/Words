@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './slider.scss'
+import managment from '../../Assets/Images/managerwords.png'
 
 export const Slider = () => {
   const [count, setCount] = useState<number>(0)
@@ -35,6 +36,14 @@ export const Slider = () => {
         'At the same time, new features will appear in the title that will be in the future.',
       focus: false,
     },
+    {
+      id: 4,
+      img: managment,
+      title: 'ManagementWords',
+      description:
+          'Here, you can add and delete your words,also update and add new rules.',
+      focus: false,
+    }
   ])
   const changeCount = (id: number) => setCount(id)
   const content = slider.map((item) => {

@@ -1,5 +1,5 @@
-import axios, { Axios, AxiosPromise } from 'axios'
-import { AuthTypeReturn } from './authAPI'
+import axios, {AxiosPromise, AxiosRequestConfig} from 'axios'
+import {ProjectTypeReturn} from "../Common/Types/CommonType";
 
 const instance = axios.create({
   baseURL: 'http://localhost:8080/profile',
@@ -10,7 +10,7 @@ export const cancelFetch = () => {
   source.cancel('i canceled this request!')
 }
 
-instance.interceptors.request.use((config) => {
+instance.interceptors.request.use((config:AxiosRequestConfig) => {
   // @ts-ignore
   config.headers.Authorization = `Bearer ${window.localStorage.getItem('token')}`
   return config
@@ -22,7 +22,7 @@ export type FullNameType = {
 }
 
 export const profileAPI = {
-  getFullName(): AxiosPromise<AuthTypeReturn<FullNameType>> {
-    return instance.get<AuthTypeReturn<FullNameType>>('/fullname', { cancelToken: source.token })
+  getFullName(): AxiosPromise<ProjectTypeReturn<FullNameType>> {
+    return instance.get<ProjectTypeReturn<FullNameType>>('/fullname', { cancelToken: source.token })
   },
 }

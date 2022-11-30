@@ -1,15 +1,8 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {AxiosError} from 'axios'
-import {AddWordType, DeleteWordType, wordApi, WordChangeType} from '../API/wordAPI'
-import {addHint} from './ErrorsReducer'
-
-export type WordType = {
-    word: string
-    translate: string
-    description: string
-    added: string
-    _id: string
-}
+import {DeleteWordType, ProfileType, SortType, wordApi, WordChangeType, WordType} from '../API/wordAPI'
+import {addHint, deleteHint} from './ErrorsReducer'
+import {ProjectTypeReturn, ThunkError} from "../Common/Types/CommonType";
 
 type WordsInitialType = {
     words: Array<WordType>
@@ -24,10 +17,10 @@ type GetWordsType = {
 const initialState: WordsInitialType = {
     words: [],
     totalWords: 0,
-    isAdded: false,
+    isAdded: true,
     isDescription: false,
 }
-type ThunkError = { rejectValue: { errors: string } }
+
 export const fetchGetWords = createAsyncThunk<GetWordsType, number, ThunkError>(
     'words/fetchGetWords',
     async (value, {rejectWithValue, dispatch}) => {
@@ -35,23 +28,27 @@ export const fetchGetWords = createAsyncThunk<GetWordsType, number, ThunkError>(
             const {data} = await wordApi.getWords(value)
             return {words: data.item.words, totalWords: data.item.totalWords}
         } catch (err) {
-            const {response, message} = err as AxiosError<any>
+            const {response, message} = err as AxiosError<ProjectTypeReturn<ProfileType>>
             if (response?.data === undefined) dispatch(addHint({article: message, status: 'error'}))
             else dispatch(addHint({article: response.data.error, status: 'error'}))
             return rejectWithValue({errors: response?.data.error || message})
         }
     },
 )
-export const fetchAddWord = createAsyncThunk<any, AddWordType, ThunkError>(
+export const fetchAddWord = createAsyncThunk<WordType, WordType, ThunkError>(
     'words/fetchAddWord',
     async ({word, translate, description, added}, {dispatch, rejectWithValue}) => {
         try {
             const upperWord = word[0].toUpperCase() + word.slice(1)
             const {data} = await wordApi.addWord({word: upperWord, translate, description, added})
-            dispatch(addHint({article: data.message || 'Added', status: 'done'}))
+            const v4id = (Math.random() * 10).toString(36).slice(2)
+            dispatch(addHint({v4id, article: data.message || 'Added', status: 'done'}))
+            setTimeout(() => {
+                dispatch(deleteHint(v4id))
+            }, 5000)
             return data.item
         } catch (err) {
-            const {response, message} = err as AxiosError<any>
+            const {response, message} = err as AxiosError<ProjectTypeReturn<WordType>>
             if (response?.data === undefined) dispatch(addHint({article: message, status: 'error'}))
             else dispatch(addHint({article: response.data.error, status: 'error'}))
             return rejectWithValue({errors: response?.data.error || message})
@@ -66,7 +63,7 @@ export const fetchDeleteWord = createAsyncThunk<DeleteWordType, DeleteWordType, 
             await wordApi.deleteWord({id, word})
             return {id, word}
         } catch (err) {
-            const {response, message} = err as AxiosError<any>
+            const {response, message} = err as AxiosError<ProjectTypeReturn<null>>
             if (response?.data === undefined) dispatch(addHint({article: message, status: 'error'}))
             else dispatch(addHint({article: response.data.error, status: 'error'}))
             return rejectWithValue({errors: response?.data.error || message})
@@ -81,9 +78,40 @@ export const fetchChangeWord = createAsyncThunk<WordChangeType, WordChangeType, 
             dispatch(addHint({article: data.message || 'Added', status: 'done'}))
             return {word, translate, description, id, added}
         } catch (err) {
-            const {response, message} = err as AxiosError<any>
+            const {response, message} = err as AxiosError<ProjectTypeReturn<null>>
             if (response?.data === undefined) dispatch(addHint({article: message, status: 'error'}))
             else dispatch(addHint({article: response.data.error, status: 'error'}))
+            return rejectWithValue({errors: response?.data.error || message})
+        }
+    },
+)
+export const fetchWordFind = createAsyncThunk<Array<WordType>, string>(
+    'words/fetchWordFind',
+    async (word, {dispatch, rejectWithValue}) => {
+        try {
+            const {data} = await wordApi.findWords(word)
+            return data.item
+        } catch (err) {
+            const {response, message} = err as AxiosError<ProjectTypeReturn<WordType>>
+            if (response?.data === undefined) dispatch(addHint({article: message, status: 'error'}))
+            else dispatch(addHint({article: response?.data.error, status: 'error'}))
+            return rejectWithValue({errors: response?.data.error || message})
+        }
+    },
+)
+
+export const fetchAddedWords = createAsyncThunk<Array<WordType>, SortType>(
+    'words/fetchAddedWords',
+    async (sortType, {dispatch, rejectWithValue, getState}) => {
+        const isSort = getState()
+        try {
+            // @ts-ignore
+            const {data} = await wordApi.addedWords({sort: isSort.wordsSlice.isAdded, sortType})
+            return data.item
+        } catch (err) {
+            const {response, message} = err as AxiosError<ProjectTypeReturn<string>>
+            if (response?.data === undefined) dispatch(addHint({article: message, status: 'error'}))
+            else dispatch(addHint({article: response?.data.error, status: 'error'}))
             return rejectWithValue({errors: response?.data.error || message})
         }
     },
@@ -92,26 +120,7 @@ export const fetchChangeWord = createAsyncThunk<WordChangeType, WordChangeType, 
 const slice = createSlice({
     name: 'words',
     initialState,
-    reducers: {
-        sort(state, action) {
-            switch (action.payload) {
-                case 'Added':
-                    state.isAdded
-                        ? state.words.sort((a, b) => new Date(a.added).valueOf() - new Date(b.added).valueOf())
-                        : state.words.sort((a, b) => new Date(b.added).valueOf() - new Date(a.added).valueOf())
-                    state.isAdded = !state.isAdded
-                    break
-                case 'Description':
-                    state.isDescription
-                        ? state.words.sort((a, b) => a.description.length - b.description.length)
-                        : state.words.sort((a, b) => b.description.length - a.description.length)
-                    state.isDescription = !state.isDescription
-                    break
-                default:
-                    break
-            }
-        },
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder.addCase(fetchGetWords.fulfilled, (state, action) => {
             state.words = action.payload.words
@@ -130,8 +139,14 @@ const slice = createSlice({
             const id = state.words.findIndex((item) => item._id === action.payload.id)
             state.words[id] = {...action.payload, _id: action.payload.id}
         })
+        builder.addCase(fetchWordFind.fulfilled, (state, action) => {
+            state.words = action.payload
+        })
+        builder.addCase(fetchAddedWords.fulfilled, (state, action) => {
+            state.isAdded = !state.isAdded
+            state.words = action.payload
+        })
     },
 })
-export const {sort} = slice.actions
 
 export const wordsSlice = slice.reducer

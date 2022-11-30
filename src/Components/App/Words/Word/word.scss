@@ -4,6 +4,7 @@
   align-items: center;
   border-bottom: solid 1px rgba(169, 169, 169, 0.39);
   height: 41px;
+
   &:last-child {
     border-bottom: none;
   }
@@ -14,9 +15,11 @@
     width: 30px;
     height: 30px;
   }
+
   img:hover {
     scale: 1.2;
   }
+
   input {
     padding-left: 10px;
     font-family: 'Calibri Light';
@@ -27,6 +30,7 @@
     color: white;
     font-size: 18px;
   }
+
   .container_word_main {
     font-family: 'Calibri Light';
     font-size: 18px;
@@ -50,6 +54,7 @@
     color: #41ea6e;
     width: 35%;
   }
+
   .description_active {
     color: #767a7b;
   }
@@ -58,11 +63,14 @@
     color: white;
     width: 18%;
   }
+
   button {
     transition: 0.5s;
-    &:hover{
+
+    &:hover {
       transform: rotate(180deg);
     }
+
     font-weight: 900;
     border-radius: 60px;
     height: 30px;
@@ -71,8 +79,10 @@
     color: white;
     cursor: pointer;
     border: none;
-    margin-right: 5px;
+    margin-right: 10px;
+    box-shadow: 0 0 10px #5d5dec;
   }
+
   button:active {
     box-shadow: inset 0 0 10px black;
   }

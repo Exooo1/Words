@@ -19,10 +19,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    min-height: 100vh;
+    min-height: 927px;
     width: 350px;
     background: #00000047;
-    //background: radial-gradient(circle, #101826 0%, #172740 82%);
 
     .container_navApp_logout {
       min-height: 10vh;
@@ -43,7 +42,6 @@
         height: 30px;
       }
 
-
       img {
         width: 40px;
         height: 40px;
@@ -55,15 +53,19 @@
       justify-content: center;
       align-items: center;
       height: 15vh;
+      flex-direction: column;
 
       .container_navApp_avatar_img {
-        width: 160px;
+        img {
+          width: 100px;
+          height: 100px;
+        }
       }
 
       .container_navApp_avatar_person {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
 
         h3 {
           margin: 0;

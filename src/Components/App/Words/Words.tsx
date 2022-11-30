@@ -2,28 +2,42 @@ import React, {ChangeEvent, useEffect, useState} from 'react'
 import {Word} from './Word/Word'
 import './words.scss'
 import {useAppDispatch, useAppSelector} from '../../../Redux/ReduxUtils'
-import {fetchDeleteWord, fetchGetWords, sort, WordType} from '../../../Redux/WordsReducer'
+import {
+    fetchAddedWords,
+    fetchDeleteWord,
+    fetchGetWords,
+    fetchWordFind,
+} from '../../../Redux/WordsReducer'
 import {WordModal} from '../../../Common/Modal/WordModal/WordModal'
 import {SortElement} from './SortElements/SortElement'
 import {Pagination} from './Pagination/Pagination'
-import {profileReselect} from "../../../Redux/Reselect";
-import {useFindWordMutation} from "../../../Redux/WordRTK";
+import {profileReselect} from '../../../Redux/Reselect'
+import {WordType, SortChoice} from '../../../API/wordAPI'
 
 export const Words = () => {
-    const [findWord, {data}] = useFindWordMutation()
     const [find, setFind] = useState<string>('')
-    const countWord = 15
+    const COUNT_WORDS = 15
     const [current, setCurrent] = useState<number>(1)
     const dispatch = useAppDispatch()
     const {words, totalWords} = useAppSelector(profileReselect)
     useEffect(() => {
         dispatch(fetchGetWords(current))
-    }, [current, totalWords])
-    const resultPagination = Math.ceil(totalWords / countWord)
+    }, [current])
+    const resultPagination = Math.ceil(totalWords / COUNT_WORDS)
     const arr: Array<number> = []
+    const [timeOut, setTimeOutT] = useState<ReturnType<typeof setTimeout>>()
     const handlerFindWord = (e: ChangeEvent<HTMLInputElement>) => {
         setFind(e.target.value)
-        findWord(e.target.value)
+        clearTimeout(timeOut)
+        if (!e.target.value) {
+            dispatch(fetchGetWords(current))
+            return
+        }
+        setTimeOutT(
+            setTimeout(() => {
+                dispatch(fetchWordFind(e.target.value))
+            }, 500),
+        )
     }
     const returnArrayPagination = () => {
         const right = () => {
@@ -41,9 +55,9 @@ export const Words = () => {
         }
     }
     returnArrayPagination()
-    const [sortElements, setSortElements] = useState([
-        {id: 2, name: 'Description', isActive: false},
-        {id: 3, name: 'Added', isActive: false},
+    const [sortElements, setSortElements] = useState<Array<{ id: number; name: string; isActive: boolean; sort: SortChoice }>>([
+        {id: 2, name: 'Description', isActive: false, sort: 'DESCRIPTION'},
+        {id: 3, name: 'Added', isActive: false, sort: 'ADDED'},
     ])
     const [isModal, setIsModal] = useState<boolean>(false)
     const handlerIsModal = (value: boolean) => setIsModal(value)
@@ -57,17 +71,15 @@ export const Words = () => {
         else setCurrent((state) => state - 1)
     }
     const showing = () => {
-        const total = totalWords - current * countWord
-        if (total > 0) return current * countWord
-        else return current * countWord - Math.abs(total)
+        const total = totalWords - current * COUNT_WORDS
+        if (total > 0) return current * COUNT_WORDS
+        else return current * COUNT_WORDS - Math.abs(total)
     }
     const handlerSortReset = () => {
-        setSortElements(
-            sortElements.map(item => ({...item, isActive: false}))
-        )
+        setSortElements(sortElements.map((item) => ({...item, isActive: false})))
         dispatch(fetchGetWords(current))
     }
-    const handlerSort = (name: string) => {
+    const handlerSort = (name: string, typeSort: SortChoice) => {
         setSortElements(
             sortElements.map((item) =>
                 item.name === name
@@ -78,7 +90,8 @@ export const Words = () => {
                     },
             ),
         )
-        dispatch(sort(name))
+        // @ts-ignore
+        dispatch(fetchAddedWords(typeSort))
     }
     return (
         <div className='container_words'>
@@ -86,36 +99,40 @@ export const Words = () => {
             <div className='container_words_description'>
                 <div className='container_words_description_one'>
                     <h1>Words Management</h1>
-                    <p>Here, you can add and delete your words,also update and add new rules.</p>
+                    <p>
+                        Here, you can manage your words and phrases, update, delete, correct. Add everything you
+                        know!
+                    </p>
                 </div>
                 <div className='container_words_description_two'>
                     <button onClick={() => handlerIsModal(true)}>+ Add new word</button>
                     <div>
                         <img src='https://cdn-icons-png.flaticon.com/512/7884/7884209.png' alt=''/>
-                        <input value={find} onChange={handlerFindWord} type='text'
-                               placeholder='Search by any words'/>
+                        <input
+                            value={find}
+                            onChange={handlerFindWord}
+                            type='text'
+                            placeholder='Search by any words'
+                        />
                     </div>
                 </div>
             </div>
             <div className='container_words_sort'>
                 <div className='container_words_sort_buttons'>
                     {sortElements.map((item) => (
-                        <SortElement sort={() => handlerSort(item.name)} key={item.id} {...item} />
+                        <SortElement
+                            sortElem={() => handlerSort(item.name, item.sort)}
+                            key={item.id}
+                            {...item}
+                        />
                     ))}
                     <button onClick={handlerSortReset}>Reset</button>
                 </div>
                 <div className={'container_words_word'}>
                     <div className={'container_words_word_item'}>
-                        {find ? data?.item.map((item: WordType) => <Word
-                            id={item._id}
-                            key={item._id}
-                            {...item}
-                            deleteWord={() =>
-                                dispatch(fetchDeleteWord({id: item._id || '', word: item.word}))
-                            }
-                        />) : words.map((item: WordType) => (
+                        {words.map((item: WordType) => (
                             <Word
-                                id={item._id}
+                                id={item._id || ''}
                                 key={item._id}
                                 {...item}
                                 deleteWord={() =>
@@ -126,7 +143,8 @@ export const Words = () => {
                     </div>
                     <div className='container_words_pagination'>
                         <div className='container_words_pagination_showing'>
-                            Showing {data?.item.length || showing()} words of {data?.item.length || totalWords} Results
+                            Showing {find.length >= 1 ? words.length : showing()} words of{' '}
+                            {find.length >= 1 ? words.length : totalWords} Results
                         </div>
                         <div>
                             <button onClick={handlerButtonPrevious}>&#171;</button>
@@ -135,6 +153,7 @@ export const Words = () => {
                                 {arr.length >= 1 &&
                                     arr.map((item) => (
                                         <Pagination
+                                            key={item}
                                             click={() => handlerCurrentPagination(item)}
                                             isActive={item === current}
                                             id={item}

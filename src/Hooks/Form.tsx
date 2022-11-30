@@ -10,7 +10,7 @@ export type InputType = {
   email: string
   password: string
 }
-type ItemProfileType = {
+export type ItemProfileType = {
   id: number
   name: string
   change: (e: ChangeEvent<HTMLInputElement>) => void

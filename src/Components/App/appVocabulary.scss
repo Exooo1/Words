@@ -1,27 +1,61 @@
 .container {
   min-height: 100vh;
-  background: linear-gradient(to right, #121421, #1b1e2f);
+  background: #111116;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Calibri Light";
+
 
   .container_navApp {
-    .container_navApp_avatar_decor {
-      margin: 0;
-      width: 210px;
-      opacity: 0.7;
-      border-top: solid 1px white;
-    }
-
-    color: white;
-    border-radius: 0 20px 20px 0;
+    border-right: solid rgba(132, 127, 127, 0.35) 1px;
     display: flex;
+    color: rgba(179, 178, 178, 0.88);
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     min-height: 927px;
-    width: 350px;
-    background: #00000047;
+    width: 250px;
+
+    .container_navApp_logoContent {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 200px;
+      color: rgba(179, 178, 178, 0.88);
+      font-family: Arial;
+
+      img {
+        width: 190px;
+        height: 120px;
+      }
+
+      div {
+        position: relative;
+        top: -45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h2 {
+          font-weight: 400;
+          font-size: 17px;
+          text-decoration: underline;
+          text-underline-offset: 5px;
+          height: 40px;
+          text-decoration: underline solid #0a84de 2px;
+        }
+
+        h1 {
+          padding-right: 5px;
+          font-size: 20px;
+          font-weight: 900;
+          color: white;
+        }
+      }
+
+    }
 
     .container_navApp_logout {
       min-height: 10vh;
@@ -38,111 +72,57 @@
       p {
         margin: 0 5px;
         transition: 1s;
-        font-weight: 700;
+        font-weight: 600;
         height: 30px;
-      }
-
-      img {
-        width: 40px;
-        height: 40px;
-      }
-    }
-
-    .container_navApp_avatar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 15vh;
-      flex-direction: column;
-
-      .container_navApp_avatar_img {
-        img {
-          width: 100px;
-          height: 100px;
-        }
-      }
-
-      .container_navApp_avatar_person {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        h3 {
-          margin: 0;
-        }
-
-        p {
-          color: darkgrey;
-          margin: 0;
-        }
-      }
-
-      img {
-        box-shadow: 0 0 5px black;
-        border-radius: 50%;
-        width: 80px;
-        height: 80px;
       }
     }
 
     .container_navApp_link {
-      height: 60vh;
+      height: 300px;
+      margin-bottom: 270px;
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
-      justify-content: center;
-
-      .container_navApp_link_app {
-        transition: 1s;
-        background: #141724;
-        opacity: 1;
-      }
+      align-items: center;
+      justify-content: space-around;
 
       div {
-        width: 240px;
         display: flex;
         justify-content: center;
-        align-items: flex-end;
-        flex-direction: column;
-        height: 95px;
-        opacity: 0.4;
+        align-items: center;
+        height: 60px;
+        font-size: 18px;
+        font-weight: 700;
+        width: 90%;
+        border-radius: 20px;
 
-        span {
-          height: 15px;
-          background: #0e0f19;
-          width: 100%;
-          border-radius: 0 0 10px 0;
-        }
-
-        span:last-child {
-          border-radius: 0 10px 0 0;
-        }
-
-        div {
-          a {
-            width: 60%;
-            text-decoration: none;
-            color: white;
-            font-family: 'Arial Narrow';
-            font-weight: 900;
-            font-size: 20px;
-          }
-
+        img {
+          width: 38px;
+          height: 38px;
           opacity: 0.5;
-          background: #00000047;
-          height: 80px;
-          margin: 0;
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          align-items: center;
-          width: 270px;
-          border-radius: 20px 0 0 20px;
+        }
 
-          img {
-            width: 30px;
-            height: 30px;
-          }
+        a {
+          margin-top: 5px;
+          text-align: start;
+          width: 120px;
+          padding-left: 5px;
+          text-decoration: none;
+          color: rgba(179, 178, 178, 0.88);
+        }
+
+        transition: 1s;
+      }
+
+      .nav_active_class {
+
+        background: #356aff;
+
+        a {
+          color: white;
+        }
+
+        img {
+          opacity: 1;
         }
       }
     }

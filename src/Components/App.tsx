@@ -8,10 +8,11 @@ import { NotFound } from './Auth/NotFound/NotFound'
 import { Login } from './Auth/Login/Login'
 import { AppVocabulary } from './App/AppVocabulary'
 import { Words } from './App/Words/Words'
+import {TestWords} from "./App/Words/TestWords";
 
 export const App = () => {
   const MainRouter = () => {
-    return <Navigate to='/auth' replace={true} />
+    return <Navigate to='/auth' replace={true}/>
   }
   return (
     <div>
@@ -30,7 +31,9 @@ export const App = () => {
           <Route path='dashboard' element={<div>Statistic</div>} />
           <Route path='achievements' element={<div>Statistic</div>} />
         </Route>
+        <Route path='https://wordsnetlif.netlify.app/work' element={<TestWords />}/>
       </Routes>
     </div>
   )
 }
+

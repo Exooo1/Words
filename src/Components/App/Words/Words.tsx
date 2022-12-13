@@ -20,6 +20,7 @@ export const Words = () => {
     const [current, setCurrent] = useState<number>(1)
     const dispatch = useAppDispatch()
     const {words, totalWords} = useAppSelector(profileReselect)
+    console.log(words)
     useEffect(() => {
         dispatch(fetchGetWords(current))
     }, [current])

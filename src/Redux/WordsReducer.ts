@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {AxiosError} from 'axios'
-import {DeleteWordType, ProfileType, SortType, wordApi, WordChangeType, WordType} from '../API/wordAPI'
+import {DeleteWordType, ProfileType, SortChoice, SortType, wordApi, WordChangeType, WordType} from '../API/wordAPI'
 import {addHint, deleteHint} from './ErrorsReducer'
 import {ProjectTypeReturn, ThunkError} from "../Common/Types/CommonType";
 
@@ -100,7 +100,7 @@ export const fetchWordFind = createAsyncThunk<Array<WordType>, string>(
     },
 )
 
-export const fetchAddedWords = createAsyncThunk<Array<WordType>, SortType>(
+export const fetchAddedWords = createAsyncThunk<Array<WordType>, SortChoice>(
     'words/fetchAddedWords',
     async (sortType, {dispatch, rejectWithValue, getState}) => {
         const isSort = getState()
@@ -117,6 +117,27 @@ export const fetchAddedWords = createAsyncThunk<Array<WordType>, SortType>(
     },
 )
 
+export const fetchDownloadFile = createAsyncThunk<any, string>('words/fetchDownloadFile', async (arg, {
+    dispatch,
+    rejectWithValue
+}) => {
+    try {
+        const {data} = await wordApi.downloadFile()
+        const blob = new Blob([data])
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = `YourWords.${arg}`
+        document.body.appendChild(a)
+        a.click()
+        a.remove()
+    } catch (err) {
+        const {response, message} = err as AxiosError<ProjectTypeReturn<null>>
+        if (response?.data === undefined) dispatch(addHint({article: message, status: 'error'}))
+        else dispatch(addHint({article: response?.data.error, status: 'error'}))
+        return rejectWithValue({errors: response?.data.error || message})
+    }
+})
 const slice = createSlice({
     name: 'words',
     initialState,

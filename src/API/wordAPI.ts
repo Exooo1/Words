@@ -60,4 +60,7 @@ export const wordApi = {
     addedWords(values: SortType): AxiosPromise<ProjectTypeReturn<Array<WordType>>> {
         return instance.post<ProjectTypeReturn<Array<WordType>>>(`sort-words`, values)
     },
+    downloadFile() {
+        return instance.get('words-download')
+    }
 }

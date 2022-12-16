@@ -5,6 +5,7 @@ import {useAppDispatch, useAppSelector} from '../../../Redux/ReduxUtils'
 import {
     fetchAddedWords,
     fetchDeleteWord,
+    fetchDownloadFile,
     fetchGetWords,
     fetchWordFind,
 } from '../../../Redux/WordsReducer'
@@ -12,9 +13,10 @@ import {WordModal} from '../../../Common/Modal/WordModal/WordModal'
 import {SortElement} from './SortElements/SortElement'
 import {Pagination} from './Pagination/Pagination'
 import {profileReselect} from '../../../Redux/Reselect'
-import {WordType, SortChoice} from '../../../API/wordAPI'
+import {SortChoice, WordType} from '../../../API/wordAPI'
 
 export const Words = () => {
+    const [file, setFile] = useState<string>('txt')
     const [find, setFind] = useState<string>('')
     const COUNT_WORDS = 15
     const [current, setCurrent] = useState<number>(1)
@@ -91,8 +93,10 @@ export const Words = () => {
                     },
             ),
         )
-        // @ts-ignore
         dispatch(fetchAddedWords(typeSort))
+    }
+    const downloadFile = ()=>{
+        dispatch(fetchDownloadFile(file))
     }
     return (
         <div className='container_words'>
@@ -120,6 +124,7 @@ export const Words = () => {
             </div>
             <div className='container_words_sort'>
                 <div className='container_words_sort_buttons'>
+                    <p>Filters - </p>
                     {sortElements.map((item) => (
                         <SortElement
                             sortElem={() => handlerSort(item.name, item.sort)}
@@ -127,7 +132,7 @@ export const Words = () => {
                             {...item}
                         />
                     ))}
-                    <button onClick={handlerSortReset}>Reset</button>
+                    <button className='button_reset_filters' onClick={handlerSortReset}>X</button>
                 </div>
                 <div className={'container_words_word'}>
                     <div className={'container_words_word_item'}>
@@ -147,24 +152,36 @@ export const Words = () => {
                             Showing {find.length >= 1 ? words.length : showing()} words of{' '}
                             {find.length >= 1 ? words.length : totalWords} Results
                         </div>
-                        <div>
-                            <button onClick={handlerButtonPrevious}>&#171;</button>
+                        <div className='container_words_pagination_logic'>
                             <div>
-                                {current > 3 && <p onClick={() => setCurrent(1)}>1...</p>}
-                                {arr.length >= 1 &&
-                                    arr.map((item) => (
-                                        <Pagination
-                                            key={item}
-                                            click={() => handlerCurrentPagination(item)}
-                                            isActive={item === current}
-                                            id={item}
-                                        />
-                                    ))}
-                                <p onClick={() => handlerCurrentPagination(resultPagination)}>
-                                    ... {arr.length > 1 && resultPagination}
-                                </p>
+                                <button onClick={handlerButtonPrevious}>&#171;</button>
+                                <div>
+                                    {current > 3 && <p onClick={() => setCurrent(1)}>1...</p>}
+                                    {arr.length >= 1 &&
+                                        arr.map((item) => (
+                                            <Pagination
+                                                key={item}
+                                                click={() => handlerCurrentPagination(item)}
+                                                isActive={item === current}
+                                                id={item}
+                                            />
+                                        ))}
+                                    <p onClick={() => handlerCurrentPagination(resultPagination)}>
+                                        ... {arr.length > 1 && resultPagination}
+                                    </p>
+                                </div>
+                                <button onClick={handlerButtonNext}>&#187;</button>
                             </div>
-                            <button onClick={handlerButtonNext}>&#187;</button>
+                        </div>
+                        <div className='container_words_selectDownload'>
+                            <div>
+                                <p onClick={downloadFile}>Download File</p>
+                                <select value={file} onChange={(e) => setFile(e.target.value)}>
+                                    <option value="txt">.txt</option>
+                                    <option value="pdf">.pdf</option>
+                                    <option value="doc">.doc</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -172,3 +189,17 @@ export const Words = () => {
         </div>
     )
 }
+
+const Amazing = <button onClick={async () => {
+    const res = await fetch('http://localhost:8080/download')
+    const t = await res.blob()
+    const downUrk = URL.createObjectURL(t)
+    const link = document.createElement('a')
+    link.href = downUrk
+    link.download = 'some.doc'
+    document.body.appendChild(link)
+    link.click()
+    link.remove()
+    console.log(t)
+}}>download
+</button>

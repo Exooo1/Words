@@ -12,6 +12,7 @@ import dashboard  from '../../Assets/Images/dashboard.png'
 import profile  from '../../Assets/Images/profile.png'
 import rewards  from '../../Assets/Images/rewards.png'
 import logo  from '../../Assets/Images/logo.png'
+import logout  from '../../Assets/Images/logout.png'
 
 export const AppVocabulary = () => {
     const auth = useAppSelector(authReselect)
@@ -76,6 +77,7 @@ export const AppVocabulary = () => {
                         ))}
                     </div>
                     <div className='container_navApp_logout' onClick={handlerLogOut}>
+                        <img src={logout} alt=""/>
                         <p>Log Out</p>
                     </div>
                 </div>

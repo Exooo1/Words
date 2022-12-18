@@ -4,8 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Calibri Light";
-
+  font-family: 'Calibri Light';
 
   .container_navApp {
     border-right: solid rgba(132, 127, 127, 0.35) 1px;
@@ -53,7 +52,6 @@
           color: white;
         }
       }
-
     }
 
     .container_navApp_logout {
@@ -66,7 +64,7 @@
       margin-bottom: 40px;
 
       &:hover {
-        img{
+        img {
           opacity: 1;
         }
       }
@@ -120,7 +118,6 @@
       }
 
       .nav_active_class {
-
         background: #356aff;
 
         a {

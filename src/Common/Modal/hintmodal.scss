@@ -4,30 +4,41 @@
   z-index: 10;
   @include flexDiv(center, center, row);
   @include wi_he(280px, 100px);
-  @include colorGrad(white, (#262b37, #4d4450));
+  background: #1c1b20;
   transition: 1s;
-  border-radius: 20px;
+  border-radius: 30px;
   position: fixed;
-  left: 15px;
+  left: 25px;
   cursor: pointer;
+  box-shadow: 0 0 5px #b55fda;
 
-  h3 {
-    width: 180px;
-    font-size: 15px;
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 190px;
+
+    span {
+      font-size: 20px;
+      font-weight: 900;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
   }
 
+
   img {
-    @include wi_he(50px, 50px);
+    @include wi_he(52px, 52px);
     margin: 0 10px;
   }
 }
 
 .error {
-  text-shadow: 0 0 20px red;
+
 }
 
 .done {
-  text-shadow: 0 0 20px #14fa03;
+
 }
 
 .warn {

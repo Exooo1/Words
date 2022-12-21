@@ -5,6 +5,7 @@ type HintsType = {
   id: string
   article: string
   status: string
+  message:string
 }
 type InitialStateType = {
   errors: Array<HintsType>
@@ -29,8 +30,9 @@ export const slice = createSlice({
     addHint(state, action: PayloadAction<PayloadHintType>) {
       state.errors.push({
         id: action.payload.v4id || uuid.v4(),
-        article: action.payload.article,
+        article: action.payload.article.split('@')[1],
         status: action.payload.status,
+        message:action.payload.article.split('@')[0]
       })
     },
   },

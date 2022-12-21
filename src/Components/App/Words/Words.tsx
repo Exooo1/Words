@@ -14,6 +14,7 @@ import { SortElement } from './SortElements/SortElement'
 import { Pagination } from './Pagination/Pagination'
 import { profileReselect } from '../../../Redux/Reselect'
 import { SortChoice, WordType } from '../../../API/wordAPI'
+import search from '../../../Assets/Images/search.png'
 
 export const Words = () => {
   const [file, setFile] = useState<string>('txt')
@@ -114,7 +115,7 @@ export const Words = () => {
         <div className='container_words_description_two'>
           <button onClick={() => handlerIsModal(true)}>+ Add new word</button>
           <div>
-            <img src='https://cdn-icons-png.flaticon.com/512/7884/7884209.png' alt='' />
+            <img src={search} alt='' />
             <input
               value={find}
               onChange={handlerFindWord}

@@ -1,9 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { AxiosError } from 'axios'
-import { InputType } from '../Hooks/Form'
-import { addHint } from './ErrorsReducer'
-import { apiAuth, AuthLoginType, LoginType } from '../API/authAPI'
-import { ProjectTypeReturn } from '../Common/Types/CommonType'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import {AxiosError} from 'axios'
+import {InputType} from '../Hooks/Form'
+import {apiAuth, AuthLoginType, LoginType} from '../API/authAPI'
+import {ProjectTypeReturn, ThunkError} from '../Common/Types/CommonType'
+import {handlerDeleteHint} from "../Common/usefulFuncs";
 
 export type InitialStateAuth = {
   auth: number
@@ -13,7 +13,6 @@ const initialState: InitialStateAuth = {
   auth: 0,
   resultCode: 0,
 }
-type ThunkError = { rejectValue: { errors: string } }
 export const fetchRegistration = createAsyncThunk<number, InputType, ThunkError>(
   'auth/fetchRegistration',
   async ({ name, password, email, surname }, { dispatch, rejectWithValue }) => {
@@ -25,8 +24,8 @@ export const fetchRegistration = createAsyncThunk<number, InputType, ThunkError>
       return auth.data.resultCode
     } catch (err) {
       const { message, response } = err as AxiosError<ProjectTypeReturn<string>>
-      if (response?.data === undefined) dispatch(addHint({ article: message, status: 'error' }))
-      else dispatch(addHint({ article: response.data.error, status: 'error' }))
+      if (response?.data === undefined) handlerDeleteHint(message, dispatch, 'error')
+      else handlerDeleteHint(response.data.error,dispatch,'error')
       return rejectWithValue({ errors: message })
     }
   },
@@ -40,8 +39,8 @@ export const fetchLogin = createAsyncThunk<number, LoginType, ThunkError>(
       return data.item.auth
     } catch (err) {
       const { response, message } = err as AxiosError<ProjectTypeReturn<AuthLoginType>>
-      if (response?.data === undefined) dispatch(addHint({ article: message, status: 'error' }))
-      else dispatch(addHint({ article: response.data.error, status: 'error' }))
+      if (response?.data === undefined) handlerDeleteHint(message, dispatch, 'error')
+      else  handlerDeleteHint(response.data.error,dispatch,'error')
       return rejectWithValue({ errors: response?.data.error || message })
     }
   },
@@ -54,7 +53,8 @@ export const fetchGetAuth = createAsyncThunk<number, undefined>(
       return data.item
     } catch (err) {
       const { response, message } = err as AxiosError<ProjectTypeReturn<number>>
-      if (response?.data === undefined) dispatch(addHint({ article: message, status: 'error' }))
+      if (response?.data === undefined) handlerDeleteHint(message, dispatch, 'error')
+      else  handlerDeleteHint(response.data.error,dispatch,'error')
       return rejectWithValue({ errors: response?.data.error || message })
     }
   },
@@ -68,8 +68,8 @@ export const fetchLogOut = createAsyncThunk<number, undefined, ThunkError>(
       return data.item
     } catch (err) {
       const { response, message } = err as AxiosError<ProjectTypeReturn<number>>
-      if (response?.data === undefined) dispatch(addHint({ article: message, status: 'error' }))
-      else dispatch(addHint({ article: response.data.error, status: 'error' }))
+      if (response?.data === undefined) handlerDeleteHint(message, dispatch, 'error')
+      else handlerDeleteHint(response.data.error,dispatch,'error')
       return rejectWithValue({ errors: response?.data.error || message })
     }
   },

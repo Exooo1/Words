@@ -3,7 +3,7 @@ import { Word } from './Word/Word'
 import './words.scss'
 import { useAppDispatch, useAppSelector } from '../../../Redux/ReduxUtils'
 import {
-  fetchAddedWords,
+  fetchSortWords,
   fetchDeleteWord,
   fetchDownloadFile,
   fetchGetWords,
@@ -15,6 +15,7 @@ import { Pagination } from './Pagination/Pagination'
 import { profileReselect } from '../../../Redux/Reselect'
 import { SortChoice, WordType } from '../../../API/wordAPI'
 import search from '../../../Assets/Images/search.png'
+import {changeTitle} from "../../../Common/usefulFuncs";
 
 export const Words = () => {
   const [file, setFile] = useState<string>('txt')
@@ -24,6 +25,7 @@ export const Words = () => {
   const dispatch = useAppDispatch()
   const { words, totalWords } = useAppSelector(profileReselect)
   useEffect(() => {
+    changeTitle('Words')
     dispatch(fetchGetWords(current))
   }, [current])
   const resultPagination = Math.ceil(totalWords / COUNT_WORDS)
@@ -96,7 +98,7 @@ export const Words = () => {
             },
       ),
     )
-    dispatch(fetchAddedWords(typeSort))
+    dispatch(fetchSortWords(typeSort))
   }
   const downloadFile = () => {
     dispatch(fetchDownloadFile(file))

@@ -9,7 +9,7 @@ import {
   fetchGetWords,
   fetchWordFind,
 } from '../../../Redux/WordsReducer'
-import { WordModal } from '../../../Common/Modal/WordModal/WordModal'
+import { WordModal } from '../../../Common/ModalComponents/WordModal/WordModal'
 import { SortElement } from './SortElements/SortElement'
 import { Pagination } from './Pagination/Pagination'
 import { profileReselect } from '../../../Redux/Reselect'
@@ -197,21 +197,3 @@ export const Words = () => {
   )
 }
 
-const Amazing = (
-  <button
-    onClick={async () => {
-      const res = await fetch('http://localhost:8080/download')
-      const t = await res.blob()
-      const downUrk = URL.createObjectURL(t)
-      const link = document.createElement('a')
-      link.href = downUrk
-      link.download = 'some.doc'
-      document.body.appendChild(link)
-      link.click()
-      link.remove()
-      console.log(t)
-    }}
-  >
-    download
-  </button>
-)

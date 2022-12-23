@@ -1,8 +1,8 @@
 import React from 'react'
-import { useActions, useAppSelector } from '../../Redux/ReduxUtils'
-import { slice } from '../../Redux/ErrorsReducer'
-import done from '../../Assets/Images/done.png'
-import error from '../../Assets/Images/error.png'
+import { useActions, useAppSelector } from '../../../Redux/ReduxUtils'
+import { slice } from '../../../Redux/ErrorsReducer'
+import done from '../../../Assets/Images/done.png'
+import error from '../../../Assets/Images/error.png'
 import './hintmodal.scss'
 
 export const HintModal = () => {

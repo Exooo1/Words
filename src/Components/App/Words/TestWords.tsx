@@ -1,11 +1,11 @@
-import React, {ChangeEvent, useEffect, useState} from 'react'
-import {useAppDispatch} from '../../../Redux/ReduxUtils'
-import {fetchDeleteWord, fetchGetWords, fetchWordFind,} from '../../../Redux/WordsReducer'
-import {SortChoice, WordType} from '../../../API/wordAPI'
-import {WordModal} from '../../../Common/Modal/WordModal/WordModal'
-import {SortElement} from './SortElements/SortElement'
-import {Word} from './Word/Word'
-import {Pagination} from './Pagination/Pagination'
+import React, { ChangeEvent, useEffect, useState } from 'react'
+import { useAppDispatch } from '../../../Redux/ReduxUtils'
+import { fetchDeleteWord, fetchGetWords, fetchWordFind } from '../../../Redux/WordsReducer'
+import { SortChoice, WordType } from '../../../API/wordAPI'
+import { WordModal } from '../../../Common/Modal/WordModal/WordModal'
+import { SortElement } from './SortElements/SortElement'
+import { Word } from './Word/Word'
+import { Pagination } from './Pagination/Pagination'
 
 const returnWords = () => {
   const words: any = [

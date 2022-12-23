@@ -1,8 +1,8 @@
 import { ChangeEvent, useCallback, useState } from 'react'
 import { useAppDispatch } from '../Redux/ReduxUtils'
-import info from '../Assets/Images/inform.png'
 import { fetchLogin, fetchRegistration } from '../Redux/AuthReducer'
-import { addHint } from '../Redux/ErrorsReducer'
+import { handlerDeleteHint } from '../Common/usefulFuncs'
+import info from '../Assets/Images/inform.png'
 
 export type InputType = {
   name: string
@@ -45,31 +45,36 @@ export const useForm = (): FormType => {
     [],
   )
   const createAccount = () => {
-    if (name.length < 1)
-      return dispatch(addHint({ article: 'Where is your name?', status: 'error' }))
-    if (surname.length < 1)
-      return dispatch(addHint({ article: 'Where is you surname?', status: 'error' }))
-    if (password.length! < 6)
-      return dispatch(addHint({ article: 'Password incorrect', status: 'error' }))
-    if (!reg.test(email)) return dispatch(addHint({ article: 'Email invalid', status: 'error' }))
-    if (reg.test(email)) {
-      dispatch(
-        fetchRegistration({
-          name: name[0].toUpperCase() + name.slice(1),
-          surname: surname[0].toUpperCase() + surname.slice(1),
-          password,
-          email,
-        }),
+    if (name.length < 3 || surname.length < 3) {
+      return handlerDeleteHint(
+        'The first and last name fields must contain more than 3 characters',
+        dispatch,
+        'error',
       )
     }
+    if (password.length! < 6) return handlerDeleteHint('Password incorrect', dispatch, 'error')
+    !reg.test(email)
+      ? handlerDeleteHint('Email invalid', dispatch, 'error')
+      : dispatch(
+          fetchRegistration({
+            name: name[0].toUpperCase() + name.slice(1),
+            surname: surname[0].toUpperCase() + surname.slice(1),
+            password,
+            email,
+          }),
+        )
   }
+
   const login = () => {
-    if (password.length! < 6)
-      return dispatch(addHint({ article: 'Password incorrect', status: 'error' }))
-    if (!reg.test(email)) return dispatch(addHint({ article: 'Email invalid', status: 'error' }))
-    if (reg.test(email)) {
-      dispatch(fetchLogin({ email, password }))
-    }
+    if (password.length! < 6) return handlerDeleteHint('Password incorrect', dispatch, 'error')
+    !reg.test(email)
+      ? handlerDeleteHint('Email invalid', dispatch, 'error')
+      : dispatch(
+          fetchLogin({
+            email,
+            password,
+          }),
+        )
   }
 
   const itemsProfile: Array<ItemProfileType> = [

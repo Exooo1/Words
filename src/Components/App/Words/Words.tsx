@@ -15,7 +15,7 @@ import { Pagination } from './Pagination/Pagination'
 import { profileReselect } from '../../../Redux/Reselect'
 import { SortChoice, WordType } from '../../../API/wordAPI'
 import search from '../../../Assets/Images/search.png'
-import {changeTitle} from "../../../Common/usefulFuncs";
+import { changeTitle } from '../../../Common/usefulFuncs'
 
 export const Words = () => {
   const [file, setFile] = useState<string>('txt')

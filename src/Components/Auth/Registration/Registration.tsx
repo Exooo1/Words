@@ -6,7 +6,7 @@ import {CreateButton} from '../../../Common/Buttons/CreateButton'
 import {LinkMemo} from '../../../Common/Link'
 import {fetchGetAuth} from '../../../Redux/AuthReducer'
 import {useAppDispatch, useAppSelector} from '../../../Redux/ReduxUtils'
-import './registration.scss'
+import styles from './registration.module.scss'
 
 export const Registration = () => {
     const dispatch = useAppDispatch()
@@ -30,7 +30,7 @@ export const Registration = () => {
         )
     })
     return (
-        <div className='reg'>
+        <div className={styles.registration}>
             <p>START FOR FREE</p>
             <h1>
                 Create new account<span>.</span>
@@ -38,8 +38,8 @@ export const Registration = () => {
             <p>
                 Already A Member? <LinkMemo name='Login' path='login'/>
             </p>
-            <div className='reg_profile'>{profile}</div>
-            <div className='reg_security'>
+            <div className={styles.registration_fields}>{profile}</div>
+            <div className={styles.registration_password}>
                 <FormPassword
                     email={email}
                     password={password}

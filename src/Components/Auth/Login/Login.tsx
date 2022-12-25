@@ -7,7 +7,7 @@ import { LinkMemo } from '../../../Common/Link'
 import { changeTitle } from '../../../Common/usefulFuncs'
 import { useAppSelector } from '../../../Redux/ReduxUtils'
 import { authReselect } from '../../../Redux/Reselect'
-import './login.scss'
+import styles from  './login.module.scss'
 
 export const Login = () => {
   const form = useForm()
@@ -18,7 +18,7 @@ export const Login = () => {
   }, [])
   if (auth === 1) navigate('/app')
   return (
-    <div className='login'>
+    <div className={styles.login}>
       <h1>
         Login<span>.</span>
       </h1>
@@ -26,9 +26,9 @@ export const Login = () => {
       <FormPassword {...form} />
       <LinkMemo name='Forgot password' path='/auth/forgot' />
       <CreateButton name='Log in' create={form.login} />
-      <div className='login_signup'>
+      <div className={styles.login_signUp}>
         <p>Don't have an account</p>
-        <LinkMemo name='Sign Up' path='/auth' />
+        <LinkMemo name='SignUp' path='/auth' />
       </div>
     </div>
   )

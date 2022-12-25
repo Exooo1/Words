@@ -1,4 +1,4 @@
-.notfound {
+.notFound {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -6,7 +6,7 @@
   background: black;
   background: linear-gradient(to right, #0f2027, #553d83, #8f049f);
 
-  .notfound_content {
+  &_information {
     color: white;
     border-radius: 20px;
     width: 40%;

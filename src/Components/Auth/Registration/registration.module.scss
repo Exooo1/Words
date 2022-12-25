@@ -1,6 +1,6 @@
 @import '../../../Common/Styles/mixins.scss';
 
-.reg {
+.registration {
   @include flexDiv(center, flex-start, column);
   @include sizes(600px, auto, 900, auto);
   z-index: 0;
@@ -35,7 +35,7 @@
     color: white;
   }
 
-  .reg_profile {
+  .registration_fields {
     @include flexDiv(space-between, none, none);
     width: 97%;
     margin: 10px 0;
@@ -75,7 +75,7 @@
     }
   }
 
-  .reg_security {
+  .registration_password {
     @include flexDiv(none, none, column);
     width: 100%;
     margin: 10px 0;

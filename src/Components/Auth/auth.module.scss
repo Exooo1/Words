@@ -29,7 +29,7 @@
     }
   }
 
-  .auth_outlet {
+  &_outlet {
     @include flexDiv(space-around, none, none);
     flex-wrap: wrap;
   }

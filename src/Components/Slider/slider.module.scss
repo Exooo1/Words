@@ -13,7 +13,7 @@
   @include wi_he(800px, auto);
   color: white;
 
-  .slider_content {
+  &_content {
     @include flexDiv(center, center, column);
 
     div {
@@ -43,7 +43,7 @@
     }
   }
 
-  .slider_switcher {
+  &_switcher {
     .slider_switcherFocus {
       transition: 2s;
       background: #443e4a;

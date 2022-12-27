@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import styles from '../appVocabulary.module.scss'
 
 type LinkAppType = {
   path: string
@@ -9,10 +10,10 @@ type LinkAppType = {
   style: boolean
 }
 
-export const NavLinkApp: React.FC<LinkAppType> = ({ path, style, name, img, click }) => {
+export const NavLinkElement: React.FC<LinkAppType> = ({ path, style, name, img, click }) => {
   return (
-    <div className={style ? 'nav_active_class' : ''}>
-      <img src={img} alt='' />
+    <div className={style ? styles.nav_content_links_activeClass : ''}>
+      <img src={img} alt={name} />
       <Link to={path} onClick={click}>
         {name}
       </Link>

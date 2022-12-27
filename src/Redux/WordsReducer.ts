@@ -15,6 +15,7 @@ type WordsInitialType = {
   words: Array<WordType>
   totalWords: number
   isAdded: boolean
+  isLoading: boolean
 }
 type GetWordsType = {
   words: Array<WordType>
@@ -24,6 +25,7 @@ const initialState: WordsInitialType = {
   words: [],
   totalWords: 0,
   isAdded: true,
+  isLoading: false,
 }
 export const fetchGetWords = createAsyncThunk<GetWordsType, number, ThunkError>(
   'words/fetchGetWords',
@@ -166,9 +168,13 @@ const slice = createSlice({
     builder.addCase(fetchWordFind.fulfilled, (state, action) => {
       state.words = action.payload
     })
+    builder.addCase(fetchSortWords.pending, (state, action) => {
+      state.isLoading = true
+    })
     builder.addCase(fetchSortWords.fulfilled, (state, action) => {
       state.isAdded = !state.isAdded
       state.words = action.payload
+      state.isLoading = false
     })
   },
 })

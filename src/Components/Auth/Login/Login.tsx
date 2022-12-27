@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from '../../../Hooks/Form'
-import { FormPassword } from '../../../Common/FormPassword/FormPassword'
-import { CreateButton } from '../../../Common/Buttons/CreateButton'
+import { FormPassword } from '../../../Common/CommonComponents/FormPassword/FormPassword'
+import { CreateButton } from '../../../Common/CommonComponents/Buttons/CreateButton'
 import { LinkMemo } from '../../../Common/Link'
 import { changeTitle } from '../../../Common/usefulFuncs'
 import { useAppSelector } from '../../../Redux/ReduxUtils'
 import { authReselect } from '../../../Redux/Reselect'
-import styles from  './login.module.scss'
+import styles from './login.module.scss'
 
 export const Login = () => {
   const form = useForm()

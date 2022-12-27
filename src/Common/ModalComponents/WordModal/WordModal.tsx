@@ -1,4 +1,4 @@
-import React, { ChangeEvent, KeyboardEventHandler, useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import { useAppDispatch } from '../../../Redux/ReduxUtils'
 import { fetchAddWord } from '../../../Redux/WordsReducer'
 import './wordModal.scss'
@@ -48,7 +48,6 @@ export const WordModal: React.FC<WordModalType> = ({ handlerIsModal }) => {
   }
   const handlerEnter = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter') {
-      console.log('Enter')
       handlerAddNewWord()
     }
   }

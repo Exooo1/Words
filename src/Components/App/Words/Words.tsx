@@ -3,10 +3,10 @@ import { Word } from './Word/Word'
 import './words.scss'
 import { useAppDispatch, useAppSelector } from '../../../Redux/ReduxUtils'
 import {
-  fetchSortWords,
   fetchDeleteWord,
   fetchDownloadFile,
   fetchGetWords,
+  fetchSortWords,
   fetchWordFind,
 } from '../../../Redux/WordsReducer'
 import { WordModal } from '../../../Common/ModalComponents/WordModal/WordModal'
@@ -16,6 +16,7 @@ import { profileReselect } from '../../../Redux/Reselect'
 import { SortChoice, WordType } from '../../../API/wordAPI'
 import search from '../../../Assets/Images/search.png'
 import { changeTitle } from '../../../Common/usefulFuncs'
+import { Loading } from '../../../Common/CommonComponents/Loading/Loading'
 
 export const Words = () => {
   const [file, setFile] = useState<string>('txt')
@@ -23,7 +24,7 @@ export const Words = () => {
   const COUNT_WORDS = 15
   const [current, setCurrent] = useState<number>(1)
   const dispatch = useAppDispatch()
-  const { words, totalWords } = useAppSelector(profileReselect)
+  const { words, totalWords, isLoading } = useAppSelector(profileReselect)
   useEffect(() => {
     changeTitle('Words')
     dispatch(fetchGetWords(current))
@@ -134,25 +135,30 @@ export const Words = () => {
             <SortElement
               sortElem={() => handlerSort(item.name, item.sort)}
               key={item.id}
+              isLoading={isLoading}
               {...item}
             />
           ))}
-          <button className='button_reset_filters' onClick={handlerSortReset}>
+          <button className='button_reset_filters' onClick={handlerSortReset} disabled={isLoading}>
             X
           </button>
         </div>
         <div className={'container_words_word'}>
           <div className={'container_words_word_item'}>
-            {words.map((item: WordType) => (
-              <Word
-                id={item._id || ''}
-                key={item._id}
-                {...item}
-                deleteWord={() =>
-                  dispatch(fetchDeleteWord({ id: item._id || '', word: item.word }))
-                }
-              />
-            ))}
+            {isLoading ? (
+              <Loading />
+            ) : (
+              words.map((item: WordType) => (
+                <Word
+                  id={item._id || ''}
+                  key={item._id}
+                  {...item}
+                  deleteWord={() =>
+                    dispatch(fetchDeleteWord({ id: item._id || '', word: item.word }))
+                  }
+                />
+              ))
+            )}
           </div>
           <div className='container_words_pagination'>
             <div className='container_words_pagination_showing'>
@@ -196,4 +202,3 @@ export const Words = () => {
     </div>
   )
 }
-

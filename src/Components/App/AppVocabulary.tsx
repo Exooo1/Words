@@ -18,7 +18,6 @@ export const AppVocabulary = () => {
   const auth = useAppSelector(authReselect)
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const { firstName, lastName } = useAppSelector((state) => state.profileReducer)
   const [nav, setNav] = useState([
     {
       id: 1,

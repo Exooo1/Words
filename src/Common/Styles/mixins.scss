@@ -37,7 +37,7 @@
   color: $color;
   background: $back;
 }
-@mixin transitionScale($trans,$scale){
+@mixin transitionScale($trans, $scale) {
   transition: $trans;
-  transform:scale($scale);
+  transform: scale($scale);
 }

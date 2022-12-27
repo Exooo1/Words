@@ -1,7 +1,7 @@
 import React, { ChangeEvent, memo, useState } from 'react'
-import eye from '../../Assets/Images/eye.png'
-import eye2 from '../../Assets/Images/eyep.png'
-import mail from '../../Assets/Images/email.png'
+import eye from '../../../Assets/Images/eye.png'
+import eye2 from '../../../Assets/Images/eyep.png'
+import mail from '../../../Assets/Images/email.png'
 
 type FormPasswordType = {
   email: string

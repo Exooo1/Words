@@ -18,14 +18,13 @@ import {changeTitle} from '../../../Common/usefulFuncs'
 import {Loading} from '../../../Common/CommonComponents/Loading/Loading'
 import search from '../../../Assets/Images/search.png'
 
-const ArrayButton=React.memo(()=>{
+const ArrayButton = React.memo(() => {
     return <div>
         DianaAAAAAAAAAAAAA
     </div>
 })
 
 export const Words = () => {
-    const [test, setTest] = useState(1)
     const [file, setFile] = useState<string>('txt')
     const [find, setFind] = useState<string>('')
     const COUNT_WORDS = 15
@@ -139,7 +138,6 @@ export const Words = () => {
             <div className='container_words_description'>
                 <div className='container_words_description_one'>
                     <h1>Words Management</h1>
-                    <button onClick={() => setTest(r => r + 1)}>click</button>
                     <p>
                         Here, you can manage your words and phrases, update, delete, correct. Add everything you
                         know!

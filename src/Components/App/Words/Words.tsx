@@ -21,17 +21,18 @@ import {SortElementComponents} from "./SortElementsComponents/SortElementCompone
 export const Words = () => {
     const [file, setFile] = useState<string>('txt')
     const [find, setFind] = useState<string>('')
-    const COUNT_WORDS = 15
     const [current, setCurrent] = useState<number>(1)
-    const dispatch = useAppDispatch()
+    const [timeOut, setTimeOutT] = useState<ReturnType<typeof setTimeout>>()
+    const [isModal, setIsModal] = useState<boolean>(false)
     const {words, totalWords, isLoading} = useAppSelector(profileReselect)
+    const dispatch = useAppDispatch()
     useEffect(() => {
         changeTitle('Words')
         dispatch(fetchGetWords(current))
     }, [current])
-    const resultPagination = Math.ceil(totalWords / COUNT_WORDS)
     const arr: Array<number> = []
-    const [timeOut, setTimeOutT] = useState<ReturnType<typeof setTimeout>>()
+    const COUNT_WORDS = 15
+    const resultPagination = Math.ceil(totalWords / COUNT_WORDS)
     const handlerFindWord = (e: ChangeEvent<HTMLInputElement>) => {
         setFind(e.target.value)
         clearTimeout(timeOut)
@@ -61,7 +62,6 @@ export const Words = () => {
         }
     }
     returnArrayPagination()
-    const [isModal, setIsModal] = useState<boolean>(false)
     const handlerIsModal = (value: boolean) => setIsModal(value)
     const handlerCurrentPagination = (value: number) => setCurrent(value)
     const handlerButtonNext = () => {
@@ -80,7 +80,7 @@ export const Words = () => {
     const handlerSortResetFetch = useCallback(() => {
         setFind('')
         dispatch(fetchGetWords(current))
-    },[])
+    }, [])
     const handlerSortFetch = useCallback((typeSort: SortChoice) => {
         dispatch(fetchSortWords(typeSort))
     }, [])
@@ -126,7 +126,8 @@ export const Words = () => {
             <div className='container_words_sort'>
                 <div className='container_words_sort_buttons'>
                     <p>Filters - </p>
-                    <SortElementComponents fetchSortReset={handlerSortResetFetch} fetchSort={handlerSortFetch} isLoading={isLoading}/>
+                    <SortElementComponents fetchSortReset={handlerSortResetFetch} fetchSort={handlerSortFetch}
+                                           isLoading={isLoading}/>
                 </div>
                 <div className={'container_words_word'}>
                     <div className={'container_words_word_item'}>

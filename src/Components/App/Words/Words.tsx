@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from 'react'
+import React, {ChangeEvent, useCallback, useEffect, useState} from 'react'
 import {Word} from './Word/Word'
 import './words.scss'
 import {useAppDispatch, useAppSelector} from '../../../Redux/ReduxUtils'
@@ -10,19 +10,13 @@ import {
     fetchWordFind,
 } from '../../../Redux/WordsReducer'
 import {WordModal} from '../../../Common/ModalComponents/WordModal/WordModal'
-import {SortElement} from './SortElements/SortElement'
 import {Pagination} from './Pagination/Pagination'
 import {profileReselect} from '../../../Redux/Reselect'
 import {SortChoice, WordType} from '../../../API/wordAPI'
 import {changeTitle} from '../../../Common/usefulFuncs'
 import {Loading} from '../../../Common/CommonComponents/Loading/Loading'
 import search from '../../../Assets/Images/search.png'
-
-const ArrayButton = React.memo(() => {
-    return <div>
-        DianaAAAAAAAAAAAAA
-    </div>
-})
+import {SortElementComponents} from "./SortElementsComponents/SortElementComponents";
 
 export const Words = () => {
     const [file, setFile] = useState<string>('txt')
@@ -67,10 +61,6 @@ export const Words = () => {
         }
     }
     returnArrayPagination()
-    const [sortElements, setSortElements] = useState<Array<{ id: number; name: string; isActive: boolean; sort: SortChoice }>>([
-        {id: 2, name: 'Description', isActive: false, sort: 'DESCRIPTION'},
-        {id: 3, name: 'Added', isActive: false, sort: 'ADDED'},
-    ])
     const [isModal, setIsModal] = useState<boolean>(false)
     const handlerIsModal = (value: boolean) => setIsModal(value)
     const handlerCurrentPagination = (value: number) => setCurrent(value)
@@ -87,39 +77,16 @@ export const Words = () => {
         if (total > 0) return current * COUNT_WORDS
         else return current * COUNT_WORDS - Math.abs(total)
     }
-    const handlerSortReset = () => {
-        setSortElements(sortElements.map((item) => ({...item, isActive: false})))
+    const handlerSortResetFetch = useCallback(() => {
         setFind('')
         dispatch(fetchGetWords(current))
-    }
-    const handlerSort = (name: string, typeSort: SortChoice) => {
-        setSortElements(
-            sortElements.map((item) =>
-                item.name === name
-                    ? {...item, isActive: !item.isActive}
-                    : {
-                        ...item,
-                        isActive: false,
-                    },
-            ),
-        )
+    },[])
+    const handlerSortFetch = useCallback((typeSort: SortChoice) => {
         dispatch(fetchSortWords(typeSort))
-    }
+    }, [])
     const downloadFile = () => {
         dispatch(fetchDownloadFile(file))
     }
-    const SortElementComponents = React.memo(() => {
-        return <div>
-            {sortElements.map(item => {
-                return <SortElement
-                    sortElem={() => handlerSort(item.name, item.sort)}
-                    key={item.id}
-                    isLoading={isLoading}
-                    {...item}
-                />
-            })}
-        </div>
-    })
     const PaginationElements = () => {
         return <div>
             {arr.map((item) => (
@@ -142,7 +109,6 @@ export const Words = () => {
                         Here, you can manage your words and phrases, update, delete, correct. Add everything you
                         know!
                     </p>
-                    <ArrayButton/>
                 </div>
                 <div className='container_words_description_two'>
                     <button onClick={() => handlerIsModal(true)}>+ Add new word</button>
@@ -160,10 +126,7 @@ export const Words = () => {
             <div className='container_words_sort'>
                 <div className='container_words_sort_buttons'>
                     <p>Filters - </p>
-                    <SortElementComponents/>
-                    <button className='button_reset_filters' onClick={handlerSortReset} disabled={isLoading}>
-                        X
-                    </button>
+                    <SortElementComponents fetchSortReset={handlerSortResetFetch} fetchSort={handlerSortFetch} isLoading={isLoading}/>
                 </div>
                 <div className={'container_words_word'}>
                     <div className={'container_words_word_item'}>

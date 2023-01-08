@@ -1,6 +1,5 @@
-import React, {ChangeEvent, useCallback, useEffect, useState} from 'react'
+import React, {ChangeEvent, useCallback, useEffect, useMemo, useState} from 'react'
 import {Word} from './Word/Word'
-import './words.scss'
 import {useAppDispatch, useAppSelector} from '../../../Redux/ReduxUtils'
 import {
     fetchDeleteWord,
@@ -10,13 +9,14 @@ import {
     fetchWordFind,
 } from '../../../Redux/WordsReducer'
 import {WordModal} from '../../../Common/ModalComponents/WordModal/WordModal'
-import {Pagination} from './Pagination/Pagination'
 import {profileReselect} from '../../../Redux/Reselect'
 import {SortChoice, WordType} from '../../../API/wordAPI'
 import {changeTitle} from '../../../Common/usefulFuncs'
 import {Loading} from '../../../Common/CommonComponents/Loading/Loading'
 import search from '../../../Assets/Images/search.png'
 import {SortElementComponents} from "./SortElementsComponents/SortElementComponents";
+import {Pagination} from "./Pagination/Pagination";
+import './words.scss'
 
 export const Words = () => {
     const [file, setFile] = useState<string>('txt')
@@ -63,15 +63,15 @@ export const Words = () => {
     }
     returnArrayPagination()
     const handlerIsModal = (value: boolean) => setIsModal(value)
-    const handlerCurrentPagination = (value: number) => setCurrent(value)
-    const handlerButtonNext = () => {
+    const handlerCurrentPagination = useCallback((value: number) => setCurrent(value), [])
+    const handlerButtonNext = useCallback(() => {
         if (current >= resultPagination) return
         setCurrent((state) => state + 1)
-    }
-    const handlerButtonPrevious = () => {
+    }, [])
+    const handlerButtonPrevious = useCallback(() => {
         if (current === 1) return
         else setCurrent((state) => state - 1)
-    }
+    }, [])
     const showing = () => {
         const total = totalWords - current * COUNT_WORDS
         if (total > 0) return current * COUNT_WORDS
@@ -87,18 +87,10 @@ export const Words = () => {
     const downloadFile = () => {
         dispatch(fetchDownloadFile(file))
     }
-    const PaginationElements = () => {
-        return <div>
-            {arr.map((item) => (
-                <Pagination
-                    key={item}
-                    click={() => handlerCurrentPagination(item)}
-                    isActive={item === current}
-                    id={item}
-                />
-            ))}
-        </div>
-    }
+    const handlerCurrent = useCallback(() => setCurrent(1), [])
+    const arrayElementsPagination = useMemo(() => {
+        return arr
+    }, [totalWords, current])
     return (
         <div className='container_words'>
             {isModal && <WordModal handlerIsModal={() => handlerIsModal(false)}/>}
@@ -152,18 +144,10 @@ export const Words = () => {
                             {find.length >= 1 ? words.length : totalWords} Results
                         </div>
                         <div className='container_words_pagination_logic'>
-                            <div>
-                                <button onClick={handlerButtonPrevious}>&#171;</button>
-                                <div>
-                                    {current > 3 && <p onClick={() => setCurrent(1)}>1...</p>}
-                                    {arr.length >= 1 &&
-                                        <PaginationElements/>}
-                                    <p onClick={() => handlerCurrentPagination(resultPagination)}>
-                                        ... {arr.length > 1 && resultPagination}
-                                    </p>
-                                </div>
-                                <button onClick={handlerButtonNext}>&#187;</button>
-                            </div>
+                            <Pagination handlerNext={handlerButtonNext} handlerPrevious={handlerButtonPrevious}
+                                        handlerCurrent={handlerCurrent} array={arrayElementsPagination}
+                                        resultPagination={resultPagination} current={current}
+                                        handlerPagination={handlerCurrentPagination}/>
                         </div>
                         <div className='container_words_selectDownload'>
                             <div>

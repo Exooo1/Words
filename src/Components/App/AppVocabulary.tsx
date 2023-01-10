@@ -51,7 +51,7 @@ export const AppVocabulary = () => {
     useEffect(() => {
         dispatch(fetchGetProfile())
         if (auth === 0) navigate('/auth')
-    }, [])
+    }, [auth])
     const changeNav = (id: number) => {
         setNav(
             nav.map((item) => (item.id !== id ? {...item, style: false} : {...item, style: true})),
@@ -67,7 +67,7 @@ export const AppVocabulary = () => {
             <div className={styles.nav}>
                 <div className={styles.nav_content}>
                     <div className={styles.nav_content_logo}>
-                        <img src={logo} alt=''/>
+                        <img src={logo} alt='logo'/>
                         <div>
                             <h1>Vocabulary</h1>
                             <sup>App</sup>

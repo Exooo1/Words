@@ -50,6 +50,7 @@ export const AppVocabulary = () => {
     ])
     useEffect(() => {
         dispatch(fetchGetProfile())
+        if (auth === 0) navigate('/auth')
     }, [])
     const changeNav = (id: number) => {
         setNav(
@@ -57,7 +58,6 @@ export const AppVocabulary = () => {
         )
     }
     const handlerLogOut = () => dispatch(fetchLogOut())
-    if (auth === 0) navigate('/auth')
     const NavLinks = nav.map((item) => (
         <NavLinkElement key={item.id} click={() => changeNav(item.id)} {...item} />
     ))

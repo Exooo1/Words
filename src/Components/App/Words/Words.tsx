@@ -91,6 +91,17 @@ export const Words = () => {
     const handlerFile = useCallback((value: string) => setFile(value), [])
     const handlerCurrent = useCallback(() => setCurrent(1), [])
     const arrayElementsPagination = useMemo(() => arr, [totalWords, current])
+    const memoResult = useMemo(() => words.map((item: WordType) => {
+        return <Word
+            id={item._id || ''}
+            key={item._id}
+            {...item}
+            deleteWord={() =>
+                dispatch(fetchDeleteWord({id: item._id || '', word: item.word}))
+            }
+        />
+    }), [words])
+
     return (
         <div className='container_words'>
             {isModal && <WordModal handlerIsModal={() => handlerIsModal(false)}/>}
@@ -126,20 +137,7 @@ export const Words = () => {
                 </div>
                 <div className={'container_words_word'}>
                     <div className={'container_words_word_item'}>
-                        {isLoading ? (
-                            <Loading/>
-                        ) : (
-                            words.map((item: WordType) => (
-                                <Word
-                                    id={item._id || ''}
-                                    key={item._id}
-                                    {...item}
-                                    deleteWord={() =>
-                                        dispatch(fetchDeleteWord({id: item._id || '', word: item.word}))
-                                    }
-                                />
-                            ))
-                        )}
+                        {isLoading ? <Loading/> : memoResult}
                     </div>
                     <div className='container_words_pagination'>
                         <div className='container_words_pagination_showing'>

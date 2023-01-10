@@ -116,7 +116,7 @@ export const Words = () => {
                 <div className='container_words_description_two'>
                     <button onClick={() => handlerIsModal(true)}>+ Add new word</button>
                     <div>
-                        <img src={search} alt=''/>
+                        <img src={search} alt='Search'/>
                         <input
                             value={find}
                             onChange={handlerFindWord}

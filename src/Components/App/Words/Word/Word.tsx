@@ -67,10 +67,3 @@ export const Word: React.FC<WordType> = ({
     </div>
   )
 }
-// <div className='container_word' key={word}>
-//     <input type="text"/>
-//     <input type="text"/>
-//     <input type="text"/>
-//     <button onClick={deleteWord}>X</button>
-// </div>
-//

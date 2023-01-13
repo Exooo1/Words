@@ -12,7 +12,6 @@ export const handlerDeleteHint = (
     status: StatusTypeHint,
 ) => {
     const v4id = (Math.random() * 10).toString(36).slice(2)
-    console.log(addHint({v4id, article: value, status}))
     dispatch(addHint({v4id, article: value, status}))
     setTimeout(() => {
         dispatch(deleteHint(v4id))

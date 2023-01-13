@@ -25,7 +25,7 @@ export const App = () => {
         <Route key='auth/email' path='auth/email' element={<CheckMail />} />
         <Route key='auth/confirmed/:id' path='auth/confirmed/:id' element={<ConfirmAccount />} />
         <Route key='app' path='/app' element={<AppVocabulary />}>
-          <Route index element={<Words />} />
+          <Route index element={<Words/>} />
           <Route key='profile' path='profile' element={<div>Profile</div>} />
           <Route key='dashboard' path='dashboard' element={<div>Statistic</div>} />
           <Route key='achievements' path='achievements' element={<div>Statistic</div>} />

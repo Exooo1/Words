@@ -8,7 +8,7 @@ export const changeTitle = (text: string) => {
 }
 export const handlerDeleteHint = (
   value: string,
-  dispatch: (item: { payload: PayloadHintType | string }) => {},
+  dispatch: (item: { payload: PayloadHintType | string }) => void,
   status: StatusTypeHint,
 ) => {
   const v4id = (Math.random() * 10).toString(36).slice(2)

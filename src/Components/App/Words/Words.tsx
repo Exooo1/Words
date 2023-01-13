@@ -16,8 +16,8 @@ import { Loading } from '../../../Common/CommonComponents/Loading/Loading'
 import search from '../../../Assets/Images/search.png'
 import { SortElementComponents } from './SortElementsComponents/SortElementComponents'
 import { Pagination } from './Pagination/Pagination'
-import './words.scss'
 import { Download } from './DownloadParameters/Download'
+import './words.scss'
 
 export const Words = () => {
   const [file, setFile] = useState<string>('txt')

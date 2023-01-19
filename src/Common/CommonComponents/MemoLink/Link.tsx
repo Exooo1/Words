@@ -6,10 +6,10 @@ type MemoLinkType = {
   path: string
   click?: () => void
 }
-export const LinkMemo: React.FC<MemoLinkType> = React.memo(({name, path, click}) => {
+export const LinkMemo: React.FC<MemoLinkType> = React.memo(({ name, path, click }) => {
   return (
-      <Link onClick={click} to={path}>
-        {name}
-      </Link>
+    <Link onClick={click} to={path}>
+      {name}
+    </Link>
   )
 })

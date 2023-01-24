@@ -79,9 +79,10 @@ export const fetchConfirmPassword = createAsyncThunk<undefined, string, ThunkErr
     'auth/fetchConfirmPassword',
     async (id, {dispatch, rejectWithValue}) => {
         try {
-            await apiAuth.confirm(id)
+            const {data} = await apiAuth.confirm(id)
+            handlerDeleteHint(data.item, dispatch, 'error')
         } catch (err) {
-            const {response, message} = err as AxiosError<ProjectTypeReturn<number>>
+            const {response, message} = err as AxiosError<ProjectTypeReturn<string>>
             if (response?.data === undefined) handlerDeleteHint(message, dispatch, 'error')
             else handlerDeleteHint(response.data.error, dispatch, 'error')
             return rejectWithValue({errors: response?.data.error || message})

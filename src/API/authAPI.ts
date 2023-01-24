@@ -40,8 +40,8 @@ export const apiAuth = {
     login({email, password}: LoginType): AxiosPromise<ProjectTypeReturn<AuthLoginType>> {
         return instance.post<ProjectTypeReturn<AuthLoginType>>('login', {email, password})
     },
-    confirm(id: string): AxiosPromise<ProjectTypeReturn<null>> {
-        return instance.post<ProjectTypeReturn<null>>('confirm', {id})
+    confirm(id: string): AxiosPromise<ProjectTypeReturn<string>> {
+        return instance.post<ProjectTypeReturn<string>>('confirm', {id})
     },
     getAuth(): AxiosPromise<ProjectTypeReturn<number>> {
         return instance.get<ProjectTypeReturn<number>>('me')

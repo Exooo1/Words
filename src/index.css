@@ -1,7 +1,7 @@
 body {
-    scroll-behavior: smooth;
-    text-rendering: optimizeSpeed;
-    font-family: 'Arial Narrow', sans-serif;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  font-family: 'Arial Narrow', sans-serif;
 }
 
 body,
@@ -13,5 +13,5 @@ figcaption,
 blockquote,
 dl,
 dd {
-    margin: 0;
+  margin: 0;
 }

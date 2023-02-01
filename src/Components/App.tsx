@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { Auth } from './Auth/Auth'
 import { Registration } from './Auth/Registration/Registration'
@@ -10,14 +11,11 @@ import { AppVocabulary } from './App/AppVocabulary'
 import { Words } from './App/Words/Words'
 
 export const App = () => {
-  const MainRouter = () => {
-    return <Navigate to='/auth' replace={true} />
-  }
   return (
     <div>
       <Routes>
         <Route key='*' path='*' element={<NotFound />} />
-        <Route key='/' path='/' element={<MainRouter />} />
+        <Route key='/' path='/' element={<Navigate to='/auth' />} />
         <Route key='path' path='auth' element={<Auth />}>
           <Route index element={<Registration />} />
           <Route key='login' path='login' element={<Login />} />

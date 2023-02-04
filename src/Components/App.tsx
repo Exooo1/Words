@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { Auth } from './Auth/Auth'
 import { Registration } from './Auth/Registration/Registration'
@@ -10,25 +11,22 @@ import { AppVocabulary } from './App/AppVocabulary'
 import { Words } from './App/Words/Words'
 
 export const App = () => {
-  const MainRouter = () => {
-    return <Navigate to='/auth' replace={true} />
-  }
   return (
     <div>
       <Routes>
-        <Route path='*' element={<NotFound />} />
-        <Route path='/' element={<MainRouter />} />
-        <Route path='auth' element={<Auth />}>
+        <Route key='*' path='*' element={<NotFound />} />
+        <Route key='/' path='/' element={<Navigate to='/auth' />} />
+        <Route key='path' path='auth' element={<Auth />}>
           <Route index element={<Registration />} />
-          <Route path='login' element={<Login />} />
+          <Route key='login' path='login' element={<Login />} />
         </Route>
-        <Route path='auth/email' element={<CheckMail />} />
-        <Route path='auth/confirmed/:id' element={<ConfirmAccount />} />
-        <Route key={'app'} path='/app' element={<AppVocabulary />}>
+        <Route key='auth/email' path='auth/email' element={<CheckMail />} />
+        <Route key='auth/confirmed/:id' path='auth/confirmed/:id' element={<ConfirmAccount />} />
+        <Route key='app' path='/app' element={<AppVocabulary />}>
           <Route index element={<Words />} />
-          <Route path='profile' element={<div>Profile</div>} />
-          <Route path='dashboard' element={<div>Statistic</div>} />
-          <Route path='achievements' element={<div>Statistic</div>} />
+          <Route key='profile' path='profile' element={<div>Profile</div>} />
+          <Route key='dashboard' path='dashboard' element={<div>Statistic</div>} />
+          <Route key='achievements' path='achievements' element={<div>Statistic</div>} />
         </Route>
       </Routes>
     </div>

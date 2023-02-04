@@ -1,8 +1,17 @@
 body {
-  padding: 0;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  font-family: 'Arial Narrow', sans-serif;
+}
+
+body,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }

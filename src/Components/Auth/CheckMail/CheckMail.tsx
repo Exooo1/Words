@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
-import mail from '../../../Assets/Images/mail.png'
-import './checkmail.scss'
 import { changeTitle } from '../../../Common/usefulFuncs'
+import styles from './checkmail.module.scss'
+import mail from '../../../Assets/Images/mail.png'
 
 export const CheckMail = () => {
   useEffect(() => {
     changeTitle('Email')
   }, [])
   return (
-    <div className='checkMail'>
+    <div className={styles.checkMail}>
       <div>
         <h1>YourVocabulary</h1>
         <img src={mail} alt='checkMail' />

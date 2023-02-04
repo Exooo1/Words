@@ -1,5 +1,5 @@
-import axios, {AxiosPromise, AxiosRequestConfig} from 'axios'
-import {ProjectTypeReturn} from "../Common/Types/CommonType";
+import axios, { AxiosPromise, AxiosRequestConfig } from 'axios'
+import { ProjectTypeReturn } from '../Common/Types/CommonType'
 
 const instance = axios.create({
   baseURL: 'http://localhost:8080/profile',
@@ -10,7 +10,7 @@ export const cancelFetch = () => {
   source.cancel('i canceled this request!')
 }
 
-instance.interceptors.request.use((config:AxiosRequestConfig) => {
+instance.interceptors.request.use((config: AxiosRequestConfig) => {
   // @ts-ignore
   config.headers.Authorization = `Bearer ${window.localStorage.getItem('token')}`
   return config

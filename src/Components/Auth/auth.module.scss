@@ -6,20 +6,21 @@
 
   .auth_logo {
     @include wi_he(350px, auto);
-    @include flexDiv(center, center, none);
+    @include flexDiv(center, center, column);
 
     div {
-      @include flexDiv(center, center, column);
+      margin-left: 20px;
       height: 120px;
-      position: relative;
-      left: -40px;
-      top: 5px;
-      text-shadow: 1px 1px 1px #ffffff;
+      @include flexDiv(center, center, column);
+      text-shadow: 1px 1px 10px #000000;
       color: white;
     }
 
     img {
-      @include wi_he(120px, 120px);
+      position: absolute;
+      top: 30px;
+      left: 93px;
+      @include wi_he(180px, 130px);
     }
 
     h3 {
@@ -28,7 +29,7 @@
     }
   }
 
-  .auth_outlet {
+  &_outlet {
     @include flexDiv(space-around, none, none);
     flex-wrap: wrap;
   }

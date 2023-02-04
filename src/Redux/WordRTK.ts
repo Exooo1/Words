@@ -27,4 +27,4 @@ type ResultTypeMutation = {
   error: string
 }
 
-export const { useFindWordMutation } = wordApi
+export const { useFindWordMutation, useGetPostQuery } = wordApi

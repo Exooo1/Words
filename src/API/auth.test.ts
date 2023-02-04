@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios'
 import { apiAuth, EmailType, LoginType } from './authAPI'
-import {ProjectTypeReturn} from "../Common/Types/CommonType";
+import { ProjectTypeReturn } from '../Common/Types/CommonType'
 
 const user = {
   name: 'Vlas',

@@ -25,9 +25,9 @@ export const Word: React.FC<WordType> = ({
   const [tran, setTran] = useState<string>(translate)
   const [descrip, setDescrip] = useState<string>(description)
   const handlerWord = (e: ChangeEvent<HTMLInputElement>) => {
-    if (wor.length === 1) return
-    else setWor(e.target.value)
+    if (wor.length > 1) setWor(e.target.value)
   }
+
   const acceptChange = () => {
     setIsEdit(false)
     if (descrip === description && tran === translate && wor === word) return
@@ -67,10 +67,3 @@ export const Word: React.FC<WordType> = ({
     </div>
   )
 }
-// <div className='container_word' key={word}>
-//     <input type="text"/>
-//     <input type="text"/>
-//     <input type="text"/>
-//     <button onClick={deleteWord}>X</button>
-// </div>
-//

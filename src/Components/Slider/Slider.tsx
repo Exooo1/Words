@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import './slider.scss'
 import managment from '../../Assets/Images/managerwords.png'
+import styles from './slider.module.scss'
+
+type SliderType = {
+  id: number
+  img: string
+  title: string
+  description: string
+  focus: boolean
+}
 
 export const Slider = () => {
   const [count, setCount] = useState<number>(0)
-  const [slider, setSlider] = useState([
+  const [slider, setSlider] = useState<Array<SliderType>>([
     {
       id: 0,
       img: 'https://www.webfx.com/wp-content/uploads/2021/10/dark-web-design-01-nerisson.png',
@@ -45,22 +53,22 @@ export const Slider = () => {
     },
   ])
   const changeCount = (id: number) => setCount(id)
-  const content = slider.map((item) => {
-    if (item.id === count)
-      return (
-        <div key={item.id} className='slider_content_image'>
-          <img className='slider_img' src={item.img} alt={item.title} />
-          <div className='slider_content'>
-            <h1>{item.title}</h1>
-            <p>{item.description}</p>
-          </div>
+  const content = (
+    <div>
+      <div key={slider[count].id} className={styles.slider_content}>
+        <img src={slider[count].img} alt={slider[count].title} />
+        <div>
+          <h1>{slider[count].title}</h1>
+          <p>{slider[count].description}</p>
         </div>
-      )
-  })
+      </div>
+    </div>
+  )
+
   const switchers = slider.map((item) => (
     <div
       onClick={() => changeCount(item.id)}
-      className={item.id === count ? 'slider_switcher_focus' : ''}
+      className={item.id === count ? styles.slider_switcherFocus : ''}
       key={item.id}
     ></div>
   ))
@@ -69,9 +77,9 @@ export const Slider = () => {
       if (count < slider.length - 1) {
         setCount(count + 1)
         setSlider(
-          slider.map((item) => {
-            return item.id === count ? { ...item, focus: true } : { ...item, focus: false }
-          }),
+          slider.map((item) =>
+            item.id === count ? { ...item, focus: true } : { ...item, focus: false },
+          ),
         )
       } else setCount(0)
     }, 5000)
@@ -79,9 +87,9 @@ export const Slider = () => {
   }, [count])
 
   return (
-    <div className='slider'>
+    <div className={styles.slider}>
       {content}
-      <div className='slider_switcher'>{switchers}</div>
+      <div className={styles.slider_switcher}>{switchers}</div>
     </div>
   )
 }

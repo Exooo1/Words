@@ -8,11 +8,16 @@
   color: #525461;
 
   a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.65);
     align-self: flex-end;
     width: 80%;
+    &:hover {
+      scale: 1.1;
+    }
   }
 
-  .login_signup {
+  .login_signUp {
     display: flex;
     justify-content: center;
     align-items: center;

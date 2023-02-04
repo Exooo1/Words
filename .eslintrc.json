@@ -71,6 +71,7 @@
     "react/jsx-wrap-multilines": "off",
     "react/destructuring-assignment": "off",
     "react-hooks/exhaustive-deps": "off",
-    "object-curly-spacing": "off"
+    "object-curly-spacing": "off",
+
   }
 }

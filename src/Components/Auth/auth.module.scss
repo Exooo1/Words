@@ -1,34 +1,6 @@
 @import '../../Common/Styles/mixins.scss';
 
 .auth {
-  background: linear-gradient(to right, #0f2027, #553d83, #8f049f);
-  min-height: 100vh;
-
-  .auth_logo {
-    @include wi_he(350px, auto);
-    @include flexDiv(center, center, column);
-
-    div {
-      margin-left: 20px;
-      height: 120px;
-      @include flexDiv(center, center, column);
-      text-shadow: 1px 1px 10px #000000;
-      color: white;
-    }
-
-    img {
-      position: absolute;
-      top: 30px;
-      left: 93px;
-      @include wi_he(180px, 130px);
-    }
-
-    h3 {
-      position: relative;
-      top: -40px;
-    }
-  }
-
   &_outlet {
     @include flexDiv(space-around, none, none);
     flex-wrap: wrap;

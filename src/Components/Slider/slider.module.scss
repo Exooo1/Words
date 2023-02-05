@@ -9,15 +9,16 @@
 }
 
 .slider {
+  margin-top: 30px;
   @include flexDiv(flex-start, center, column);
-  @include wi_he(800px, auto);
+  @include wi_he(500px, 400px);
   color: white;
 
   &_content {
     @include flexDiv(center, center, column);
 
     div {
-      @include wi_he(100%, 230px);
+      height: 180px;
       @include flexDiv(center, center, column);
       border-radius: 0 0 20px 20px;
 
@@ -39,19 +40,24 @@
     img {
       animation: sliderImg 1s;
       border-radius: 20px 20px 0 0;
-      @include wi_he(100%, 430px);
+      width: 500px;
+      height: 300px;
     }
   }
 
   &_switcher {
+
     .slider_switcherFocus {
       transition: 2s;
       background: #443e4a;
       box-shadow: 0 0 20px #cf91fc;
     }
 
-    @include flexDiv(space-around, center, none);
-    @include wi_he(40%, 60px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 30px;
+    width: 300px;
 
     div {
       @include wi_he(40px, 40px);

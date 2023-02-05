@@ -1,6 +1,4 @@
 import React from 'react'
-
-import {Header} from "./header/header";
 import {Navigate, Route, Routes} from 'react-router-dom'
 import {Auth} from './Auth/Auth'
 import {Registration} from './Auth/Registration/Registration'
@@ -17,8 +15,7 @@ import {Footer} from "./footer/footer";
 export const Layout = () => {
     return (
         <main className={styles.main}>
-            <Header/>
-            <div style={{height:'70vh'}}>
+            <div style={{minHeight:'70vh'}}>
                 <Routes>
                     <Route key='*' path='*' element={<NotFound/>}/>
                     <Route key='/' path='/' element={<Navigate to='/auth'/>}/>

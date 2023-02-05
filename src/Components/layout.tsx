@@ -11,11 +11,13 @@ import {Words} from './App/Words/Words'
 
 import styles from './layout.module.scss'
 import {Footer} from "./footer/footer";
+import {Header} from "./header/header";
 
 export const Layout = () => {
     return (
         <main className={styles.main}>
-            <div style={{minHeight:'70vh'}}>
+            <Header/>
+            <div style={{minHeight: '70vh'}}>
                 <Routes>
                     <Route key='*' path='*' element={<NotFound/>}/>
                     <Route key='/' path='/' element={<Navigate to='/auth'/>}/>

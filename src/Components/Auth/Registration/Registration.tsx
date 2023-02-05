@@ -3,7 +3,6 @@ import {LinkMemo} from '../../../Common/CommonComponents/MemoLink/Link'
 import {fetchGetAuth} from '../../../Redux/AuthReducer'
 import {useAppDispatch, useAppSelector} from '../../../Redux/ReduxUtils'
 import styles from './registration.module.scss'
-import {CreateButton} from "../../../Common/CommonComponents/Buttons/CreateButton";
 import {useForm} from "../../../Hooks/Form";
 import {Navigate} from "react-router-dom";
 
@@ -36,7 +35,9 @@ export const Registration = () => {
                 <b> Already A Member? <LinkMemo name='Login' path='login'/></b>
             </header>
             <section className={styles.registration_fill}>{profile}</section>
-            <CreateButton create={form.createAccount} name={'Create account'}/>
+            <section className={styles.registration_button}>
+                <button type='button' onClick={form.createAccount}>CreateAccount</button>
+            </section>
         </section>
     )
 }

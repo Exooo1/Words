@@ -1,8 +1,8 @@
 @import '../../Common/Styles/mixins.scss';
 
 .auth {
-  &_outlet {
-    @include flexDiv(space-around, none, none);
-    flex-wrap: wrap;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }

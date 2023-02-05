@@ -41,15 +41,3 @@ export const Registration = () => {
         </section>
     )
 }
-
-// <div className={styles.registration_fields}>{profile}</div>
-// <div className={styles.registration_password}>
-//     <FormPassword
-//         email={email}
-//         password={password}
-//         changeEmail={changeEmail}
-//         changePassword={changePassword}
-//         login={login}
-//     />
-// </div>
-// <CreateButton create={form.createAccount} name={'Create account'} />

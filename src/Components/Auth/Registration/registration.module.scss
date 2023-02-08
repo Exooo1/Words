@@ -75,8 +75,8 @@
       border-radius: 10px;
       box-shadow: 0 0 6px black;
       display: flex;
-      justify-content: flex-start;
       align-items: center;
+      gap: 10px;
       min-width: 305px;
       background: #323645;
 
@@ -84,7 +84,6 @@
       div {
         display: flex;
         align-items: flex-start;
-        justify-content: flex-start;
         flex-direction: column;
         height: 70px;
       }
@@ -93,10 +92,10 @@
         outline: none;
         color: white;
         font-size: 18px;
-        margin-left: 25px;
+        margin-left: 15px;
         background: #323645;
         font-weight: 900;
-        width: 255px;
+        width: 265px;
         border: none;
         height: 40px;
       }
@@ -104,13 +103,13 @@
       label {
         font-weight: 800;
         color: darkgrey;
-        padding-left: 25px;
+        padding-left: 15px;
       }
 
       img {
         margin-right: 10px;
-        width: 40px;
-        height: 40px;
+        width: 45px;
+        height: 45px;
       }
     }
   }

@@ -1,121 +1,115 @@
 @import '../../../Common/Styles/mixins.scss';
 
 .registration {
-  @include flexDiv(center, flex-start, column);
-  @include sizes(600px, auto, 900, auto);
-  z-index: 0;
-  color: #525461;
+  margin: 10px 0;
+  border-radius: 20px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 
-  button {
-    width: 97%;
-  }
+  header {
+    margin: 15px 15px;
+    line-height: 0px;
+    letter-spacing: 0.2px;
+    color: darkgrey;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
 
-  a {
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.65);
-  }
-
-  p {
-    span {
-      color: #234d78;
+    a {
+      text-decoration: none;
+      font-weight: 700;
     }
 
-    position: relative;
-    top: -50px;
-  }
-
-  p:first-child {
-    position: relative;
-    top: 120px;
-    font-size: 20px;
-  }
-
-  h1 {
-    span {
-      font-size: 100px;
-      color: #0370e5;
+    b {
+      font-family: "Calibri Light";
+      font-weight: 600;
     }
 
-    @include wei_fon(900, 50px);
-    color: white;
-  }
+    h1 {
+      color: white;
+      letter-spacing: 0.5px;
+      font-weight: 900;
+      font-size: 26px;
 
-  &_fields {
-    @include flexDiv(space-between, none, none);
-    width: 97%;
-    margin: 10px 0;
-    flex-wrap: wrap;
-
-    div {
-      @include flexDiv(space-between, center, none);
-      @include wi_he(45%, 80px);
-      @include colorShadow(none, #323645, 0 0 10px rgba(0, 0, 0, 0.5), none);
-      min-width: 100px;
-      border-radius: 20px;
-
-      img {
-        @include wi_he(30px, 30px);
-        margin: 0 20px;
-        color: #a9acb3;
+      span {
+        font-size: 50px;
+        color: #0a84de;
       }
+    }
+  }
+
+  &_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      &:active {
+        box-shadow: inset 0 0 10px #000000;
+      }
+
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 0 6px #06fbde;
+      font-size: 25px;
+      font-weight: 900;
+      color: white;
+      background: #323645;
+      border-radius: 20px;
+      width: 335px;
+      height: 70px;
+    }
+  }
+
+  &_fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+
+    &_field {
+      border-radius: 10px;
+      box-shadow: 0 0 6px black;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 305px;
+      background: #323645;
+
 
       div {
-        @include flexDiv(center, flex-start, column);
-        width: 90%;
-        box-shadow: none;
-
-        label {
-          margin: 0 20px;
-        }
-
-        input {
-          @include sizes(90%, 50px, 900, 22px);
-          @include colorSimple(white, #323645);
-          min-width: 100px;
-          margin: 0 15px;
-          outline: none;
-          border: none;
-        }
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        height: 70px;
       }
-    }
-  }
 
-  &_password {
-    @include flexDiv(none, none, column);
-    width: 100%;
-    margin: 10px 0;
+      input {
+        outline: none;
+        color: white;
+        font-size: 18px;
+        margin-left: 15px;
+        background: #323645;
+        font-weight: 900;
+        width: 265px;
+        border: none;
+        height: 40px;
+      }
 
-    div {
-      @include flexDiv(space-between, center, none);
-      @include wi_he(97%, 80px);
-      @include colorShadow(none, #323645, 0 0 10px rgba(0, 0, 0, 0.5), none);
-      margin: 10px 0;
-      min-width: 100px;
-      border-radius: 20px;
+      label {
+        font-weight: 800;
+        color: darkgrey;
+        padding-left: 15px;
+      }
 
       img {
-        @include wi_he(30px, 30px);
-        margin: 0 20px;
-        cursor: pointer;
-      }
-
-      div {
-        @include flexDiv(center, flex-start, column);
-        width: 90%;
-        box-shadow: none;
-
-        label {
-          margin: 0 20px;
-        }
-
-        input {
-          @include sizes(90%, 50px, 900, 22px);
-          @include colorSimple(white, #323645);
-          min-width: 100px;
-          margin: 0 15px;
-          outline: none;
-          border: none;
-        }
+        margin-right: 10px;
+        width: 45px;
+        height: 45px;
       }
     }
   }

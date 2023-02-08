@@ -1,16 +1,16 @@
 @import '../../../Common/Styles/mixins.scss';
 
 .registration {
+  margin: 10px 0;
   border-radius: 20px;
   width: 500px;
-  max-height: 610px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 20px;
 
   header {
-    margin: 30px 15px;
-    line-height: 12px;
+    margin: 15px 15px;
+    line-height: 0px;
     letter-spacing: 0.2px;
     color: darkgrey;
     display: flex;
@@ -32,10 +32,10 @@
       color: white;
       letter-spacing: 0.5px;
       font-weight: 900;
-      font-size: 30px;
+      font-size: 26px;
 
       span {
-        font-size: 60px;
+        font-size: 50px;
         color: #0a84de;
       }
     }
@@ -59,7 +59,7 @@
       color: white;
       background: #323645;
       border-radius: 20px;
-      min-width: 345px;
+      width: 335px;
       height: 70px;
     }
   }
@@ -72,11 +72,12 @@
     gap: 10px;
 
     &_field {
-      border-radius: 20px;
+      border-radius: 10px;
       box-shadow: 0 0 6px black;
       display: flex;
+      justify-content: flex-start;
       align-items: center;
-      min-width: 345px;
+      min-width: 305px;
       background: #323645;
 
 
@@ -85,7 +86,7 @@
         align-items: flex-start;
         justify-content: flex-start;
         flex-direction: column;
-        height: 80px;
+        height: 70px;
       }
 
       input {
@@ -95,7 +96,7 @@
         margin-left: 25px;
         background: #323645;
         font-weight: 900;
-        width: 275px;
+        width: 255px;
         border: none;
         height: 40px;
       }

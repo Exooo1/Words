@@ -53,25 +53,6 @@ export const Slider = () => {
     },
   ])
   const changeCount = (id: number) => setCount(id)
-  const content = (
-    <div>
-      <div key={slider[count].id} className={styles.slider_content}>
-        <img src={slider[count].img} alt={slider[count].title} />
-        <div>
-          <h1>{slider[count].title}</h1>
-          <p>{slider[count].description}</p>
-        </div>
-      </div>
-    </div>
-  )
-
-  const switchers = slider.map((item) => (
-    <div
-      onClick={() => changeCount(item.id)}
-      className={item.id === count ? styles.slider_switcherFocus : ''}
-      key={item.id}
-    ></div>
-  ))
   useEffect(() => {
     const interval = setInterval(() => {
       if (count < slider.length - 1) {
@@ -85,6 +66,26 @@ export const Slider = () => {
     }, 5000)
     return () => clearInterval(interval)
   }, [count])
+
+  const content = (
+      <article>
+        <div key={slider[count].id} className={styles.slider_content}>
+          <img src={slider[count].img} alt={slider[count].title}/>
+          <div>
+            <h1>{slider[count].title}</h1>
+            <p>{slider[count].description}</p>
+          </div>
+        </div>
+      </article>
+  )
+
+  const switchers = slider.map((item) => (
+      <div
+          onClick={() => changeCount(item.id)}
+          className={item.id === count ? styles.slider_switcherFocus : ''}
+          key={item.id}
+      ></div>
+  ))
 
   return (
     <div className={styles.slider}>

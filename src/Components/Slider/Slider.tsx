@@ -68,7 +68,7 @@ export const Slider = () => {
     }, [count])
 
     const switchers = slider.map((item) => (
-        <button
+        <button disabled={item.id === count}
             onClick={() => changeCount(item.id)}
             className={item.id === count ? styles.switchers_isActive : ''}
             key={item.id}

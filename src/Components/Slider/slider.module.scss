@@ -33,7 +33,7 @@
     width: 100%;
 
     .switchers_isActive {
-      &:disabled{
+      &:disabled {
         cursor: initial;
       }
       transition: 2s;
@@ -81,4 +81,3 @@
     }
   }
 }
-

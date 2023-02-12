@@ -9,9 +9,10 @@ import { Login } from './Auth/Login/Login'
 import { AppVocabulary } from './App/AppVocabulary'
 import { Words } from './App/Words/Words'
 
-import styles from './layout.module.scss'
 import { Footer } from './footer/footer'
 import { Header } from './header/header'
+
+import styles from './layout.module.scss'
 
 export const Layout = () => {
   return (

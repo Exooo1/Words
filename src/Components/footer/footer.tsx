@@ -1,12 +1,22 @@
 import styles from './footer.module.scss'
 
 export const Footer = () => {
-  return (
-    <footer className={styles.footer}>
-      <cite>Vlas Maskalenchik</cite>
-      <address>
-        Minsk <time>@2022-2023</time>
-      </address>
-    </footer>
-  )
+    return (
+        <footer className={styles.footer}>
+            <section>
+                <cite>Released under the MIT License. (55b97113)
+                    Copyright
+                    <time>© 2022-present </time>
+                    Vlas Maskalenchik</cite>
+            </section>
+            <section>
+                <ul>
+                    <li>instagram</li>
+                    <li>github</li>
+                    <li>linkedin</li>
+                    <li>Telegram</li>
+                </ul>
+            </section>
+        </footer>
+    )
 }

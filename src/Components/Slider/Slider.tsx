@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+
 import managment from '../../Assets/Images/managerwords.png'
 import styles from './slider.module.scss'
 

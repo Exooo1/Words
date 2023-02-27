@@ -28,25 +28,12 @@ export const Login = () => {
                 Log In
             </button>
             <section className={styles.login_description}>
-                <p>Don't have an account or you forgot password</p>
+                <p>Don&apos;t have an account or you forgot password</p>
                 <section>
                     <Link to='/auth/forgot'>Forgot Password</Link>
                     <Link to='/auth'>SignUp</Link>
                 </section>
             </section>
         </section>
-        // <div className={styles.login}>
-        //   <h1>
-        //     Login<span>.</span>
-        //   </h1>
-        //   <p>With this app you will grow!</p>
-        //   <FormPassword {...form} />
-        //   <LinkMemo name='Forgot password' path='/auth/forgot' />
-        //   <CreateButton name='Log in' create={form.login} />
-        //   <div className={styles.login_signUp}>
-        //     <p>Don't have an account</p>
-        //     <LinkMemo name='SignUp' path='/auth' />
-        //   </div>
-        // </div>
     )
 }

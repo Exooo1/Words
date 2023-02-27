@@ -1,76 +1,26 @@
 {
-  "plugins": [
-    "prettier",
-    "@typescript-eslint"
-  ],
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
   "extends": [
-    "airbnb-typescript",
-    "react-app",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   },
-  "settings": {
-    "import/resolver": {
-      "typescript": {
-        "alwaysTryTypes": true
-      }
-    }
-  },
+  "plugins": [
+    "react",
+    "@typescript-eslint"
+  ],
   "rules": {
-    "no-unused-vars": [
-      "error",
-      {
-        "vars": "all",
-        "args": "none"
-      }
-    ],
-    "@typescript-eslint/semi": [
-      "off"
-    ],
-    "@typescript-eslint/no-unused-vars": [
-      "warn",
-      {
-        "vars": "all",
-        "args": "none"
-      }
-    ],
-    "@typescript-eslint/no-explicit-any": [
-      "error",
-      {
-        "ignoreRestArgs": true
-      }
-    ],
-    "no-plusplus": [
-      "error",
-      {
-        "allowForLoopAfterthoughts": true
-      }
-    ],
-    "react/jsx-key": "error",
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": [
-          "**/*.test.js",
-          "**/*.test.jsx",
-          "**/*.test.ts",
-          "**/*.test.tsx",
-          "src/tests/**/*"
-        ]
-      }
-    ],
-    "react/jsx-props-no-spreading": "off",
-    "import/prefer-default-export": "off",
-    "react/jsx-boolean-value": "off",
-    "react/prop-types": "off",
-    "react/no-unescaped-entities": "off",
-    "react/jsx-one-expression-per-line": "off",
-    "react/jsx-wrap-multilines": "off",
-    "react/destructuring-assignment": "off",
-    "react-hooks/exhaustive-deps": "off",
-    "object-curly-spacing": "off"
   }
 }

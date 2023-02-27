@@ -1,24 +1,22 @@
 import React from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
-import { Auth } from './Auth/Auth'
-import { Registration } from './Auth/Registration/Registration'
-import { CheckMail } from './Auth/CheckMail/CheckMail'
-import { ConfirmAccount } from './Auth/ConfirmAccount/ConfirmAccount'
-import { NotFound } from './Auth/NotFound/NotFound'
-import { Login } from './Auth/Login/Login'
-import { AppVocabulary } from './App/AppVocabulary'
-import { Words } from './App/Words/Words'
+import {Navigate, Route, Routes} from 'react-router-dom'
+import {Auth} from './Auth/Auth'
+import {Registration} from './Auth/Registration/Registration'
+import {CheckMail} from './Auth/CheckMail/CheckMail'
+import {ConfirmAccount} from './Auth/ConfirmAccount/ConfirmAccount'
+import {NotFound} from './Auth/NotFound/NotFound'
+import {Login} from './Auth/Login/Login'
+import {AppVocabulary} from './App/AppVocabulary'
+import {Words} from './App/Words/Words'
 
-import { Footer } from './footer/footer'
-import { Header } from './header/header'
+import {Footer} from './footer/footer'
 
 import styles from './layout.module.scss'
 
 export const Layout = () => {
   return (
     <main className={styles.main}>
-      <Header />
-      <div style={{ minHeight: '70vh' }}>
+      <div style={{ minHeight: '88vh' }}>
         <Routes>
           <Route key='*' path='*' element={<NotFound />} />
           <Route key='/' path='/' element={<Navigate to='/auth' />} />

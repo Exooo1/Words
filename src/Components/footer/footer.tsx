@@ -10,11 +10,11 @@ export const Footer = () => {
         <footer className={styles.footer}>
             <section>
                 <ul>
-                    <li><a rel="noreferrer" target='_blank' href="https://www.instagram.com/vlasmaskalenchik/"><img
+                    <li><a rel="noreferrer" target='_blank' href="https://github.com/Exooo1/Words"><img
                         src={github} alt="github"/></a></li>
-                    <li><a rel="noreferrer" target='_blank' href="https://www.instagram.com/vlasmaskalenchik/"><img
+                    <li><a rel="noreferrer" target='_blank' href="https://www.linkedin.com/in/vlasmaskalenchik/"><img
                         src={linkedin} alt="linkedin"/></a></li>
-                    <li><a rel="noreferrer" target='_blank' href="https://www.instagram.com/vlasmaskalenchik/"><img
+                    <li><a rel="noreferrer" target='_blank' href="https://t.me/Vlasmaskalenchik"><img
                         src={telegram} alt="telegram"/></a></li>
                 </ul>
             </section>

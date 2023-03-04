@@ -41,3 +41,21 @@
   transition: $trans;
   transform: scale($scale);
 }
+//FlexMixins
+@mixin base-flex($justify,$align,$direction,$gap){
+  display: flex;
+  justify-content:$justify;
+  align-items: $align;
+  flex-direction: $direction;
+  gap:$gap;
+}
+
+//responsive
+@mixin width-height($width,$height){
+  width: $width;
+  height: $height;
+}
+@mixin maxWidth-height($width,$height){
+  width: $width;
+  height: $height;
+}

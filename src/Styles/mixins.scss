@@ -56,6 +56,21 @@
   height: $height;
 }
 @mixin maxWidth-height($width,$height){
-  width: $width;
+  max-width: $width;
   height: $height;
+}
+@mixin width-minHeight($width,$height){
+  width: $width;
+  min-height: $height;
+}
+@mixin size-weight-line($size,$weight,$line){
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line;
+}
+
+//position
+@mixin  base-positionR($top){
+  position: relative;
+  top:$top;
 }

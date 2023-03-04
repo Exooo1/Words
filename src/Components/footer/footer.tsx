@@ -19,10 +19,7 @@ export const Footer = () => {
                 </ul>
             </section>
             <section>
-                <cite>Released under the MIT License. (55b97113)
-                    Copyright
-                    <time>© 2022-present </time>
-                    Vlas Maskalenchik</cite>
+                <p>Released under the MIT License. Vlas Maskalenchik<time>© 2022-present </time></p>
             </section>
         </footer>
     )

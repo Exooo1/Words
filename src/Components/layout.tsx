@@ -16,7 +16,7 @@ import styles from './layout.module.scss'
 export const Layout = () => {
   return (
     <main className={styles.main}>
-      <div style={{ minHeight: '88vh' }}>
+      <div style={{ height: '88vh' }}>
         <Routes>
           <Route key='*' path='*' element={<NotFound />} />
           <Route key='/' path='/' element={<Navigate to='/auth' />} />

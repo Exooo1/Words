@@ -1,6 +1,6 @@
 @import '../Styles/variables.scss';
 
 .main {
-  height: $base-height;
+  min-height: $base-height;
   background-image: url('../Assets/Images/background.jfif');
 }

@@ -4,7 +4,8 @@ import {HintModal} from '../../Common/ModalComponents/HintModal/HintModal'
 import {changeTitle} from '../../Common/usefulFuncs'
 
 import styles from './auth.module.scss'
-import {Slider} from "../Slider/Slider";
+import {Slider} from '../Slider/Slider'
+import {Header} from "../header/header";
 
 export const Auth = () => {
     useEffect(() => {
@@ -16,16 +17,24 @@ export const Auth = () => {
         {id: 2, isActive: false},
     ])
     const handlerChoice = (value: number) => {
-        setChoice(choice.map(item => item.id === value ? {...item, isActive: true} : {...item, isActive: false}))
+        setChoice(
+            choice.map((item) =>
+                item.id === value ? {...item, isActive: true} : {...item, isActive: false},
+            ),
+        )
         setChoose(!choose)
     }
-    const buttons = choice.map(item => <button key={item.id} onClick={() => handlerChoice(item.id)}
-                                               style={{background: item.isActive ? '#323645' : 'white'}}></button>)
+    const buttons = choice.map((item) => (
+        <button
+            key={item.id}
+            onClick={() => handlerChoice(item.id)}
+            style={{background: item.isActive ? '#323645' : 'white'}}
+        ></button>
+    ))
     return (
         <section>
-            <section className={styles.auth_choose}>
-                {buttons}
-            </section>
+            <Header/>
+            <section className={styles.auth_choose}>{buttons}</section>
             <section className={styles.auth}>
                 {choose ? <Outlet/> : <Slider/>}
                 <HintModal/>

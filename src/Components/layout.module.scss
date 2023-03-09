@@ -1,4 +1,6 @@
+@import '../Styles/variables.scss';
+
 .main {
-  background: rgb(37, 37, 41);
-  height: 100vh;
+  min-height: $base-height;
+  background-image: url('../Assets/Images/background.jfif');
 }

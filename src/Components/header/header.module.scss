@@ -1,37 +1,29 @@
+@import '../../Styles/mixins.scss';
+@import '../../Styles/variables.scss';
+
 .header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  @include base-flex($justify-center,$align-center,$flex-directionC,auto);
   height: 20vh;
 
   section {
-    height: 120px;
-    width: 340px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include width-height(340px,120px);
+    @include base-flex($justify-center,$align-center,auto,auto);
 
     h1 {
-      position: relative;
-      top: 50px;
-      font-size: 30px;
-      line-height: 24px;
-      font-weight: 900;
+      @include base-positionR(50px);
+      @include size-weight-line(30px,$weight-900,24px);
       background-image: linear-gradient(-45deg, #989a9b 50%, #ffffff 50%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     p {
-      position: relative;
-      top: 60px;
-      color: #41ea6e;
+      @include base-positionR(60px);
+      color: $color-green;
     }
   }
 
   img {
     width: 250px;
   }
-
 }

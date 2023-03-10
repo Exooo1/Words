@@ -34,7 +34,6 @@ export const Layout = () => {
           </Route>
         </Routes>
       </div>
-      <Footer />
     </main>
   )
 }

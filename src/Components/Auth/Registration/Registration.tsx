@@ -32,13 +32,8 @@ export const Registration = () => {
     <section className={styles.registration}>
       <header>
         <b>START FOR FREE</b>
-        <h1>
-          Create new Account <span>.</span>
-        </h1>
-        <b>
-          {' '}
-          Already A Member? <LinkMemo name='Login' path='login' />
-        </b>
+        <h1>Create new Account <span>.</span></h1>
+        <b>Already A Member? <LinkMemo name='Login' path='login' /></b>
       </header>
       <section className={styles.registration_fill}>
         {profile}

@@ -68,9 +68,25 @@
   font-weight: $weight;
   line-height: $line;
 }
+@mixin size-weight-spacing($size,$weight,$spacing){
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $spacing;
+}
 
 //position
 @mixin  base-positionR($top){
   position: relative;
   top:$top;
+}
+
+//background
+@mixin back-shadow($back,$shadow){
+  background: $back;
+  box-shadow: $shadow;
+}
+@mixin back-shadow-radius($back,$shadow,$radius){
+  background: $back;
+  box-shadow: $shadow;
+  border-radius: $radius;
 }

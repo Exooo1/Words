@@ -33,7 +33,7 @@ export const slice = createSlice({
   name: 'profile',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder.addCase(fetchGetProfile.fulfilled, (state, action) => {
       state.firstName = action.payload.firstName
       state.lastName = action.payload.lastName

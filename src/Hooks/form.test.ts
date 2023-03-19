@@ -89,7 +89,7 @@ it('CheckItemsProfile', () => {
     },
   ]
   const mock = jest.fn()
-  itemsProfile.map((item) => {
+  itemsProfile.map(item => {
     mock(item)
     expect(item.plc).toMatch(correctArray[count].plc)
     expect(item.id).toBe(correctArray[count].id)

@@ -42,50 +42,50 @@
   transform: scale($scale);
 }
 //FlexMixins
-@mixin base-flex($justify,$align,$direction,$gap){
+@mixin base-flex($justify, $align, $direction, $gap) {
   display: flex;
-  justify-content:$justify;
+  justify-content: $justify;
   align-items: $align;
   flex-direction: $direction;
-  gap:$gap;
+  gap: $gap;
 }
 
 //responsive
-@mixin width-height($width,$height){
+@mixin width-height($width, $height) {
   width: $width;
   height: $height;
 }
-@mixin maxWidth-height($width,$height){
+@mixin maxWidth-height($width, $height) {
   max-width: $width;
   height: $height;
 }
-@mixin width-minHeight($width,$height){
+@mixin width-minHeight($width, $height) {
   width: $width;
   min-height: $height;
 }
-@mixin size-weight-line($size,$weight,$line){
+@mixin size-weight-line($size, $weight, $line) {
   font-size: $size;
   font-weight: $weight;
   line-height: $line;
 }
-@mixin size-weight-spacing($size,$weight,$spacing){
+@mixin size-weight-spacing($size, $weight, $spacing) {
   font-size: $size;
   font-weight: $weight;
   letter-spacing: $spacing;
 }
 
 //position
-@mixin  base-positionR($top){
+@mixin base-positionR($top) {
   position: relative;
-  top:$top;
+  top: $top;
 }
 
 //background
-@mixin back-shadow($back,$shadow){
+@mixin back-shadow($back, $shadow) {
   background: $back;
   box-shadow: $shadow;
 }
-@mixin back-shadow-radius($back,$shadow,$radius){
+@mixin back-shadow-radius($back, $shadow, $radius) {
   background: $back;
   box-shadow: $shadow;
   border-radius: $radius;

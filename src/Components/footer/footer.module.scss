@@ -2,7 +2,7 @@
 @import '../../Styles/variables.scss';
 
 .footer {
-  font-family: "Calibri Light";
+  font-family: 'Calibri Light';
   color: $color-darkGrey;
   @include base-flex($justify-start, $align-center, $flex-directionC, $gap-5);
   @include size-weight-line(17px, $weight-400, 20px);
@@ -10,7 +10,7 @@
 
   &_description {
     @include base-flex($justify-center, $align-center, $flex-directionC, auto);
-    &_cite{
+    &_cite {
       margin-top: 15px;
     }
     &_links {
@@ -48,7 +48,7 @@
 @media (max-height: 800px) {
   .footer {
     section {
-      display: none
+      display: none;
     }
   }
 }

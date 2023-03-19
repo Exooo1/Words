@@ -2,12 +2,12 @@
 @import '../../Styles/variables.scss';
 
 .auth {
-  @include base-flex($justify-center,$align-center,auto,auto);
+  @include base-flex($justify-center, $align-center, auto, auto);
   flex-wrap: wrap;
 
   &_choose {
     min-width: 200px;
-    @include base-flex($justify-center,$align-center,auto,$gap-15);
+    @include base-flex($justify-center, $align-center, auto, $gap-15);
     transition: $transition1s;
 
     button {
@@ -23,7 +23,7 @@
       cursor: $cursor-pointer;
       border: $border-none;
       border-radius: $border-radius50;
-      @include width-height(40px,40px);
+      @include width-height(40px, 40px);
     }
   }
 }

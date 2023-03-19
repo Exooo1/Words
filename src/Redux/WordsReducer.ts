@@ -147,7 +147,7 @@ const slice = createSlice({
   name: 'words',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder.addCase(fetchGetWords.fulfilled, (state, action) => {
       state.words = action.payload.words
       state.totalWords = action.payload.totalWords
@@ -157,18 +157,18 @@ const slice = createSlice({
       state.totalWords += 1
     })
     builder.addCase(fetchDeleteWord.fulfilled, (state, action) => {
-      const id = state.words.findIndex((item) => item._id === action.payload.id)
+      const id = state.words.findIndex(item => item._id === action.payload.id)
       state.words.splice(id, 1)
       state.totalWords -= 1
     })
     builder.addCase(fetchChangeWord.fulfilled, (state, action) => {
-      const id = state.words.findIndex((item) => item._id === action.payload.id)
+      const id = state.words.findIndex(item => item._id === action.payload.id)
       state.words[id] = { ...action.payload, _id: action.payload.id }
     })
     builder.addCase(fetchWordFind.fulfilled, (state, action) => {
       state.words = action.payload
     })
-    builder.addCase(fetchSortWords.pending, (state) => {
+    builder.addCase(fetchSortWords.pending, state => {
       state.isLoading = true
     })
     builder.addCase(fetchSortWords.fulfilled, (state, action) => {

@@ -93,7 +93,7 @@ export const slice = createSlice({
   name: 'auth',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder.addCase(fetchRegistration.fulfilled, (state, action) => {
       state.resultCode = action.payload
     })

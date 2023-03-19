@@ -22,7 +22,7 @@ export const SortElementComponents: React.FC<SortTypeItems> = React.memo(
     ])
     const handlerSort = (name: string, sort: SortChoice) => {
       setSortElements(
-        sortElements.map((item) =>
+        sortElements.map(item =>
           item.name === name
             ? { ...item, isActive: !item.isActive }
             : {
@@ -34,13 +34,13 @@ export const SortElementComponents: React.FC<SortTypeItems> = React.memo(
       fetchSort(sort)
     }
     const handlerSortReset = () => {
-      setSortElements(sortElements.map((item) => ({ ...item, isActive: false })))
+      setSortElements(sortElements.map(item => ({ ...item, isActive: false })))
       fetchSortReset()
     }
     return (
       <>
         <div>
-          {sortElements.map((item) => {
+          {sortElements.map(item => {
             return (
               <SortElement
                 sortElem={() => handlerSort(item.name, item.sort)}

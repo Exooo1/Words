@@ -53,7 +53,7 @@ export const WordModal: React.FC<WordModalType> = ({ handlerIsModal }) => {
   }
   return (
     <div className='container_modalWord' onClick={handlerIsModal}>
-      <div onClick={(e) => e.stopPropagation()}>
+      <div onClick={e => e.stopPropagation()}>
         <h2>Add new Word</h2>
         <div className={hint === 'word' ? 'modalWord_requiredfield' : ''}>
           {word && <label>Word</label>}

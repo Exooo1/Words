@@ -13,11 +13,11 @@ export const Registration = () => {
     dispatch(fetchGetAuth())
   }, [])
   const { password, email, changePassword, changeEmail, ...form } = useForm()
-  const resultCode = useAppSelector((state) => state.authReducer.resultCode)
-  const auth = useAppSelector((state) => state.authReducer.auth)
+  const resultCode = useAppSelector(state => state.authReducer.resultCode)
+  const auth = useAppSelector(state => state.authReducer.auth)
   if (resultCode === 1) return <Navigate to='/auth/email' replace={true} />
   if (auth === 1) return <Navigate to='/app' replace={true} />
-  const profile = form.itemsProfile.map((item) => {
+  const profile = form.itemsProfile.map(item => {
     return (
       <section key={item.id} className={styles.registration_fill_field}>
         <div>
@@ -32,8 +32,12 @@ export const Registration = () => {
     <section className={styles.registration}>
       <header>
         <b>START FOR FREE</b>
-        <h1>Create new Account <span>.</span></h1>
-        <b>Already A Member? <LinkMemo name='Login' path='login' /></b>
+        <h1>
+          Create new Account <span>.</span>
+        </h1>
+        <b>
+          Already A Member? <LinkMemo name='Login' path='login' />
+        </b>
       </header>
       <section className={styles.registration_fill}>
         {profile}

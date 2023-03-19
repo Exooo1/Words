@@ -24,7 +24,7 @@ export const slice = createSlice({
   initialState,
   reducers: {
     deleteHint(state, action: PayloadAction<string>) {
-      const result = state.errors.findIndex((item) => item.id === action.payload)
+      const result = state.errors.findIndex(item => item.id === action.payload)
       state.errors.splice(result, 1)
     },
     addHint(state, action: PayloadAction<PayloadHintType>) {

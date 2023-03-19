@@ -59,7 +59,7 @@ export const Slider = () => {
       if (count < slider.length - 1) {
         setCount(count + 1)
         setSlider(
-          slider.map((item) =>
+          slider.map(item =>
             item.id === count ? { ...item, focus: true } : { ...item, focus: false },
           ),
         )
@@ -68,7 +68,7 @@ export const Slider = () => {
     return () => clearInterval(interval)
   }, [count])
 
-  const switchers = slider.map((item) => (
+  const switchers = slider.map(item => (
     <button
       disabled={item.id === count}
       onClick={() => changeCount(item.id)}

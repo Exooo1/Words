@@ -7,7 +7,7 @@ import styles from './hintmodal.module.scss'
 
 export const HintModal = () => {
   const { deleteHint } = useActions(slice.actions)
-  const hints = useAppSelector((state) => state.errorsReducer.errors)
+  const hints = useAppSelector(state => state.errorsReducer.errors)
   const removeHint = (id: string) => deleteHint(id)
   const resultHits = hints.map((item, index) => {
     switch (item.status) {

@@ -36,11 +36,11 @@ export const Word: React.FC<WordType> = ({
   return isEdit ? (
     <div className='container_word' key={word}>
       <input type='text' value={wor} onChange={handlerWord} />
-      <input type='text' value={tran} onChange={(e) => setTran(e.target.value)} />
+      <input type='text' value={tran} onChange={e => setTran(e.target.value)} />
       <input
         type='text'
         value={descrip || 'your description'}
-        onChange={(e) => setDescrip(e.target.value)}
+        onChange={e => setDescrip(e.target.value)}
       />
       <p className={'container_word_added'}>{added}</p>
       <img

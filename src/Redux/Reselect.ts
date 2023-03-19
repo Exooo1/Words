@@ -13,7 +13,7 @@ export const profileReselect = (state: AppRootState) => state.wordsSlice
 //     }
 //     return a.length + state.wordsSlice.totalWords
 // }
-export const reselectCount = createSelector([profileReselect], (state) => {
+export const reselectCount = createSelector([profileReselect], state => {
   console.log('s')
   const a: Array<any> = []
   for (let i = 0; i < 19000000; i++) {

@@ -32,12 +32,12 @@ it('NavBar', () => {
       style: false,
     },
   ]
-  const mock = jest.fn((item) => item)
+  const mock = jest.fn(item => item)
   const changeNav = (id: number) => {
-    const item = nav.findIndex((item) => item.id === id)
+    const item = nav.findIndex(item => item.id === id)
     nav.splice(item, 1)
   }
-  nav.map((item) => mock(item))
+  nav.map(item => mock(item))
   expect(mock.mock.calls.length).toBe(4)
   expect(mock.mock.results[0].value.style).toBeTruthy()
   expect(mock.mock.lastCall[0].style).toBeFalsy()

@@ -53,12 +53,10 @@ export const AppVocabulary = () => {
     if (auth === 0) navigate('/auth')
   }, [auth])
   const changeNav = (id: number) => {
-    setNav(
-      nav.map((item) => (item.id !== id ? { ...item, style: false } : { ...item, style: true })),
-    )
+    setNav(nav.map(item => (item.id !== id ? { ...item, style: false } : { ...item, style: true })))
   }
   const handlerLogOut = () => dispatch(fetchLogOut())
-  const NavLinks = nav.map((item) => (
+  const NavLinks = nav.map(item => (
     <NavLinkElement key={item.id} click={() => changeNav(item.id)} {...item} />
   ))
   return (

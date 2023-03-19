@@ -8,21 +8,21 @@
   p {
     color: darkgrey;
   }
-  &_image{
+  &_image {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
     line-height: 25px;
-    img{
+    img {
       width: 50%;
     }
-    h2{
+    h2 {
       color: white;
       max-width: 400px;
     }
-    span{
-      color:#0a84de;
+    span {
+      color: #0a84de;
       font-size: 50px;
     }
   }

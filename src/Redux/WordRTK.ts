@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const wordApi = createApi({
   reducerPath: 'wordApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8080' }),
-  endpoints: (build) => ({
+  endpoints: build => ({
     getPost: build.query({
       query: () => ({
         url: ``,

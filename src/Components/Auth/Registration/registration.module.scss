@@ -5,15 +5,14 @@
   margin: 10px 0;
   border-radius: 20px;
   width: 500px;
-  @include base-flex(auto,auto,$flex-directionC,$gap-20);
-
+  @include base-flex(auto, auto, $flex-directionC, $gap-20);
 
   header {
     line-height: 0px;
     margin: 15px 15px;
     letter-spacing: 0.2px;
     color: $color-darkGrey;
-    @include base-flex($justify-center,$align-center,$flex-directionC,auto);
+    @include base-flex($justify-center, $align-center, $flex-directionC, auto);
 
     a {
       color: $color-green;
@@ -28,7 +27,7 @@
 
     h1 {
       color: $color-white;
-      @include size-weight-spacing(26px,$weight-900,0.5px);
+      @include size-weight-spacing(26px, $weight-900, 0.5px);
 
       span {
         font-size: 50px;
@@ -38,7 +37,7 @@
   }
 
   &_button {
-    @include base-flex($justify-center,$align-center,auto,auto);
+    @include base-flex($justify-center, $align-center, auto, auto);
 
     button {
       &:active {
@@ -47,23 +46,23 @@
 
       cursor: $cursor-pointer;
       border: $border-none;
-      @include size-weight-line(25px,$weight-900,auto);
-      @include width-height(345px,70px);
-      @include back-shadow-radius($color-white,$box-shadow-black,20px);
+      @include size-weight-line(25px, $weight-900, auto);
+      @include width-height(345px, 70px);
+      @include back-shadow-radius($color-white, $box-shadow-black, 20px);
       color: #464444;
     }
   }
 
   &_fill {
-    @include base-flex($justify-center,$align-center,$flex-directionC,$gap-10);
+    @include base-flex($justify-center, $align-center, $flex-directionC, $gap-10);
 
     &_field {
       min-width: 305px;
-      @include base-flex(auto,$align-center,auto,$gap-10);
-      @include back-shadow-radius($color-white,$box-shadow-black,10px);
+      @include base-flex(auto, $align-center, auto, $gap-10);
+      @include back-shadow-radius($color-white, $box-shadow-black, 10px);
 
       div {
-        @include base-flex(auto,$align-start,$flex-directionC,auto);
+        @include base-flex(auto, $align-start, $flex-directionC, auto);
         height: 70px;
       }
 
@@ -73,20 +72,20 @@
         margin-left: 15px;
         background: $color-white;
         border: $border-none;
-        @include width-height(265px,40px);
-        @include size-weight-line(18px,$weight-900,auto);
+        @include width-height(265px, 40px);
+        @include size-weight-line(18px, $weight-900, auto);
       }
 
       label {
         color: #848383;
         padding-top: 5px;
         padding-left: 15px;
-        @include size-weight-spacing(12px,$weight-800,1.2px)
+        @include size-weight-spacing(12px, $weight-800, 1.2px);
       }
 
       img {
         margin-right: 10px;
-        @include width-height(45px,45px);
+        @include width-height(45px, 45px);
       }
     }
   }

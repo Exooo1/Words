@@ -5,7 +5,7 @@ import { ProjectTypeReturn } from '../Common/Types/CommonType'
 const instance = axios.create({
   baseURL: 'http://localhost:8080/auth/',
 })
-instance.interceptors.request.use((config) => {
+instance.interceptors.request.use(config => {
   // @ts-ignore
   config.headers.Authorization = `Bearer ${window.localStorage.getItem('token')}`
   return config

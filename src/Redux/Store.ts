@@ -15,6 +15,6 @@ const reducers = combineReducers({
 })
 export const store = configureStore({
   reducer: reducers,
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware().prepend(wordApi.middleware, thunkMiddleware),
 })

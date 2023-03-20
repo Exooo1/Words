@@ -1,4 +1,4 @@
-@import '../../../Styles/mixins';
+@import "../../../Styles/mixins";
 
 .container_modalWord {
   .modalWord_requiredfield {
@@ -33,7 +33,11 @@
       width: 100%;
 
       button {
-        background: linear-gradient(90deg, rgb(23, 243, 60) 10%, rgb(13, 236, 177) 72%);
+        background: linear-gradient(
+          90deg,
+          rgb(23, 243, 60) 10%,
+          rgb(13, 236, 177) 72%
+        );
         font-weight: 900;
         min-width: 100px;
         font-size: 22px;
@@ -47,7 +51,11 @@
       }
 
       button:last-child {
-        background: linear-gradient(90deg, rgb(243, 23, 140) 10%, rgba(238, 18, 18, 0.5) 72%);
+        background: linear-gradient(
+          90deg,
+          rgb(243, 23, 140) 10%,
+          rgba(238, 18, 18, 0.5) 72%
+        );
       }
 
       button:active {

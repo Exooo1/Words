@@ -1,5 +1,5 @@
-@import '../../Styles/mixins.scss';
-@import '../../Styles/variables.scss';
+@import "../../Styles/mixins.scss";
+@import "../../Styles/variables.scss";
 
 @keyframes sliderImg {
   from {
@@ -53,7 +53,12 @@
     border-bottom: 0.5px $color-white;
 
     dl {
-      @include base-flex($justify-center, $align-center, $flex-directionC, $gap-10);
+      @include base-flex(
+        $justify-center,
+        $align-center,
+        $flex-directionC,
+        $gap-10
+      );
       height: 125px;
 
       dt {

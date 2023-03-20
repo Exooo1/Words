@@ -1,36 +1,37 @@
-import React, { useEffect, useState } from 'react'
-import { Outlet } from 'react-router-dom'
-import { HintModal } from '../../Common/ModalComponents/HintModal/HintModal'
-import { changeTitle } from '../../Common/usefulFuncs'
+import React, { FC, useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
+import { HintModal } from "../../Common/ModalComponents/HintModal/HintModal";
+import { changeTitle } from "../../Common/usefulFuncs";
 
-import styles from './auth.module.scss'
-import { Slider } from '../Slider/Slider'
-import { Header } from '../header/header'
+import styles from "./auth.module.scss";
+import { Slider } from "../Slider/Slider";
+import { Header } from "../header/header";
+import { CHOICE_AUTH } from "../../constants/constants";
+import { ChoiceAuthType } from "../../Common/Types/CommonType";
 
-export const Auth = () => {
+export const Auth: FC = () => {
   useEffect(() => {
-    changeTitle('Auth')
-  }, [])
-  const [choose, setChoose] = useState<boolean>(true)
-  const [choice, setChoice] = useState([
-    { id: 1, isActive: true },
-    { id: 2, isActive: false },
-  ])
+    changeTitle("Auth");
+  }, []);
+  const [choose, setChoose] = useState<boolean>(true);
+  const [choice, setChoice] = useState(CHOICE_AUTH);
   const handlerChoice = (value: number) => {
     setChoice(
       choice.map(item =>
-        item.id === value ? { ...item, isActive: true } : { ...item, isActive: false },
-      ),
-    )
-    setChoose(!choose)
-  }
+        item.id === value
+          ? { ...item, isActive: true }
+          : { ...item, isActive: false }
+      )
+    );
+    setChoose(!choose);
+  };
   const buttons = choice.map(item => (
     <button
       key={item.id}
       onClick={() => handlerChoice(item.id)}
-      style={{ background: item.isActive ? '#323645' : 'white' }}
+      style={{ background: item.isActive ? "#323645" : "white" }}
     ></button>
-  ))
+  ));
   return (
     <section>
       <Header />
@@ -40,5 +41,5 @@ export const Auth = () => {
         <HintModal />
       </section>
     </section>
-  )
-}
+  );
+};

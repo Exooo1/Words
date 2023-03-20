@@ -1,5 +1,5 @@
-@import '../../../Styles/mixins.scss';
-@import '../../../Styles/variables.scss';
+@import "../../../Styles/mixins.scss";
+@import "../../../Styles/variables.scss";
 
 .registration {
   margin: 10px 0;
@@ -54,7 +54,12 @@
   }
 
   &_fill {
-    @include base-flex($justify-center, $align-center, $flex-directionC, $gap-10);
+    @include base-flex(
+      $justify-center,
+      $align-center,
+      $flex-directionC,
+      $gap-10
+    );
 
     &_field {
       min-width: 305px;

@@ -1,24 +1,21 @@
+@import "./src/Styles/mixins.scss";
+@import "./src/Styles/variables.scss";
+
 .notFound {
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  @include base-flex($justify-center, $align-center, $flex-directionC, auto);
   background: #292929;
   p {
-    color: darkgrey;
+    color: $color-darkGrey;
   }
   &_image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+    @include base-flex($justify-center, $align-center, auto, $gap-10);
     line-height: 25px;
     img {
       width: 50%;
     }
     h2 {
-      color: white;
+      color: $color-white;
       max-width: 400px;
     }
     span {

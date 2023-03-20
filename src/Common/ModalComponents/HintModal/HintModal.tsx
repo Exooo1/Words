@@ -1,20 +1,20 @@
-import React from 'react'
-import { useActions, useAppSelector } from '../../../Redux/ReduxUtils'
-import { slice } from '../../../Redux/ErrorsReducer'
-import done from '../../../Assets/Images/done.png'
-import error from '../../../Assets/Images/error.png'
-import styles from './hintmodal.module.scss'
+import React from "react";
+import { useActions, useAppSelector } from "../../../Redux/ReduxUtils";
+import { slice } from "../../../Redux/ErrorsReducer";
+import done from "../../../Assets/Images/done.png";
+import error from "../../../Assets/Images/error.png";
+import styles from "./hintmodal.module.scss";
 
 export const HintModal = () => {
-  const { deleteHint } = useActions(slice.actions)
-  const hints = useAppSelector(state => state.errorsReducer.errors)
-  const removeHint = (id: string) => deleteHint(id)
+  const { deleteHint } = useActions(slice.actions);
+  const hints = useAppSelector(state => state.errorsReducer.errors);
+  const removeHint = (id: string) => deleteHint(id);
   const resultHits = hints.map((item, index) => {
     switch (item.status) {
-      case 'error':
+      case "error":
         return (
           <div
-            style={{ top: `${800 - index * 115}px`, color: '#ed4004' }}
+            style={{ top: `${800 - index * 115}px`, color: "#ed4004" }}
             className={styles.hint}
             onClick={() => removeHint(item.id)}
             key={item.id}
@@ -26,12 +26,12 @@ export const HintModal = () => {
               </p>
             </div>
           </div>
-        )
-      case 'done':
+        );
+      case "done":
         return (
           <div
             className={styles.hint}
-            style={{ top: `${800 - index * 115}px`, color: '#00f61a' }}
+            style={{ top: `${800 - index * 115}px`, color: "#00f61a" }}
             onClick={() => removeHint(item.id)}
             key={item.id}
           >
@@ -42,22 +42,22 @@ export const HintModal = () => {
               </p>
             </div>
           </div>
-        )
-      case 'warn':
+        );
+      case "warn":
         return (
           <div
             className={styles.hint}
-            style={{ top: `${800 - index * 115}px`, color: 'yellow' }}
+            style={{ top: `${800 - index * 115}px`, color: "yellow" }}
             onClick={() => removeHint(item.id)}
             key={item.id}
           >
             <h3>{item.article}</h3>
           </div>
-        )
+        );
       default:
-        return null
+        return null;
     }
-  })
+  });
 
-  return <div>{resultHits}</div>
-}
+  return <div>{resultHits}</div>;
+};

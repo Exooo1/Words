@@ -1,5 +1,5 @@
-@import '../../Styles/mixins.scss';
-@import '../../Styles/variables.scss';
+@import "../../Styles/mixins.scss";
+@import "../../Styles/variables.scss";
 
 .auth {
   @include base-flex($justify-center, $align-center, auto, auto);

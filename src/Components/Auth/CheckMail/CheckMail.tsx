@@ -8,20 +8,20 @@ export const CheckMail = () => {
     changeTitle("Email");
   }, []);
   return (
-    <div className={styles.checkMail}>
-      <div>
-        <h1>YourVocabulary</h1>
+    <section className={styles.checkMail}>
+      <figure>
+        <h2>YourVocabulary</h2>
         <img src={mail} alt="checkMail" />
         <h3>Check your Email</h3>
         <p>
-          We've sent an Email with instructions to example
+          We have sent an Email with instructions to example
           <span>@Gmail.com</span>
         </p>
         <p>
           if you do not confirm registration, your account will be deleted after
           12 hours
         </p>
-      </div>
-    </div>
+      </figure>
+    </section>
   );
 };

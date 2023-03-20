@@ -1,15 +1,15 @@
-import React from 'react'
-import { PaginationElements } from './PaginationElements'
+import React from "react";
+import { PaginationElements } from "./PaginationElements";
 
 type PaginationType = {
-  current: number
-  handlerCurrent: () => void
-  resultPagination: number
-  handlerPagination: (value: number) => void
-  array: Array<number>
-  handlerNext: () => void
-  handlerPrevious: () => void
-}
+  current: number;
+  handlerCurrent: () => void;
+  resultPagination: number;
+  handlerPagination: (value: number) => void;
+  array: Array<number>;
+  handlerNext: () => void;
+  handlerPrevious: () => void;
+};
 
 export const Pagination: React.FC<PaginationType> = React.memo(
   ({
@@ -19,7 +19,7 @@ export const Pagination: React.FC<PaginationType> = React.memo(
     current,
     handlerCurrent,
     handlerPagination,
-    resultPagination,
+    resultPagination
   }) => {
     const paginationElements = () => {
       return array.map((item: number) => (
@@ -29,8 +29,8 @@ export const Pagination: React.FC<PaginationType> = React.memo(
           isActive={item === current}
           id={item}
         />
-      ))
-    }
+      ));
+    };
     return (
       <div>
         <button onClick={handlerPrevious}>&#171;</button>
@@ -43,6 +43,6 @@ export const Pagination: React.FC<PaginationType> = React.memo(
         </div>
         <button onClick={handlerNext}>&#187;</button>
       </div>
-    )
-  },
-)
+    );
+  }
+);

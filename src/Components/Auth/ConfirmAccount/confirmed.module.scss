@@ -1,48 +1,35 @@
+@import 'src/Styles/mixins.scss';
+@import 'src/Styles/variables.scss';
+
 .confirmed {
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background: linear-gradient(to right, #0f2027, #553d83, #8f049f);
-
-  div {
-    background: linear-gradient(to right, #262b37, #4d4450);
-    height: 450px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  @include base-flex($justify-center,$align-center,$flex-directionC,auto);
+  &_content {
     border-radius: 20px;
-    width: 400px;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    button {
-      background: #517ee8;
-      border-radius: 15px;
-      width: 230px;
-      border: none;
-      color: white;
-      font-weight: 800;
-      font-size: 20px;
-      height: 75px;
-      cursor: pointer;
+    color: $color-white;
+    background: linear-gradient(to right, #262b37, #4d4450);
+    @include maxWidth-height(450px,470px);
+    @include base-flex($justify-center,$align-center,$flex-directionC,$gap-10);
+    h2 {
+      span {
+        color: #0a84de;
+      }
     }
-    button:active {
-      box-shadow: inset 0 0 10px black;
-    }
-    span {
-      font-size: 40px;
-      color: #0370e5;
-    }
-
     p {
-      width: 300px;
+      text-align: center;
     }
-
-    img {
-      width: 120px;
-      height: 120px;
-    }
+  }
+  img {
+    width: 150px;
+  }
+  button {
+    cursor: $cursor-pointer;
+    border-radius: 10px;
+    border: none;
+    color: $color-white;
+    @include width-height(180px,70px);
+    @include size-weight-line(18px,$weight-900,auto);
+    @include back-shadow(#0370e5,$box-shadow-black);
   }
 }

@@ -16,7 +16,7 @@
   }
 
   input {
-    font-family: 'Calibri Light';
+    font-family: "Calibri Light";
     height: 40px;
     width: 26.67%;
     background: none;
@@ -26,7 +26,7 @@
   }
 
   .container_word_main {
-    font-family: 'Calibri Light';
+    font-family: "Calibri Light";
     font-size: 18px;
     font-weight: 700;
     text-align: left;
@@ -53,7 +53,7 @@
   }
 
   .description_active {
-    font-family: 'Cambria Math';
+    font-family: "Cambria Math";
     color: rgba(118, 122, 123, 0.51);
   }
 
@@ -86,10 +86,10 @@
   }
 }
 
-$font-light: 'Calibri Light';
-$font-main: 'Calibri Light';
+$font-light: "Calibri Light";
+$font-main: "Calibri Light";
 $font-translate: Roboto;
-$font-description: 'Cambria Math';
+$font-description: "Cambria Math";
 $color-white: white;
 $color-purple: #b562e6;
 $color-green: #00f841;

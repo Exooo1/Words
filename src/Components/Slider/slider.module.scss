@@ -1,5 +1,5 @@
-@import '../../Styles/mixins.scss';
-@import '../../Styles/variables.scss';
+@import "../../Styles/mixins.scss";
+@import "../../Styles/variables.scss";
 
 @keyframes sliderImg {
   from {
@@ -11,18 +11,19 @@
 
 .slider {
   margin-top: 10px;
-  @include base-flex($justify-start,$align-center,$flex-directionC,auto);
-  @include maxWidth-height(500px,530px);
+  @include base-flex($justify-start, $align-center, $flex-directionC, auto);
+  @include maxWidth-height(500px, 530px);
   color: $color-white;
   border-radius: $border-radius20;
 
   img {
     border-radius: 20px 20px 0 0;
-    @include width-height(100%,350px);
+    @include width-height(100%, 350px);
   }
 
   &_switchers {
-    @include base-flex($justify-center,$align-center,auto,$gap-15);
+    margin-top: 7px;
+    @include base-flex($justify-center, $align-center, auto, $gap-15);
 
     .switchers_isActive {
       &:disabled {
@@ -36,7 +37,6 @@
 
     button {
       cursor: $cursor-pointer;
-
       &:hover {
         transform: scale(1.5);
       }
@@ -44,8 +44,8 @@
       transition: 0.5s;
       border: $border-none;
       background: $color-white;
-      border-radius: $border-radius30;
-      @include width-height(40px,40px);
+      border-radius: $border-radius10;
+      @include width-height(40px, 40px);
     }
   }
 
@@ -53,7 +53,12 @@
     border-bottom: 0.5px $color-white;
 
     dl {
-      @include base-flex($justify-center,$align-center,$flex-directionC,$gap-10);
+      @include base-flex(
+        $justify-center,
+        $align-center,
+        $flex-directionC,
+        $gap-10
+      );
       height: 125px;
 
       dt {
@@ -63,7 +68,8 @@
       }
 
       dd {
-        width: 325px;
+        width: 335px;
+        font-size: 15px;
         font-weight: $weight-400;
       }
     }

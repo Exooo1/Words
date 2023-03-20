@@ -1,18 +1,14 @@
-@import '../../Styles/mixins.scss';
+@import "../../Styles/mixins.scss";
+@import "../../Styles/variables.scss";
 
 .auth {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include base-flex($justify-center, $align-center, auto, auto);
   flex-wrap: wrap;
 
   &_choose {
     min-width: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    transition: 1s;
+    @include base-flex($justify-center, $align-center, auto, $gap-15);
+    transition: $transition1s;
 
     button {
       &:active {
@@ -24,11 +20,10 @@
       }
 
       box-shadow: 0 0 15px white;
-      cursor: pointer;
-      border: none;
-      border-radius: 90px;
-      width: 40px;
-      height: 40px;
+      cursor: $cursor-pointer;
+      border: $border-none;
+      border-radius: $border-radius50;
+      @include width-height(40px, 40px);
     }
   }
 }

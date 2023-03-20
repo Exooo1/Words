@@ -1,26 +1,32 @@
-import React from 'react'
-import github from '../../Assets/Images/github.svg'
-import telegram from '../../Assets/Images/telegram.svg'
-import linkedin from '../../Assets/Images/linkedin.svg'
+import React, { FC } from "react";
 
-import styles from './footer.module.scss'
+import linkedin from "../../Assets/Images/linkedin.png";
+import telegram from "../../Assets/Images/telegram.png";
+import github from "../../Assets/Images/github.png";
 
-export const Footer = () => {
-    return (
-        <footer className={styles.footer}>
-            <section>
-                <ul>
-                    <li><a rel="noreferrer" target='_blank' href="https://github.com/Exooo1/Words"><img
-                        src={github} alt="github"/></a></li>
-                    <li><a rel="noreferrer" target='_blank' href="https://www.linkedin.com/in/vlasmaskalenchik/"><img
-                        src={linkedin} alt="linkedin"/></a></li>
-                    <li><a rel="noreferrer" target='_blank' href="https://t.me/Vlasmaskalenchik"><img
-                        src={telegram} alt="telegram"/></a></li>
-                </ul>
-            </section>
-            <section>
-                <p>Released under the MIT License. Vlas Maskalenchik<time>© 2022-present </time></p>
-            </section>
-        </footer>
-    )
-}
+import styles from "./footer.module.scss";
+
+export const Footer: FC = () => {
+  return (
+    <footer className={styles.footer}>
+      <section className={styles.footer_description}>
+        <section className={styles.footer_description_links}>
+          <ul>
+            <li>
+              <img src={linkedin} alt="linkedin" />
+            </li>
+            <li>
+              <img src={github} alt="github" />
+            </li>
+            <li>
+              <img src={telegram} alt="telegram" />
+            </li>
+          </ul>
+        </section>
+        <section className={styles.footer_description_cite}>
+          <cite>Vlas Maskalenchik 2023. All rights reserved.</cite>
+        </section>
+      </section>
+    </footer>
+  );
+};

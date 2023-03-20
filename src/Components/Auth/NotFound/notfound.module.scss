@@ -1,40 +1,26 @@
+@import "./src/Styles/mixins.scss";
+@import "./src/Styles/variables.scss";
+
 .notFound {
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: black;
-  background: linear-gradient(to right, #0f2027, #553d83, #8f049f);
-
-  &_information {
-    color: white;
-    border-radius: 20px;
-    width: 40%;
-    min-height: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    h1 {
-      font-weight: 800;
-      min-width: 300px;
-      font-size: 35px;
-      margin: 0 0;
+  @include base-flex($justify-center, $align-center, $flex-directionC, auto);
+  background: #292929;
+  p {
+    color: $color-darkGrey;
+  }
+  &_image {
+    @include base-flex($justify-center, $align-center, auto, $gap-10);
+    line-height: 25px;
+    img {
+      width: 50%;
     }
-
-    p {
-      min-width: 300px;
-      width: 80%;
-      font-size: 18px;
+    h2 {
+      color: $color-white;
+      max-width: 400px;
     }
-
-    p:first-child {
-      text-shadow: 0 0 18px #9c3ee0;
-      color: #e4e5ef;
-      margin: 0 0;
-      font-weight: 900;
-      font-size: 150px;
+    span {
+      color: #0a84de;
+      font-size: 50px;
     }
   }
 }

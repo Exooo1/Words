@@ -1,3 +1,5 @@
+import profile from "../../Assets/Images/profile.png";
+
 export type ThunkError = { rejectValue: { errors: string } };
 export type ProjectTypeReturn<T> = {
   item: T;
@@ -16,4 +18,11 @@ export type SliderTypeBanners = {
 export type ChoiceAuthType = {
   id: number;
   isActive: boolean;
+};
+export type NavType = {
+  id: number;
+  name: string;
+  path: string;
+  img: string;
+  style: boolean;
 };

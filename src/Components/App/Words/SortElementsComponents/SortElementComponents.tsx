@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { SortElement } from "../SortElements/SortElement";
-import { SortChoice } from "../../../../API/wordAPI";
+import React, {useState} from "react";
+import {SortElement} from "../SortElements/SortElement";
+import {SortChoice} from "../../../../API/wordAPI";
 
 type SortElementsType = {
   id: number;

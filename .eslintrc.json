@@ -18,7 +18,8 @@
       }
     ],
     "no-confusing-arro": "off",
-    "@typescript-eslint/ban-ts-comment": "warn"
+    "@typescript-eslint/ban-ts-comment": "warn",
+    "react/display-name": "off"
   },
   "settings": {
     "react": {

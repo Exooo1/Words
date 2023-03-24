@@ -1,5 +1,5 @@
 import React from "react";
-import { PaginationElements } from "./PaginationElements";
+import {PaginationElements} from "./PaginationElements";
 
 type PaginationType = {
   current: number;

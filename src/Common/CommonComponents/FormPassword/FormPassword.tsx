@@ -1,4 +1,4 @@
-import React, { ChangeEvent, memo, useState } from "react";
+import React, {ChangeEvent, memo, useState} from "react";
 import eye from "../../../Assets/Images/eye.png";
 import eye2 from "../../../Assets/Images/eyep.png";
 import mail from "../../../Assets/Images/email.png";

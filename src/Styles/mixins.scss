@@ -79,6 +79,11 @@
   position: relative;
   top: $top;
 }
+@mixin base-positionA($left,$top){
+  position: absolute;
+  left:$left;
+  top:$top;
+}
 
 //background
 @mixin back-shadow($back, $shadow) {

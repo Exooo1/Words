@@ -1,5 +1,9 @@
 import managment from "../Assets/Images/managerwords.png";
-import { ChoiceAuthType, SliderTypeBanners } from "../Common/Types/CommonType";
+import {ChoiceAuthType, NavType, SliderTypeBanners} from "../Common/Types/CommonType";
+import profile from "../Assets/Images/profile.png";
+import dashboard from "../Assets/Images/dashboard.png";
+import vocab from "../Assets/Images/vocab.png";
+import rewards from "../Assets/Images/rewards.png";
 
 export const SLIDER_BANNERS: Array<SliderTypeBanners> = [
   {
@@ -47,3 +51,31 @@ export const CHOICE_AUTH: Array<ChoiceAuthType> = [
   { id: 1, isActive: true },
   { id: 2, isActive: false }
 ];
+export const NAV:Array<NavType> = [ {
+    id: 1,
+    name: "Profile",
+    path: "profile",
+    img: profile,
+    style: false
+},
+    {
+        id: 2,
+        name: "Dashboard",
+        path: "dashboard",
+        img: dashboard,
+        style: false
+    },
+    {
+        id: 3,
+        name: "Words",
+        path: "",
+        img: vocab,
+        style: true
+    },
+    {
+        id: 4,
+        name: "Achievements",
+        path: "achievements",
+        img: rewards,
+        style: false
+    }]

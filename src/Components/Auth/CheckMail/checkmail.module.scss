@@ -9,9 +9,7 @@
     width: 100px;
   }
   p{
-    width: 350px;
     text-align: center;
-    margin: 20px;
   }
   span{
     font-weight: $weight-800;
@@ -22,6 +20,6 @@
     border-radius: 20px;
     background: linear-gradient(to right, #262b37, #4d4450);
     @include base-flex($justify-center,$align-center,$flex-directionC,auto);
-    @include maxWidth-height(450px,470px);
+    @include maxWidth-height(420px,450px);
   }
 }
